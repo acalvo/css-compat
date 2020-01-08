@@ -20,7 +20,7 @@ export function getAllCssSources() {
   const getInlineStyles = () => {
     return Array
       .from(document.getElementsByTagName('style'))
-      .map(node => node.innerText)
+      .map(node => node.textContent)
       .filter(content => content.length > 0);
   };
 
