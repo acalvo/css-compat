@@ -2,6 +2,7 @@ import StyleSheet from './lib/StyleSheet';
 import semverCompare from 'semver-compare';
 import Vue from 'vue';
 import App from './ui/app.vue';
+import Error from './ui/error.vue';
 import { browsersMap } from './lib/browsers';
 import { getAllCssSources, manageThemeColorChange, reloadOnNavigation } from './lib/browser-tasks';
 
@@ -51,6 +52,19 @@ getAllCssSources().then((sources: Array<{ id: string | number; content: string; 
     }
   });
 
-}).catch(err => {
-  console.log(err);
+}).catch(error => {
+  console.error(error);
+  new Vue({
+    el: '#app',
+    components: {
+      Error
+    },
+    render(h) {
+      return h('error', {
+        props: {
+          error
+        }
+      });
+    }
+  });
 });

@@ -21,6 +21,10 @@ body {
 }
 
 .simple {
-  margin: 100px auto;
+  margin: 75px auto;
   width: max-content;
+}
+
+a {
+  color: inherit;
 }

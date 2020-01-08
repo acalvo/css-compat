@@ -146,9 +146,6 @@ li .property {
   font-size: 16px;
   font-family: Courier, "Lucida Console", monospace;
 }
-li a {
-  color: inherit;
-}
 li .additional-info {
   font-size: 12px;
 }
