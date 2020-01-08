@@ -76,3 +76,7 @@ export function manageThemeColorChange() {
     browser.devtools.panels.onThemeChanged.addListener(setTheme);
   });
 }
+
+export function reloadOnNavigation() {
+  browser.devtools.network.onNavigated.addListener((url) => location.reload());
+}

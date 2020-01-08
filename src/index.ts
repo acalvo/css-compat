@@ -3,9 +3,10 @@ import semverCompare from 'semver-compare';
 import Vue from 'vue';
 import App from './ui/app.vue';
 import { browsersMap } from './lib/browsers';
-import { getAllCssSources, manageThemeColorChange } from './lib/browser-tasks';
+import { getAllCssSources, manageThemeColorChange, reloadOnNavigation } from './lib/browser-tasks';
 
 manageThemeColorChange();
+reloadOnNavigation();
 
 getAllCssSources().then((sources: Array<{ id: string | number; content: string; external: boolean }>) => {
   const stylesheets = new StyleSheet();
