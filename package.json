@@ -8,6 +8,7 @@
     "build-data": "npx ts-node scripts/build-data.ts",
     "build": "(rm -r dist/ || true) && webpack && npx web-ext build --source-dir ./dist --overwrite-dest",
     "watch": "webpack --watch",
+    "changelog": "npx conventional-changelog -p angular -i CHANGELOG.md -s",
     "lint": "npx eslint './**/*.ts'"
   },
   "dependencies": {},
@@ -18,6 +19,7 @@
     "@typescript-eslint/eslint-plugin": "^2.15.0",
     "@typescript-eslint/parser": "^2.15.0",
     "awesome-typescript-loader": "^5.2.1",
+    "conventional-changelog-cli": "^2.0.31",
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.4.1",
     "cssbeautify": "^0.3.1",
