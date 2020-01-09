@@ -1,3 +1,5 @@
+import browser from 'webextension-polyfill';
+
 export interface Source {
   id: string | number; // URL in case of external, int id in case of inline
   content: string;
@@ -70,7 +72,7 @@ export function getAllCssSources() {
 }
 
 export function manageThemeColorChange() {
-  window.addEventListener('DOMContentLoaded', () => {
+  window?.addEventListener('DOMContentLoaded', () => {
     const setTheme = theme => document.documentElement.dataset.theme = theme;
     setTheme(browser.devtools.panels.themeName);
     browser.devtools.panels.onThemeChanged.addListener(setTheme);

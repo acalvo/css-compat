@@ -4,10 +4,13 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
   mode: 'production',
-  entry: './src/index.ts',
+  entry: {
+    index: './src/index.ts',
+    panel: './src/panel.ts'
+  },
   output: {
     path: __dirname + '/dist',
-    filename: 'bundle.js'
+    filename: '[name].js'
   },
   resolve: {
     extensions: ['.ts', '.js', '.json']
@@ -44,11 +47,6 @@ module.exports = {
       {
         from: 'static',
         to: '.'
-      },
-      {
-        from: 'node_modules/webextension-polyfill/dist/browser-polyfill.js',
-        to: '.',
-        transform: fileContent => terser.minify(fileContent.toString()).code.toString()
       }
     ]),
     new VueLoaderPlugin()

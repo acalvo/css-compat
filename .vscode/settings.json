@@ -1,5 +1,6 @@
 {
     "files.insertFinalNewline": true,
     "editor.formatOnSave": true,
+    "html.format.extraLiners": "none",
     "html.format.indentInnerHtml": true
 }
