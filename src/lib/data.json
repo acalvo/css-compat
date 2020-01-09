@@ -546,19 +546,26 @@
         "78": {
           "release_date": "2019-10-22",
           "release_notes": "https://chromereleases.googleblog.com/2019/10/stable-channel-update-for-desktop_22.html",
-          "status": "current",
+          "status": "retired",
           "engine": "Blink",
           "engine_version": "78"
         },
         "79": {
-          "status": "beta",
+          "release_date": "2019-12-10",
+          "release_notes": "https://chromereleases.googleblog.com/2019/12/stable-channel-update-for-desktop.html",
+          "status": "current",
           "engine": "Blink",
           "engine_version": "79"
         },
         "80": {
-          "status": "nightly",
+          "status": "beta",
           "engine": "Blink",
           "engine_version": "80"
+        },
+        "81": {
+          "status": "nightly",
+          "engine": "Blink",
+          "engine_version": "81"
         }
       }
     },
@@ -1107,23 +1114,37 @@
         "70": {
           "release_date": "2019-10-22",
           "release_notes": "https://developer.mozilla.org/docs/Mozilla/Firefox/Releases/70",
-          "status": "current",
+          "status": "retired",
           "engine": "Gecko",
           "engine_version": "70"
         },
         "71": {
           "release_date": "2019-12-10",
           "release_notes": "https://developer.mozilla.org/docs/Mozilla/Firefox/Releases/71",
-          "status": "beta",
+          "status": "retired",
           "engine": "Gecko",
           "engine_version": "71"
         },
         "72": {
           "release_date": "2020-01-07",
           "release_notes": "https://developer.mozilla.org/docs/Mozilla/Firefox/Releases/72",
-          "status": "nightly",
+          "status": "current",
           "engine": "Gecko",
           "engine_version": "72"
+        },
+        "73": {
+          "release_date": "2020-02-11",
+          "release_notes": "https://developer.mozilla.org/docs/Mozilla/Firefox/Releases/73",
+          "status": "beta",
+          "engine": "Gecko",
+          "engine_version": "73"
+        },
+        "74": {
+          "release_date": "2020-03-10",
+          "release_notes": "https://developer.mozilla.org/docs/Mozilla/Firefox/Releases/74",
+          "status": "nightly",
+          "engine": "Gecko",
+          "engine_version": "74"
         },
         "1.5": {
           "release_date": "2005-11-29",
@@ -2829,7 +2850,7 @@
             },
             "status": {
               "experimental": false,
-              "standard_track": false,
+              "standard_track": true,
               "deprecated": false
             }
           }
@@ -3055,7 +3076,7 @@
             },
             "status": {
               "experimental": false,
-              "standard_track": false,
+              "standard_track": true,
               "deprecated": false
             }
           }
@@ -3083,7 +3104,7 @@
             },
             "status": {
               "experimental": false,
-              "standard_track": false,
+              "standard_track": true,
               "deprecated": false
             }
           }
@@ -3427,7 +3448,7 @@
             },
             "status": {
               "experimental": false,
-              "standard_track": false,
+              "standard_track": true,
               "deprecated": false
             }
           }
@@ -3923,7 +3944,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -3951,7 +3972,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -3979,7 +4000,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -4007,7 +4028,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -4116,7 +4137,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -4405,7 +4426,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -4463,7 +4484,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -5216,6 +5237,39 @@
               "standard_track": false,
               "deprecated": true
             }
+          }
+        }
+      },
+      "-ms-scrollbar-track-color": {
+        "__compat": {
+          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/-ms-scrollbar-track-color",
+          "support": {
+            "chrome": {
+              "version_added": false
+            },
+            "edge": {
+              "version_added": false
+            },
+            "firefox": {
+              "version_added": false
+            },
+            "ie": [
+              {
+                "version_added": "5",
+                "alternative_name": "scrollbar-track-color"
+              },
+              {
+                "version_added": "8"
+              }
+            ],
+            "safari": {
+              "version_added": false
+            }
+          },
+          "status": {
+            "deprecated": true,
+            "experimental": false,
+            "standard_track": false
           }
         }
       },
@@ -22639,13 +22693,13 @@
                 "version_added": "12"
               },
               "firefox": {
-                "version_added": false
+                "version_added": "72"
               },
               "ie": {
-                "version_added": "10"
+                "version_added": "9"
               },
               "safari": {
-                "version_added": "1"
+                "version_added": "5.1"
               }
             },
             "status": {
@@ -23357,7 +23411,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -23411,7 +23465,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -23438,7 +23492,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -23976,7 +24030,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -25748,7 +25802,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -26345,7 +26399,7 @@
             }
           },
           "status": {
-            "experimental": true,
+            "experimental": false,
             "standard_track": true,
             "deprecated": false
           }
@@ -26371,7 +26425,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": false,
               "deprecated": false
             }
@@ -26398,7 +26452,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": false,
               "deprecated": false
             }
@@ -26425,7 +26479,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": false,
               "deprecated": false
             }
@@ -26452,7 +26506,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": false,
               "deprecated": false
             }
@@ -26482,7 +26536,7 @@
             }
           },
           "status": {
-            "experimental": true,
+            "experimental": false,
             "standard_track": true,
             "deprecated": false
           }
@@ -26513,7 +26567,7 @@
             }
           },
           "status": {
-            "experimental": true,
+            "experimental": false,
             "standard_track": true,
             "deprecated": false
           }
@@ -26539,7 +26593,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -26566,7 +26620,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -26594,7 +26648,7 @@
             }
           },
           "status": {
-            "experimental": true,
+            "experimental": false,
             "standard_track": true,
             "deprecated": false
           }
@@ -26638,7 +26692,7 @@
             }
           },
           "status": {
-            "experimental": true,
+            "experimental": false,
             "standard_track": true,
             "deprecated": false
           }
@@ -26664,7 +26718,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -26693,7 +26747,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": false,
               "deprecated": false
             }
@@ -26720,7 +26774,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -26747,7 +26801,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -26790,7 +26844,7 @@
             }
           },
           "status": {
-            "experimental": true,
+            "experimental": false,
             "standard_track": true,
             "deprecated": false
           }
@@ -26833,7 +26887,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -26876,7 +26930,7 @@
             }
           },
           "status": {
-            "experimental": true,
+            "experimental": false,
             "standard_track": true,
             "deprecated": false
           }
@@ -26918,7 +26972,7 @@
             }
           },
           "status": {
-            "experimental": true,
+            "experimental": false,
             "standard_track": true,
             "deprecated": false
           }
@@ -28676,7 +28730,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -32356,7 +32410,7 @@
             }
           },
           "status": {
-            "experimental": true,
+            "experimental": false,
             "standard_track": true,
             "deprecated": false
           }
@@ -32494,39 +32548,6 @@
           }
         }
       },
-      "scrollbar-track-color": {
-        "__compat": {
-          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/scrollbar-track-color",
-          "support": {
-            "chrome": {
-              "version_added": false
-            },
-            "edge": {
-              "version_added": false
-            },
-            "firefox": {
-              "version_added": false
-            },
-            "ie": [
-              {
-                "version_added": "5"
-              },
-              {
-                "version_added": "8",
-                "prefix": "-ms-"
-              }
-            ],
-            "safari": {
-              "version_added": false
-            }
-          },
-          "status": {
-            "deprecated": true,
-            "experimental": false,
-            "standard_track": false
-          }
-        }
-      },
       "scrollbar-width": {
         "__compat": {
           "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/scrollbar-width",
@@ -32560,7 +32581,7 @@
             }
           },
           "status": {
-            "experimental": true,
+            "experimental": false,
             "standard_track": true,
             "deprecated": false
           }
@@ -32988,7 +33009,7 @@
             }
           },
           "status": {
-            "experimental": true,
+            "experimental": false,
             "standard_track": true,
             "deprecated": false
           }
@@ -33015,7 +33036,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -33096,7 +33117,7 @@
             }
           },
           "status": {
-            "experimental": true,
+            "experimental": false,
             "standard_track": true,
             "deprecated": false
           }
@@ -33212,7 +33233,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -33239,7 +33260,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -34062,7 +34083,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -34089,7 +34110,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -34140,7 +34161,7 @@
             }
           },
           "status": {
-            "experimental": true,
+            "experimental": false,
             "standard_track": true,
             "deprecated": false
           }
@@ -34302,7 +34323,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -34329,7 +34350,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -34356,7 +34377,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -34666,7 +34687,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -34693,7 +34714,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -35282,7 +35303,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -36104,7 +36125,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -36942,61 +36963,7 @@
               }
             },
             "status": {
-              "experimental": true,
-              "standard_track": true,
-              "deprecated": false
-            }
-          }
-        },
-        "border-box": {
-          "__compat": {
-            "description": "<code>border-box</code>",
-            "support": {
-              "chrome": {
-                "version_added": false
-              },
-              "edge": {
-                "version_added": false
-              },
-              "firefox": {
-                "version_added": false
-              },
-              "ie": {
-                "version_added": false
-              },
-              "safari": {
-                "version_added": false
-              }
-            },
-            "status": {
-              "experimental": true,
-              "standard_track": true,
-              "deprecated": false
-            }
-          }
-        },
-        "content-box": {
-          "__compat": {
-            "description": "<code>content-box</code>",
-            "support": {
-              "chrome": {
-                "version_added": false
-              },
-              "edge": {
-                "version_added": false
-              },
-              "firefox": {
-                "version_added": false
-              },
-              "ie": {
-                "version_added": false
-              },
-              "safari": {
-                "version_added": false
-              }
-            },
-            "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -37364,6 +37331,33 @@
               },
               "safari": {
                 "version_added": "6.1"
+              }
+            },
+            "status": {
+              "experimental": false,
+              "standard_track": true,
+              "deprecated": false
+            }
+          }
+        },
+        "svg": {
+          "__compat": {
+            "description": "SVG support",
+            "support": {
+              "chrome": {
+                "version_added": "1"
+              },
+              "edge": {
+                "version_added": "12"
+              },
+              "firefox": {
+                "version_added": "72"
+              },
+              "ie": {
+                "version_added": "9"
+              },
+              "safari": {
+                "version_added": "5.1"
               }
             },
             "status": {
@@ -39483,7 +39477,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -39787,6 +39781,35 @@
           }
         }
       },
+      "column": {
+        "__compat": {
+          "description": "Column combinator (<code>A || B</code>)",
+          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/Column_combinator",
+          "support": {
+            "chrome": {
+              "version_added": false
+            },
+            "edge": {
+              "version_added": false
+            },
+            "firefox": {
+              "version_added": false,
+              "notes": "See <a href='https://bugzil.la/1605558'>bug 1605558</a>."
+            },
+            "ie": {
+              "version_added": false
+            },
+            "safari": {
+              "version_added": false
+            }
+          },
+          "status": {
+            "experimental": true,
+            "standard_track": true,
+            "deprecated": false
+          }
+        }
+      },
       "cue": {
         "__compat": {
           "description": "<code>::cue</code>",
@@ -39966,7 +39989,7 @@
             }
           },
           "status": {
-            "experimental": true,
+            "experimental": false,
             "standard_track": true,
             "deprecated": false
           }
@@ -40051,7 +40074,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -40379,7 +40402,7 @@
             }
           },
           "status": {
-            "experimental": true,
+            "experimental": false,
             "standard_track": true,
             "deprecated": false
           }
@@ -40573,7 +40596,7 @@
             }
           },
           "status": {
-            "experimental": true,
+            "experimental": false,
             "standard_track": true,
             "deprecated": false
           }
@@ -40603,7 +40626,7 @@
             }
           },
           "status": {
-            "experimental": true,
+            "experimental": false,
             "standard_track": true,
             "deprecated": false
           }
@@ -40632,7 +40655,7 @@
             }
           },
           "status": {
-            "experimental": true,
+            "experimental": false,
             "standard_track": true,
             "deprecated": false
           }
@@ -42301,7 +42324,7 @@
             }
           },
           "status": {
-            "experimental": true,
+            "experimental": false,
             "standard_track": true,
             "deprecated": false
           }
@@ -43491,7 +43514,7 @@
             }
           },
           "status": {
-            "experimental": true,
+            "experimental": false,
             "standard_track": true,
             "deprecated": false
           }
@@ -43631,7 +43654,7 @@
             }
           },
           "status": {
-            "experimental": true,
+            "experimental": false,
             "standard_track": true,
             "deprecated": false
           }
@@ -43659,7 +43682,7 @@
             }
           },
           "status": {
-            "experimental": true,
+            "experimental": false,
             "standard_track": true,
             "deprecated": false
           }
@@ -43685,7 +43708,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -43712,7 +43735,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -43922,7 +43945,7 @@
               ]
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -44852,7 +44875,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -44885,7 +44908,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -44913,7 +44936,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -45023,7 +45046,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -45108,7 +45131,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -45135,7 +45158,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -45163,7 +45186,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": false,
               "deprecated": false
             }
@@ -45217,7 +45240,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -45244,7 +45267,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -45298,7 +45321,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -45476,7 +45499,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -45561,7 +45584,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -45588,7 +45611,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -45616,7 +45639,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": false,
               "deprecated": false
             }
@@ -45670,7 +45693,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -45697,7 +45720,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -45752,7 +45775,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
