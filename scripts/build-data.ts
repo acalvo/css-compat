@@ -7,7 +7,13 @@ import { browsersMap } from './../src/lib/browsers';
 (Object.keys(browsers) as Array<BrowserNames>).forEach(b => {
   if (!browsersMap.get(b)) {
     delete browsers[b];
+    return;
   }
+  Object.keys(browsers[b].releases).forEach(r => {
+    if (browsers[b].releases[r].status === 'planned') {
+      delete browsers[b].releases[r];
+    }
+  });
 });
 
 (function cleanBrowsers(obj) {
