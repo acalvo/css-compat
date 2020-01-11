@@ -7,7 +7,7 @@ Helpers.prototype.getUnsupportedVersions = function ({
   added,
   removed
 }) {
-  const browserData = Array.from(browsersMap.get(browser).releases.keys());
+  const browserData = Array.from(browsersMap.get(browser).releases.keys()).reverse();
 
   if (
     !browserData ||

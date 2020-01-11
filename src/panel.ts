@@ -1,8 +1,7 @@
 import StyleSheet from './lib/StyleSheet';
-import semverCompare from 'semver-compare';
 import Vue from 'vue';
-import App from './ui/app.vue';
-import Error from './ui/error.vue';
+import App from './ui/App.vue';
+import Error from './ui/Error.vue';
 import { browsersMap } from './lib/browsers';
 import { getAllCssSources, manageThemeColorChange, reloadOnNavigation } from './lib/browser-tasks';
 
@@ -19,21 +18,21 @@ getAllCssSources().then((sources: Array<{ id: string | number; content: string; 
   const compat = {};
   // TODO: should be part of Stylesheets class
   Object.keys(data).forEach(browser => {
-    const versions = Object.keys(data[browser]).sort(semverCompare);
-    compat[browser] = [{
-      versions: [versions[0]],
-      data: data[browser][versions[0]]
-    }];
-    let i = 0;
-    while (++i < versions.length) {
-      if (Object.keys(compat[browser][0].data).length === Object.keys(data[browser][versions[i]]).length) {
-        compat[browser][0].versions.push(versions[i]);
-      } else {
+    compat[browser] = [];
+    const releases = browsersMap.get(browser).releases.entries();
+    let result = releases.next();
+    while (!result.done) {
+      if (compat[browser].length === 0 || Object.keys(compat[browser][0].data).length !== Object.keys(data[browser][result.value[0]]).length) {
         compat[browser].unshift({
-          versions: [versions[i]],
-          data: data[browser][versions[i]]
+          versions: {
+            first: result.value[0]
+          },
+          data: data[browser][result.value[0]]
         });
+      } else {
+        compat[browser][0].versions.last = result.value[0]
       }
+      result = releases.next();
     }
   });
 
@@ -43,10 +42,9 @@ getAllCssSources().then((sources: Array<{ id: string | number; content: string; 
       App
     },
     render(h) {
-      return h('app', {
+      return h('App', {
         props: {
-          compat,
-          browsersData: Array.from(browsersMap)
+          compat
         }
       });
     }
@@ -60,7 +58,7 @@ getAllCssSources().then((sources: Array<{ id: string | number; content: string; 
       Error
     },
     render(h) {
-      return h('error', {
+      return h('Error', {
         props: {
           error
         }
