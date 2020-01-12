@@ -1,4 +1,4 @@
-const { browsersMap } = require('./browsers')
+const { browsers } = require('./browsers')
 const compatData = require('./data.json')
 const Helpers = require('./Helpers')
 const objectPath = require('object-path')
@@ -58,7 +58,7 @@ Declaration.prototype.processCompatPath = function (compatPath, compatPathData, 
   let mainNode = this.node
 
   Object.keys(propertySuppport).forEach(browser => {
-    if (!browsersMap.get(browser)) return
+    if (!browsers.get(browser)) return
 
     let missingPrefixesForVersion = {}
     let unsupportedVersions = []

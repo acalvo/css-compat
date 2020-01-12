@@ -1,10 +1,5 @@
+import { Source } from './stylesheet';
 import browser from 'webextension-polyfill';
-
-export interface Source {
-  id: string | number; // URL in case of external, int id in case of inline
-  content: string;
-  external: boolean;
-}
 
 export function getAllCssSources() {
   const getExternalStyles = () => {

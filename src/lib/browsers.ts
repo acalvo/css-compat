@@ -1,5 +1,5 @@
 import { BrowserNames } from 'mdn-browser-compat-data/types';
-import { browsers } from './data.json';
+import { browsers as browsersJson } from './data.json';
 import semverCompare from 'semver-compare';
 
 const browsersOrder: Array<BrowserNames> = [
@@ -10,16 +10,16 @@ const browsersOrder: Array<BrowserNames> = [
   'ie'
 ];
 
-const browsersMap: Map<string, { name: string; releases: Map<any, any> }> = new Map();
+const browsers: Map<string, { name: string; releases: Map<string, any> }> = new Map();
 browsersOrder.forEach(k => {
   const releases = new Map();
-  Object.keys(browsers[k].releases).sort(semverCompare).forEach(v => {
-    releases.set(v, browsers[k].releases[v]);
+  Object.keys(browsersJson[k].releases).sort(semverCompare).forEach(v => {
+    releases.set(v, browsersJson[k].releases[v]);
   });
-  browsersMap.set(k, {
-    name: browsers[k].name,
+  browsers.set(k, {
+    name: browsersJson[k].name,
     releases
   });
 });
 
-export { browsersMap };
+export { browsers };

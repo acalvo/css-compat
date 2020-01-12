@@ -1,7 +1,7 @@
 <template>
   <div v-if="browserKey">
     <h2>
-      {{ browsersMap.get(browserKey).name }} {{ range.versions.first }}
+      {{ browsers.get(browserKey).name }} {{ range.versions.first }}
       <template
         v-if="range.versions.last"
       >- {{ range.versions.last }}</template>
@@ -43,12 +43,12 @@
 </template>
 
 <script>
-import { browsersMap } from "../lib/browsers";
+import { browsers } from "../lib/browsers";
 
 export default {
   props: ["browserKey", "range"],
   data: () => ({
-    browsersMap
+    browsers
   }),
   methods: {
     localizeDate: function(strDate) {
@@ -62,11 +62,11 @@ export default {
     },
     getReleaseDates(v1, v2) {
       let result = this.localizeDate(
-        browsersMap.get(this.browserKey).releases.get(v1)["release_date"]
+        browsers.get(this.browserKey).releases.get(v1)["release_date"]
       );
       if (v2) {
         result = `${result} - ${this.localizeDate(
-          browsersMap.get(this.browserKey).releases.get(v2)["release_date"]
+          browsers.get(this.browserKey).releases.get(v2)["release_date"]
         )}`;
       }
       return result;

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>{{ browsersMap.get(browserKey).name.replace('Internet Explorer', 'IE') }}</div>
+    <div>{{ browsers.get(browserKey).name.replace('Internet Explorer', 'IE') }}</div>
     <div>
       <button
         v-for="range in browserCompat"
@@ -17,12 +17,12 @@
 </template>
 
 <script>
-import { browsersMap } from "../lib/browsers";
+import { browsers } from "../lib/browsers";
 
 export default {
   props: ["browserKey", "browserCompat"],
   data: () => ({
-    browsersMap
+    browsers
   })
 };
 </script>

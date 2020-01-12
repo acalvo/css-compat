@@ -1,4 +1,4 @@
-const { browsersMap } = require('./browsers')
+const { browsers } = require('./browsers')
 const compatData = require('./data.json')
 const Helpers = require('./Helpers')
 const objectPath = require('object-path')
@@ -116,7 +116,7 @@ Selector.prototype.process = function (issues) {
     )
 
     Object.keys(issueSupport).forEach(browser => {
-      if (!browsersMap.get(browser)) return
+      if (!browsers.get(browser)) return
 
       const unsupportedVersions = Helpers.getUnsupportedVersions({
         browser,

@@ -1,17 +1,17 @@
 import fs from 'fs';
 import path from 'path';
 import { BrowserNames } from 'mdn-browser-compat-data/types';
-import { browsers, css } from 'mdn-browser-compat-data';
-import { browsersMap } from './../src/lib/browsers';
+import { browsers as browsersJson, css } from 'mdn-browser-compat-data';
+import { browsers } from './../src/lib/browsers';
 
-(Object.keys(browsers) as Array<BrowserNames>).forEach(b => {
-  if (!browsersMap.get(b)) {
-    delete browsers[b];
+(Object.keys(browsersJson) as Array<BrowserNames>).forEach(b => {
+  if (!browsers.get(b)) {
+    delete browsersJson[b];
     return;
   }
-  Object.keys(browsers[b].releases).forEach(r => {
-    if (browsers[b].releases[r].status === 'planned') {
-      delete browsers[b].releases[r];
+  Object.keys(browsersJson[b].releases).forEach(r => {
+    if (browsersJson[b].releases[r].status === 'planned') {
+      delete browsersJson[b].releases[r];
     }
   });
 });
@@ -26,7 +26,7 @@ import { browsersMap } from './../src/lib/browsers';
   }
   if (obj['__compat']) {
     (Object.keys(obj['__compat']['support']) as Array<BrowserNames>).forEach(b => {
-      if (!browsersMap.get(b)) {
+      if (!browsers.get(b)) {
         delete obj['__compat']['support'][b];
       }
     });
@@ -35,7 +35,7 @@ import { browsersMap } from './../src/lib/browsers';
 
 fs.writeFile(
   path.resolve(__dirname, '..', 'src', 'lib', 'data.json'),
-  JSON.stringify({ browsers: browsers, css }, null, '  '),
+  JSON.stringify({ browsers: browsersJson, css }, null, '  '),
   err => {
     if (err) {
       console.error(err);
