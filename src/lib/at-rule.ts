@@ -1,67 +1,32 @@
+import { Source, Issues } from './stylesheet';
 import compatData from './data.json';
 import Helpers from './Helpers';
+import { AtRule as postcssAtRule } from 'postcss';
 
 export class AtRule {
-  constructor(private node, private source) {
+  constructor(private node: postcssAtRule, private source: Source) {
   }
 
-  public process(issues) {
+  public process(issues: Issues) {
     const atRuleIssues = {};
+    atRuleIssues[this.node.name] = compatData.css['at-rules'][this.node.name];
+    const properties = Object.keys(atRuleIssues[this.node.name]).filter(p => {
+      return atRuleIssues[this.node.name][p].__compat?.status.deprecated === false;
+    });
 
-    console.log(this.node);
-
-    switch (this.node.name) {
-      case 'counter-style': {
-        const counterStyleCompat = compatData.css['at-rules']['counter-style'];
-
-        atRuleIssues['counter-style'] = counterStyleCompat;
-
-        const counterStyleProperties = [
-          'additive-symbols',
-          'fallback',
-          'negative',
-          'pad',
-          'prefix',
-          'range',
-          'speak-as',
-          'suffix',
-          'symbols',
-          'system'
-        ];
-
-        this.node.walkDecls(declaration => {
-          if (counterStyleProperties.includes(declaration.prop)) {
-            atRuleIssues[`counter-style.${declaration.prop}`] = counterStyleCompat[declaration.prop];
-          }
-        });
-
-        break;
-      }
-      case 'font-face': {
-        const fontFaceCompat = compatData.css['at-rules']['font-face'];
-
-        atRuleIssues['font-face'] = fontFaceCompat;
-
-        const fontFaceProperties = [
-          'font-display',
-          'font-family',
-          'font-feature-settings',
-          'font-style',
-          'font-weight',
-          'src',
-          'unicode-range'
-        ];
-
-        this.node.walkDecls(declaration => {
-          if (fontFaceProperties.includes(declaration.prop)) {
-            atRuleIssues[`font-face.${declaration.prop}`] = fontFaceCompat[declaration.prop];
-          }
-        });
-
-        break;
-      }
+    if (this.node.name === 'media') {
+      properties.forEach(p => {
+        if (this.node.params.includes(p)) {
+          atRuleIssues[`${this.node.name}/${p}`] = atRuleIssues[this.node.name][p];
+        }
+      });
+    } else {
+      this.node.walkDecls(declaration => {
+        if (properties.includes(declaration.prop)) {
+          atRuleIssues[`${this.node.name}/${declaration.prop}`] = atRuleIssues[this.node.name][declaration.prop];
+        }
+      });
     }
-    console.log(Object.keys(atRuleIssues));
 
     Object.keys(atRuleIssues).forEach(issueKey => {
       const issueSupport = atRuleIssues[issueKey].__compat.support;
@@ -69,23 +34,25 @@ export class AtRule {
       Object.keys(issueSupport).forEach(browser => {
         const unsupportedVersions = Helpers.getUnsupportedVersions({
           browser,
-          added: issueSupport[browser].version_added,
+          added: issueSupport[browser].version_added || issueSupport[browser][0]?.version_added,
           removed: issueSupport[browser].version_removed
         });
 
         unsupportedVersions.forEach(version => {
-          issues[browser][version].push({
-            data: issueSupport,
-            compat: atRuleIssues[issueKey].__compat,
-            instance: {
-              start: this.node.source.start,
-              end: this.node.source.end
-            },
-            source: this.source.id,
-            subType: 'at-rule',
-            title: `@${issueKey}`,
-            type: 'CSS'
-          });
+          const [atrule] = issueKey.split('/');
+          if (issues[browser][version].every(i => i.title !== `@${atrule}`)) {
+            issues[browser][version].push({
+              data: atRuleIssues[issueKey],
+              instance: {
+                start: this.node.source.start,
+                end: this.node.source.end
+              },
+              source: this.source.id,
+              subType: 'at-rule',
+              title: `@${issueKey}`,
+              type: 'CSS'
+            });
+          }
         });
       });
     });
