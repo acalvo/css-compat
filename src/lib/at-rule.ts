@@ -1,6 +1,6 @@
 import { Source, Issues } from './stylesheet';
 import compatData from './data.json';
-import Helpers from './Helpers';
+import { Helpers } from './helpers';
 import { AtRule as postcssAtRule } from 'postcss';
 
 export class AtRule {

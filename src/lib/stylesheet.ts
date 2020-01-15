@@ -1,9 +1,9 @@
 import { AtRule } from './at-rule';
 import cssBeautify from 'cssbeautify';
-import Declaration from './Declaration';
+import { Declaration } from './declaration';
 import { browsers } from './browsers';
 import postcss from 'postcss';
-import Selector from './Selector';
+import { Selector } from './selector';
 
 export interface Source {
   id: string | number; // URL in case of external, int id in case of inline

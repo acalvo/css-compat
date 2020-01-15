@@ -22,12 +22,15 @@ getAllCssSources().then((sources: Array<Source>) => {
     const releases = browsers.get(browser).releases.entries();
     let result = releases.next();
     while (!result.done) {
-      if (compat[browser].length === 0 || Object.keys(compat[browser][0].data).length !== Object.keys(data[browser][result.value[0]]).length) {
+      const releaseData = data[browser][result.value[0]];
+      if (compat[browser].length === 0
+        || Object.keys(compat[browser][0].data).length !== Object.keys(releaseData).length
+        || Object.keys(releaseData).length !== (new Set(Object.keys(compat[browser][0].data).concat(Object.keys(releaseData)))).size) {
         compat[browser].unshift({
           versions: {
             first: result.value[0]
           },
-          data: data[browser][result.value[0]]
+          data: releaseData
         });
       } else {
         compat[browser][0].versions.last = result.value[0];
