@@ -1,4 +1,4 @@
-import { Source, Issues } from './stylesheet';
+import { Issues, Source } from './stylesheet';
 import compatData from './data.json';
 import { Helpers } from './helpers';
 import { AtRule as postcssAtRule } from 'postcss';

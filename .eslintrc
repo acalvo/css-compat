@@ -10,14 +10,20 @@
     "sourceType": "module"
   },
   "rules": {
-    "semi": 2,
-    "prefer-template": 2,
+    "prefer-template": "error",
+    "semi": "error",
+    "sort-imports": [
+      "error",
+      {
+        "ignoreDeclarationSort": true
+      }
+    ],
     "quotes": [
-      2,
+      "error",
       "single"
     ],
-    "@typescript-eslint/explicit-function-return-type": 0,
-    "@typescript-eslint/no-explicit-any": 0,
-    "@typescript-eslint/no-unused-vars": 0
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-unused-vars": "off"
   }
 }

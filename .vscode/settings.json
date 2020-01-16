@@ -1,6 +1,9 @@
 {
     "files.insertFinalNewline": true,
     "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true
+    },
     "html.format.extraLiners": "none",
     "html.format.indentInnerHtml": true
 }
