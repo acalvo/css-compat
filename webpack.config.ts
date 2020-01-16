@@ -1,15 +1,15 @@
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-let terser = require('terser');
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
+import webpack from 'webpack';
+import { VueLoaderPlugin } from 'vue-loader';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 
-module.exports = {
+const config: webpack.Configuration = {
   mode: 'production',
   entry: {
     index: './src/index.ts',
     panel: './src/panel.ts'
   },
   output: {
-    path: __dirname + '/dist',
+    path: `${__dirname}/dist`,
     filename: '[name].js'
   },
   resolve: {
@@ -19,7 +19,7 @@ module.exports = {
     rules: [
       {
         test: /\.ts$/,
-        loader: "awesome-typescript-loader"
+        loader: 'awesome-typescript-loader'
       },
       {
         test: /\.css$/,
@@ -54,4 +54,6 @@ module.exports = {
   performance: {
     hints: false
   }
-}
+};
+
+export default config;
