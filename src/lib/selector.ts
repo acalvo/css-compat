@@ -1,7 +1,7 @@
+import { BrowserKey } from './types';
 import { browsers } from './browsers';
 import compatData from './data.json';
 import { Helpers } from './helpers';
-import objectPath from 'object-path';
 import postcssSelectorParser from 'postcss-selector-parser';
 
 export class Selector {
@@ -110,19 +110,13 @@ export class Selector {
     }).processSync(this.selectorString);
 
     Object.keys(selectorIssues).forEach(issueKey => {
-      const issueSupport = objectPath.get(
-        selectorIssues,
-        issueKey
-      );
+      const issueSupport = selectorIssues[issueKey];
 
-      Object.keys(issueSupport).forEach(browser => {
+      Object.keys(issueSupport).forEach((browser: BrowserKey) => {
         if (!browsers.get(browser)) return;
 
-        const unsupportedVersions = Helpers.getUnsupportedVersions({
-          browser,
-          added: issueSupport[browser].version_added,
-          removed: issueSupport[browser].version_removed
-        });
+        const unsupportedVersions =
+          Helpers.getUnsupportedVersions(browser, issueSupport[browser].version_added, issueSupport[browser].version_removed);
 
         unsupportedVersions.forEach(version => {
           issues[browser][version].push({
@@ -132,9 +126,8 @@ export class Selector {
               end: this.rule.source.end
             },
             source: this.source.id,
-            subType: 'selector',
-            title: `${selectorIssueTitle} selector`,
-            type: 'CSS'
+            type: 'selector',
+            title: `${selectorIssueTitle} selector`
           });
         });
       });

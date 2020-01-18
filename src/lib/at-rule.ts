@@ -1,4 +1,4 @@
-import { Issues, Source } from './stylesheet';
+import { BrowserKey, Issues, Source } from './types';
 import compatData from './data.json';
 import { Helpers } from './helpers';
 import { AtRule as postcssAtRule } from 'postcss';
@@ -31,26 +31,21 @@ export class AtRule {
     Object.keys(atRuleIssues).forEach(issueKey => {
       const issueSupport = atRuleIssues[issueKey].__compat.support;
 
-      Object.keys(issueSupport).forEach(browser => {
-        const unsupportedVersions = Helpers.getUnsupportedVersions({
-          browser,
-          added: issueSupport[browser].version_added || issueSupport[browser][0]?.version_added,
-          removed: issueSupport[browser].version_removed
-        });
-
+      Object.keys(issueSupport).forEach((browser: BrowserKey) => {
+        const support = Helpers.getSupportUnit(issueSupport[browser]);
+        const unsupportedVersions = Helpers.getUnsupportedVersions(browser, support.version_added, support.version_removed);
         unsupportedVersions.forEach(version => {
           const [atrule] = issueKey.split('/');
           if (issues[browser][version].every(i => i.title !== `@${atrule}`)) {
             issues[browser][version].push({
+              type: 'at-rule',
+              title: `@${issueKey}`,
               data: atRuleIssues[issueKey],
               instance: {
                 start: this.node.source.start,
                 end: this.node.source.end
               },
-              source: this.source.id,
-              subType: 'at-rule',
-              title: `@${issueKey}`,
-              type: 'CSS'
+              source: this.source.id
             });
           }
         });

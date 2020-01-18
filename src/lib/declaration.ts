@@ -1,137 +1,104 @@
+import { BrowserKey, Issues, Source } from './types';
 import compatData from './data.json';
 import { Helpers } from './helpers';
-import objectPath from 'object-path';
 import postcss from 'postcss';
 
 export class Declaration {
 
-  constructor(private node, private source, private rule, private ruleCache) {
+  constructor(
+    private rule: postcss.Rule,
+    private source: Source,
+  ) {
   }
 
-  public process(issues) {
-    const unprefixedProperty = postcss.vendor.unprefixed(this.node.prop);
-
-    if (this.ruleCache[unprefixedProperty]) return;
-
-    const compatPaths = {
-      [unprefixedProperty]: {
-        subType: 'property',
-        title: unprefixedProperty,
-        type: 'CSS'
+  public process(issues: Issues) {
+    const declarations: { [key: string]: Array<postcss.Declaration> } = {};
+    this.rule.walkDecls(decl => {
+      const prop = postcss.vendor.unprefixed(decl.prop);
+      if (!declarations[prop]) {
+        declarations[prop] = [];
       }
-    };
-
-    Object.keys(compatPaths).filter(Boolean).forEach(compatPath => {
-      return this.processCompatPath(compatPath, compatPaths[compatPath], issues);
+      declarations[prop].push(decl);
     });
-  }
 
-  private processCompatPath(compatPath, compatPathData, issues) {
-    const unprefixedProperty = postcss.vendor.unprefixed(this.node.prop);
-    const propertyCompatData = objectPath.get(compatData.css.properties, compatPath);
-
-    if (!propertyCompatData || !propertyCompatData.__compat) return;
-
-    const propertySuppport = propertyCompatData.__compat.support;
-
-    Object.keys(propertySuppport).forEach(browser => {
-      let missingPrefixesForVersion = {};
-      let unsupportedVersions = [];
-
-      if (Array.isArray(propertySuppport[browser])) {
-        const prefixesInRule = [];
-
-        this.rule.walkDecls(declaration => {
-          if (postcss.vendor.unprefixed(declaration.prop) === unprefixedProperty) {
-            const prefix = postcss.vendor.prefix(declaration.prop);
-            prefixesInRule.push(prefix);
+    const prefixRE = new RegExp(`(${Helpers.getPossiblePrefixes().join('|')})$`);
+    const endsWithLetterRE = new RegExp('[a-z]$');
+    for (const prop in declarations) {
+      const hasMainVariant = declarations[prop].some(d => d.prop === prop);
+      const prefixes = Array.from(new Set(declarations[prop].filter(d => d.prop !== prop).map(d => d.prop.replace(prop, ''))));
+      const propertyCompatData = compatData.css.properties[prop];
+      if (!propertyCompatData?.__compat) return;
+      let values: Array<string> = [];
+      let prefixedValues: Array<string> = [];
+      for (const v in propertyCompatData) {
+        if (!propertyCompatData[v].__compat || propertyCompatData[v].__compat.status.deprecated) {
+          continue;
+        }
+        declarations[prop].forEach(d => {
+          const pos = d.value.indexOf(v);
+          const pre = d.value.substr(0, pos);
+          if (pos !== -1 && !pre.match(endsWithLetterRE) && (!pre.endsWith('-') || pre.match(prefixRE))) {
+            values.push(v);
+            const prefix = Helpers.getPossiblePrefixes().find(p => pre.endsWith(p));
+            if (prefix) {
+              prefixedValues.push(`${prefix}${v}`);
+            }
           }
         });
+      }
+      values = Array.from(new Set(values));
+      prefixedValues = Array.from(new Set(prefixedValues));
 
-        // So that we don't process the same property multiple times
-        // within this rule.
-        this.ruleCache[unprefixedProperty] = true;
-
-        // The main variant is the one that doesn't contain any keys other than
-        // `version_added` and `version_removed`.
-        const mainVariantIndex = propertySuppport[browser].findIndex(variant => {
-          return Object.keys(variant).filter(property => {
-            return ![
-              'notes',
-              'version_added',
-              'version_removed'
-            ].includes(property);
-          }).length === 0;
-        });
-        const unsupportedVersionsForMainVariant = Helpers.getUnsupportedVersions({
-          browser,
-          added: propertySuppport[browser][mainVariantIndex].version_added,
-          removed: propertySuppport[browser][mainVariantIndex].version_removed
-        });
-
-        const unsupportedVersionsForVariants = [unsupportedVersionsForMainVariant];
-
-        missingPrefixesForVersion = propertySuppport[browser].reduce((result, variant, index) => {
-          if (
-            index === mainVariantIndex ||
-            !variant.prefix ||
-            variant.flag
-          ) {
-            return result;
+      for (const browser in propertyCompatData.__compat.support) {
+        const s = hasMainVariant ? Helpers.getSupportUnit(propertyCompatData.__compat.support[browser]) : {};
+        let unsupportedVersions = Helpers.getUnsupportedVersions(browser as BrowserKey, s.version_added, s.version_removed);
+        prefixes.forEach(prefix => {
+          const s = Helpers.getSupportUnit(propertyCompatData.__compat.support[browser], prefix);
+          if (s.version_added) {
+            const prefixedUnsupportedVersions =
+              Helpers.getUnsupportedVersions(browser as BrowserKey, s.version_added, s.version_removed);
+            unsupportedVersions = unsupportedVersions.filter(version => prefixedUnsupportedVersions.includes(version));
           }
-
-          const unsupportedVersionsForVariant = Helpers.getUnsupportedVersions({
-            browser,
-            added: variant.version_added,
-            removed: variant.version_removed
+        });
+        unsupportedVersions.forEach(version => {
+          issues[browser][version].push({
+            type: 'property',
+            title: hasMainVariant ? prop : prefixes.map(p => `${p}${prop}`).join('/'),
+            data: propertyCompatData,
+            instance: {
+              start: declarations[prop][0].source.start,
+              end: declarations[prop][0].source.end
+            },
+            source: this.source.id
           });
-
-          // These versions are not supported by the main variant but supported
-          // by adding a prefix.
-          const addedVersions = unsupportedVersionsForMainVariant.filter(version => {
-            return !unsupportedVersionsForVariant.includes(version);
-          });
-
-          addedVersions.forEach(version => {
-            result[version] = result[version] || [];
-
-            if (!result[version].includes(variant.prefix)) {
-              result[version].push(variant.prefix);
+        });
+        values.forEach(value => {
+          const hasMainValueVariant =
+            prefixedValues.length === 0 || declarations[prop].some(d => d.value.includes(value) && !d.value.includes(`-${value}`));
+          const s = hasMainValueVariant ? Helpers.getSupportUnit(propertyCompatData[value].__compat.support[browser]) : {};
+          let unsupportedVersions = Helpers.getUnsupportedVersions(browser as BrowserKey, s.version_added, s.version_removed);
+          prefixedValues.filter(pv => pv.includes(value)).map(pv => pv.replace(value, '')).forEach(prefix => {
+            const s = Helpers.getSupportUnit(propertyCompatData[value].__compat.support[browser], prefix);
+            if (s.version_added) {
+              const prefixedUnsupportedVersions =
+                Helpers.getUnsupportedVersions(browser as BrowserKey, s.version_added, s.version_removed);
+              unsupportedVersions = unsupportedVersions.filter(version => prefixedUnsupportedVersions.includes(version));
             }
           });
-
-          if (prefixesInRule.includes(variant.prefix)) {
-            unsupportedVersionsForVariants.push(unsupportedVersionsForVariant);
-          }
-
-          return result;
-        }, {});
-
-        unsupportedVersions = Helpers.getArrayIntersection(unsupportedVersionsForVariants);
-      } else {
-        unsupportedVersions = Helpers.getUnsupportedVersions({
-          browser,
-          added: propertySuppport[browser].version_added,
-          removed: propertySuppport[browser].version_removed
+          unsupportedVersions.forEach(version => {
+            issues[browser][version].push({
+              type: 'value',
+              title: `${prop}: ${hasMainValueVariant ? value : prefixedValues.join('/')}`,
+              data: propertyCompatData,
+              instance: {
+                start: declarations[prop][0].source.start,
+                end: declarations[prop][0].source.end
+              },
+              source: this.source.id
+            });
+          });
         });
       }
-
-      unsupportedVersions.forEach(version => {
-        const versionData = Object.assign({}, compatPathData, {
-          data: propertyCompatData,
-          instance: {
-            start: this.node.source.start,
-            end: this.node.source.end
-          },
-          source: this.source.id
-        });
-
-        if (missingPrefixesForVersion[version]) {
-          versionData.missingPrefixes = missingPrefixesForVersion[version];
-        }
-
-        issues[browser][version].push(versionData);
-      });
-    });
+    }
   }
 }

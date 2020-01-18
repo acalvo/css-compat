@@ -1,4 +1,5 @@
-import { Source, Stylesheet } from './lib/stylesheet';
+import { Stylesheet } from './lib/stylesheet';
+import { Source } from './lib/types';
 import Vue from 'vue';
 import App from './ui/App.vue';
 import Error from './ui/Error.vue';

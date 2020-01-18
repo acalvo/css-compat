@@ -1,4 +1,4 @@
-import { Source } from './stylesheet';
+import { Source } from './types';
 import browser from 'webextension-polyfill';
 
 export function getAllCssSources() {

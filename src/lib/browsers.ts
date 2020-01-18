@@ -1,8 +1,8 @@
-import { BrowserNames } from 'mdn-browser-compat-data/types';
+import { BrowserKey } from './types';
 import { browsers as browsersJson } from './data.json';
 import semverCompare from 'semver-compare';
 
-const browsersOrder: Array<BrowserNames> = [
+const browsersOrder: Array<BrowserKey> = [
   'chrome',
   'firefox',
   'safari',

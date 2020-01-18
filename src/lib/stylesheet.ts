@@ -1,21 +1,9 @@
+import { GroupedIssues, Issues, Source } from './types';
 import { AtRule } from './at-rule';
-import cssBeautify from 'cssbeautify';
 import { Declaration } from './declaration';
 import { browsers } from './browsers';
 import postcss from 'postcss';
 import { Selector } from './selector';
-
-export interface Source {
-  id: string | number; // URL in case of external, int id in case of inline
-  content: string;
-  external: boolean;
-}
-
-export interface Issues {
-  [browserKey: string]: {
-    [version: string]: Array<any>;
-  };
-}
 
 export class Stylesheet {
   issues: Issues = {}
@@ -36,7 +24,7 @@ export class Stylesheet {
   }
 
   private groupIssues(issues: Issues, property: string) {
-    const groupedIssues: Issues = {};
+    const groupedIssues: GroupedIssues = {};
 
     Object.keys(issues).forEach(browser => {
       groupedIssues[browser] = groupedIssues[browser] || {};
@@ -65,10 +53,9 @@ export class Stylesheet {
         css.walkRules((rule) => this.processRule(source, rule));
         css.walkAtRules((node) => this.processAtRule(source, node));
       });
-      const formattedCss = cssBeautify(source.content);
 
       return postcss([plugin])
-        .process(formattedCss, { from: undefined })
+        .process(source.content, { from: undefined })
         .then(result => {
           processedSources[source.id] = result.css;
 
@@ -95,8 +82,6 @@ export class Stylesheet {
   }
 
   private processRule(source: Source, rule: postcss.Rule) {
-    const ruleCache = {};
-
     // Process selector
     if (rule.selector) {
       const selector = new Selector(
@@ -109,15 +94,11 @@ export class Stylesheet {
     }
 
     // Process declarations
-    rule.walkDecls(declarationNode => {
-      const declaration = new Declaration(
-        declarationNode,
-        source,
-        rule,
-        ruleCache
-      );
+    const declaration = new Declaration(
+      rule,
+      source
+    );
 
-      declaration.process(this.issues);
-    });
+    declaration.process(this.issues);
   }
 }
