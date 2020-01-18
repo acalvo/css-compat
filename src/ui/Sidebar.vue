@@ -1,5 +1,10 @@
 <template>
-  <div v-if="browserKey">
+  <div v-if="browserKey === 'edge' && !range">
+    <h2>{{ browsers.get(browserKey).name }} 79 - {{ Array.from(browsers.get('chrome').releases)[browsers.get('chrome').releases.size-1][0] }}</h2>
+    <div class="sub">(released: January 2020 - present)</div>
+    <p>Edge 79 onwards shares the same engine as Chrome. Please, see its compatibility data for this version range.</p>
+  </div>
+  <div v-else-if="browserKey">
     <h2>
       {{ browsers.get(browserKey).name }} {{ range.versions.first }}
       <template

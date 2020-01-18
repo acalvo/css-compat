@@ -3,6 +3,11 @@
     <div>{{ browsers.get(browserKey).name.replace('Internet Explorer', 'IE') }}</div>
     <div>
       <button
+        v-if="browserKey === 'edge'"
+        style="background: royalblue"
+        @click="$emit('select', { browserKey, undefined })"
+      >79 - {{ Array.from(browsers.get('chrome').releases)[browsers.get('chrome').releases.size-1][0] }}</button>
+      <button
         v-for="range in browserCompat"
         :key="range"
         :title="`${Object.keys(range.data).length} unsupported properties`"
