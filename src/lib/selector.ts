@@ -119,15 +119,19 @@ export class Selector {
           Helpers.getUnsupportedVersions(browser, issueSupport[browser].version_added, issueSupport[browser].version_removed);
 
         unsupportedVersions.forEach(version => {
-          issues[browser][version].push({
-            data: issueSupport,
-            instance: {
-              start: this.rule.source.start,
-              end: this.rule.source.end
-            },
+          const title = `${selectorIssueTitle} selector`;
+          if (!issues[browser][version][title]) {
+            issues[browser][version][title] = {
+              type: 'selector',
+              title: title,
+              data: issueSupport,
+              instances: []
+            };
+          }
+          issues[browser][version][title].instances.push({
             source: this.source.id,
-            type: 'selector',
-            title: `${selectorIssueTitle} selector`
+            start: this.rule.source.start,
+            end: this.rule.source.end
           });
         });
       });

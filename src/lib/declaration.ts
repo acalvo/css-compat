@@ -61,15 +61,19 @@ export class Declaration {
           }
         });
         unsupportedVersions.forEach(version => {
-          issues[browser][version].push({
-            type: 'property',
-            title: hasMainVariant ? prop : prefixes.map(p => `${p}${prop}`).join('/'),
-            data: propertyCompatData,
-            instance: {
-              start: declarations[prop][0].source.start,
-              end: declarations[prop][0].source.end
-            },
-            source: this.source.id
+          const title = hasMainVariant ? prop : prefixes.map(p => `${p}${prop}`).join('/');
+          if (!issues[browser][version][title]) {
+            issues[browser][version][title] = {
+              type: 'property',
+              title: title,
+              data: propertyCompatData,
+              instances: []
+            };
+          }
+          issues[browser][version][title].instances.push({
+            source: this.source.id,
+            start: declarations[prop][0].source.start,
+            end: declarations[prop][0].source.end
           });
         });
         values.forEach(value => {
@@ -86,15 +90,19 @@ export class Declaration {
             }
           });
           unsupportedVersions.forEach(version => {
-            issues[browser][version].push({
-              type: 'value',
-              title: `${prop}: ${hasMainValueVariant ? value : prefixedValues.join('/')}`,
-              data: propertyCompatData,
-              instance: {
-                start: declarations[prop][0].source.start,
-                end: declarations[prop][0].source.end
-              },
-              source: this.source.id
+            const title = `${prop}: ${hasMainValueVariant ? value : prefixedValues.join('/')}`;
+            if (!issues[browser][version][title]) {
+              issues[browser][version][title] = {
+                type: 'value',
+                title: title,
+                data: propertyCompatData,
+                instances: []
+              };
+            }
+            issues[browser][version][title].instances.push({
+              source: this.source.id,
+              start: declarations[prop][0].source.start,
+              end: declarations[prop][0].source.end
             });
           });
         });

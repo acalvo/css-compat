@@ -10,9 +10,9 @@ export interface Source {
 export interface Issue {
   type: 'at-rule' | 'property' | 'selector' | 'value';
   title: string;
-  source: Source['id'];
   data: any;
-  instance: {
+  instances: Array<{
+    source: Source['id'];
     start: {
       column: number;
       line: number;
@@ -21,20 +21,14 @@ export interface Issue {
       column: number;
       line: number;
     };
-  };
+  }>;
   missingPrefixes?: any;
 }
 
 export interface Issues {
   [browserKey: string]: {
-    [version: string]: Array<Issue>;
-  };
-}
-
-export interface GroupedIssues {
-  [browserKey: string]: {
     [version: string]: {
-      [property: string]: Array<Issue>;
+      [property: string]: Issue;
     };
   };
 }

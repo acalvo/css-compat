@@ -15,17 +15,14 @@
     <div v-if="Object.keys(range.data).length > 0">
       <p>Missing CSS features:</p>
       <ol>
-        <li v-for="propArr in range.data" v-bind:key="propArr">
+        <li v-for="prop in range.data" v-bind:key="prop">
           <span class="property">
-            <a
-              v-if="propArr[0].data.__compat"
-              :href="propArr[0].data.__compat.mdn_url"
-            >{{ propArr[0].title }}</a>
-            <template v-else>{{ propArr[0].title }}</template>
+            <a v-if="prop.data.__compat" :href="prop.data.__compat.mdn_url">{{ prop.title }}</a>
+            <template v-else>{{ prop.title }}</template>
           </span>
           <span class="additional-info">
             (used
-            <template v-if="propArr.length > 1">{{ propArr.length }} times</template>
+            <template v-if="prop.instances.length > 1">{{ prop.instances.length }} times</template>
             <template v-else>once</template>)
           </span>
         </li>

@@ -1,9 +1,10 @@
-import { GroupedIssues, Issues, Source } from './types';
+import { Issues, Source } from './types';
 import { AtRule } from './at-rule';
 import { Declaration } from './declaration';
 import { browsers } from './browsers';
 import postcss from 'postcss';
 import { Selector } from './selector';
+import { compilation } from 'webpack';
 
 export class Stylesheet {
   issues: Issues = {}
@@ -14,34 +15,13 @@ export class Stylesheet {
       this.issues[browser] = {};
 
       Array.from(browsers.get(browser).releases.keys()).forEach(version => {
-        this.issues[browser][version] = [];
+        this.issues[browser][version] = {};
       });
     });
   }
 
   public add(source: Source) {
     this.sources.push(source);
-  }
-
-  private groupIssues(issues: Issues, property: string) {
-    const groupedIssues: GroupedIssues = {};
-
-    Object.keys(issues).forEach(browser => {
-      groupedIssues[browser] = groupedIssues[browser] || {};
-
-      Object.keys(issues[browser]).forEach(version => {
-        groupedIssues[browser][version] = issues[browser][version].reduce((issues, issue) => {
-          const key = issue[property];
-
-          issues[key] = issues[key] || [];
-          issues[key].push(issue);
-
-          return issues;
-        }, {});
-      });
-    });
-
-    return groupedIssues;
   }
 
   public parse() {
@@ -68,12 +48,31 @@ export class Stylesheet {
         });
     });
 
-    return Promise.all(queue).then(stylesheets => ({
-      data: this.groupIssues(this.issues, 'title'),
-      failedSources,
-      stylesheets: processedSources,
-      allSources: this.sources
-    }));
+    return Promise.all(queue).then(stylesheets => {
+      const compat = {};
+      for (const browser in this.issues) {
+        compat[browser] = [];
+        const releases = browsers.get(browser).releases.entries();
+        let result = releases.next();
+        while (!result.done) {
+          const releaseData = this.issues[browser][result.value[0]];
+          if (compat[browser].length === 0
+            || Object.keys(compat[browser][0].data).length !== Object.keys(releaseData).length
+            || Object.keys(releaseData).length !== (new Set(Object.keys(compat[browser][0].data).concat(Object.keys(releaseData)))).size) {
+            compat[browser].unshift({
+              versions: {
+                first: result.value[0]
+              },
+              data: releaseData
+            });
+          } else {
+            compat[browser][0].versions.last = result.value[0];
+          }
+          result = releases.next();
+        }
+      }
+      return compat;
+    });
   }
 
   private processAtRule(source: Source, node: postcss.AtRule) {

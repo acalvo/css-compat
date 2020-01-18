@@ -36,15 +36,18 @@ export class AtRule {
         const unsupportedVersions = Helpers.getUnsupportedVersions(browser, support.version_added, support.version_removed);
         unsupportedVersions.forEach(version => {
           const [atrule] = issueKey.split('/');
-          if (issues[browser][version].every(i => i.title !== `@${atrule}`)) {
-            issues[browser][version].push({
-              type: 'at-rule',
-              title: `@${issueKey}`,
-              data: atRuleIssues[issueKey],
-              instance: {
-                start: this.node.source.start,
-                end: this.node.source.end
-              },
+          if (!issueKey.includes('/') || Object.keys(issues[browser][version]).every(t => t !== `@${atrule}`)) {
+            if (!issues[browser][version][`@${issueKey}`]) {
+              issues[browser][version][`@${issueKey}`] = {
+                type: 'at-rule',
+                title: `@${issueKey}`,
+                data: atRuleIssues[issueKey],
+                instances: []
+              };
+            }
+            issues[browser][version][`@${issueKey}`].instances.push({
+              start: this.node.source.start,
+              end: this.node.source.end,
               source: this.source.id
             });
           }
