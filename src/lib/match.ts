@@ -1,3 +1,4 @@
+import { Helpers } from './helpers';
 import postcss from 'postcss';
 import compatData from './data.json';
 
@@ -13,6 +14,22 @@ export class Match {
       return { property: '', prefix: '' };
     }
     return { property, prefix };
+  }
+
+  public static value(text: string, property: string): { value: string; prefix: string } {
+    const propertyCompatData = compatData.css.properties[property];
+    const prefixRE = new RegExp(`(${Helpers.getPossiblePrefixes().join('|')})$`);
+    for (const value in propertyCompatData) {
+      if (!propertyCompatData[value].__compat || propertyCompatData[value].__compat.status.deprecated) {
+        continue;
+      }
+      const pos = text.indexOf(value);
+      const pre = text.substr(0, pos);
+      if (pos !== -1 && !pre.match(/[a-z]$/) && (!pre.endsWith('-') || pre.match(prefixRE))) {
+        return { value, prefix: Helpers.getPossiblePrefixes().find(p => pre.endsWith(p)) || '' };
+      }
+    }
+    return { value: '', prefix: '' };
   }
 
 }

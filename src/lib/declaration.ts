@@ -29,32 +29,21 @@ export class Declaration {
       declarations[match.property].instances.push(decl);
     });
 
-    const prefixRE = new RegExp(`(${Helpers.getPossiblePrefixes().join('|')})$`);
-    const endsWithLetterRE = new RegExp('[a-z]$');
     for (const prop in declarations) {
       const hasMainVariant = declarations[prop].prefixes.has('');
       const prefixes = Array.from(declarations[prop].prefixes.values()).filter(p => p);
       const propertyCompatData = compatData.css.properties[prop];
-      let values: Array<string> = [];
-      let prefixedValues: Array<string> = [];
-      for (const v in propertyCompatData) {
-        if (!propertyCompatData[v].__compat || propertyCompatData[v].__compat.status.deprecated) {
-          continue;
+      const values: { [key: string]: Set<string> } = {};
+      declarations[prop].instances.forEach(d => {
+        const match = Match.value(d.value, prop);
+        if (!match.value) {
+          return;
         }
-        declarations[prop].instances.forEach(d => {
-          const pos = d.value.indexOf(v);
-          const pre = d.value.substr(0, pos);
-          if (pos !== -1 && !pre.match(endsWithLetterRE) && (!pre.endsWith('-') || pre.match(prefixRE))) {
-            values.push(v);
-            const prefix = Helpers.getPossiblePrefixes().find(p => pre.endsWith(p));
-            if (prefix) {
-              prefixedValues.push(`${prefix}${v}`);
-            }
-          }
-        });
-      }
-      values = Array.from(new Set(values));
-      prefixedValues = Array.from(new Set(prefixedValues));
+        if (!values[match.value]) {
+          values[match.value] = new Set();
+        }
+        values[match.value].add(match.prefix);
+      });
 
       for (const browser in propertyCompatData.__compat.support) {
         const s = hasMainVariant ? Helpers.getSupportUnit(propertyCompatData.__compat.support[browser]) : {};
@@ -83,12 +72,11 @@ export class Declaration {
             end: declarations[prop].instances[0].source.end
           });
         });
-        values.forEach(value => {
-          const hasMainValueVariant = prefixedValues.length === 0
-            || declarations[prop].instances.some(d => d.value.includes(value) && !d.value.includes(`-${value}`));
-          const s = hasMainValueVariant ? Helpers.getSupportUnit(propertyCompatData[value].__compat.support[browser]) : {};
+        Object.keys(values).forEach(value => {
+          const s = values[value].has('') ? Helpers.getSupportUnit(propertyCompatData[value].__compat.support[browser]) : {};
           let unsupportedVersions = Helpers.getUnsupportedVersions(browser as BrowserKey, s.version_added, s.version_removed);
-          prefixedValues.filter(pv => pv.includes(value)).map(pv => pv.replace(value, '')).forEach(prefix => {
+          const prefixes = Array.from(values[value].values()).filter(p => p);
+          prefixes.forEach(prefix => {
             const s = Helpers.getSupportUnit(propertyCompatData[value].__compat.support[browser], prefix);
             if (s.version_added) {
               const prefixedUnsupportedVersions =
@@ -97,7 +85,7 @@ export class Declaration {
             }
           });
           unsupportedVersions.forEach(version => {
-            const title = `${prop}: ${hasMainValueVariant ? value : prefixedValues.join('/')}`;
+            const title = `${prop}: ${values[value].has('') ? value : prefixes.map(p => `${p}${value}`).join('/')}`;
             if (!issues[browser][version][title]) {
               issues[browser][version][title] = {
                 type: 'value',
