@@ -21,15 +21,16 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { Component, Prop, Vue } from "vue-property-decorator";
 import { browsers } from "../lib/browsers";
 
-export default {
-  props: ["browserKey", "browserCompat"],
-  data: () => ({
-    browsers
-  })
-};
+@Component
+export default class Browser extends Vue {
+  @Prop() public browserKey: string;
+  @Prop() public browserCompat: any;
+  public browsers = browsers;
+}
 </script>
 
 <style scoped>

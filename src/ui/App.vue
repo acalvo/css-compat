@@ -17,27 +17,27 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { Component, Prop, Vue } from "vue-property-decorator";
 import Browser from "./Browser.vue";
 import Sidebar from "./Sidebar.vue";
 
-export default {
-  props: ["compat"],
+@Component({
   components: {
     Browser,
     Sidebar
-  },
-  data: () => ({
-    selectedBrowserKey: undefined,
-    selectedRange: {}
-  }),
-  methods: {
-    showInfo: function(value) {
-      this.selectedBrowserKey = value.browserKey;
-      this.selectedRange = value.range;
-    }
   }
-};
+})
+export default class App extends Vue {
+  @Prop() public compat: any;
+  public selectedBrowserKey: string;
+  public selectedRange: any = {};
+
+  public showInfo(value: { browserKey: string; range: any }) {
+    this.selectedBrowserKey = value.browserKey;
+    this.selectedRange = value.range;
+  }
+}
 </script>
 
 <style scoped>

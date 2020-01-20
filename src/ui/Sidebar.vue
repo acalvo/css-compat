@@ -44,37 +44,37 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { Component, Prop, Vue } from "vue-property-decorator";
 import { browsers } from "../lib/browsers";
 
-export default {
-  props: ["browserKey", "range"],
-  data: () => ({
-    browsers
-  }),
-  methods: {
-    localizeDate: function(strDate) {
-      if (!strDate || new Date(strDate) > new Date()) {
-        return "present";
-      }
-      return new Date(strDate).toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "long"
-      });
-    },
-    getReleaseDates(v1, v2) {
-      let result = this.localizeDate(
-        browsers.get(this.browserKey).releases.get(v1)["release_date"]
-      );
-      if (v2) {
-        result = `${result} - ${this.localizeDate(
-          browsers.get(this.browserKey).releases.get(v2)["release_date"]
-        )}`;
-      }
-      return result;
+@Component
+export default class Sidebar extends Vue {
+  @Prop() public browserKey: string;
+  @Prop() public range: any;
+  public browsers = browsers;
+
+  public localizeDate(strDate: string): string {
+    if (!strDate || new Date(strDate) > new Date()) {
+      return "present";
     }
+    return new Date(strDate).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long"
+    });
   }
-};
+  public getReleaseDates(v1: string, v2: string): string {
+    let result = this.localizeDate(
+      browsers.get(this.browserKey).releases.get(v1)["release_date"]
+    );
+    if (v2) {
+      result = `${result} - ${this.localizeDate(
+        browsers.get(this.browserKey).releases.get(v2)["release_date"]
+      )}`;
+    }
+    return result;
+  }
+}
 </script>
 
 <style scoped>
