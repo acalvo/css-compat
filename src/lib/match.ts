@@ -32,4 +32,29 @@ export class Match {
     return { value: '', prefix: '' };
   }
 
+  public static selector(text: string): string {
+    let selector = text.replace(/^:*/, '');
+    switch (text) {
+      case ' ':
+        selector = 'descendant';
+        break;
+      case '+':
+        selector = 'adjacent_sibling';
+        break;
+      case '>':
+        selector = 'child';
+        break;
+      case '~':
+        selector = 'general_sibling';
+        break;
+      case '||':
+        selector = 'column';
+        break;
+    }
+    if (compatData.css.selectors[selector]?.__compat) {
+      return selector;
+    }
+    return '';
+  }
+
 }

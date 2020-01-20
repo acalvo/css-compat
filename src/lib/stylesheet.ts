@@ -4,7 +4,6 @@ import { Declaration } from './declaration';
 import { browsers } from './browsers';
 import postcss from 'postcss';
 import { Selector } from './selector';
-import { compilation } from 'webpack';
 
 export class Stylesheet {
   issues: Issues = {}
@@ -84,9 +83,8 @@ export class Stylesheet {
     // Process selector
     if (rule.selector) {
       const selector = new Selector(
-        rule.selector,
-        source,
-        rule
+        rule,
+        source
       );
 
       selector.process(this.issues);

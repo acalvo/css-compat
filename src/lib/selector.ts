@@ -1,141 +1,64 @@
-import { BrowserKey } from './types';
-import { browsers } from './browsers';
+import { Match } from './match';
+import { BrowserKey, Issues, Source } from './types';
 import compatData from './data.json';
 import { Helpers } from './helpers';
 import postcssSelectorParser from 'postcss-selector-parser';
+import postcss from 'postcss';
 
 export class Selector {
-  constructor(private selectorString, private source, private rule) {
+  constructor(
+    private rule: postcss.Rule,
+    private source: Source
+  ) {
   }
 
-  public process(issues) {
-    const selectorIssues = {};
-    let selectorIssueTitle;
-
+  public process(issues: Issues) {
     postcssSelectorParser(selectors => {
-      selectors.walk(selector => {
-        switch (selector.type) {
-          case 'attribute':
-            selectorIssues['attribute'] = compatData.css.selectors.attribute;
-            selectorIssueTitle = 'Attribute';
-
-            if (selector.insensitive) {
-              selectorIssues['attribute.case_sensitive_modifier'] = compatData.css.selectors.attribute.case_sensitive_modifier;
-              selectorIssueTitle += ' (case insensitive)';
-            }
-
-            break;
-
-          case 'class':
-            selectorIssues['class'] = compatData.css.selectors.class;
-            selectorIssueTitle = 'Class';
-
-            break;
-
-          case 'combinator':
-            switch (selector.value) {
-              case ' ':
-                selectorIssues['descendant'] = compatData.css.selectors.descendant;
-                selectorIssueTitle = 'Descendant';
-
-                break;
-
-              case '>>':
-                selectorIssues['descendant.two_greater_than_syntax'] = compatData.css.selectors.descendant.two_greater_than_syntax;
-                selectorIssueTitle = 'Descendant (>>)';
-
-                break;
-
-              case '+':
-                selectorIssues['adjacent_sibling'] = compatData.css.selectors.adjacent_sibling;
-                selectorIssueTitle = 'Adjacent sibling';
-
-                break;
-
-              case '>':
-                selectorIssues['child'] = compatData.css.selectors.child;
-                selectorIssueTitle = 'Child';
-
-                break;
-
-              case '~':
-                selectorIssues['general_sibling'] = compatData.css.selectors.general_sibling;
-                selectorIssueTitle = 'General sibling';
-
-                break;
-            }
-
-            break;
-
-          case 'id':
-            selectorIssues['id'] = compatData.css.selectors.id;
-            selectorIssueTitle = 'ID';
-
-            break;
-
+      selectors.walk(s => {
+        let selector = '';
+        switch (s.type) {
           case 'pseudo':
-            switch (selector.value) {
-              case '::cue':
-                selectorIssues['cue'] = compatData.css.selectors.cue;
-                selectorIssueTitle = '::cue';
-
-                break;
-            }
-
+          case 'combinator':
+            selector = Match.selector(s.value);
             break;
-
-          case 'tag':
-            selectorIssues['type'] = compatData.css.selectors.type;
-            selectorIssueTitle = 'Tag';
-
-            if (selector['_namespace']) {
-              selectorIssues['type.namespaces'] = compatData.css.selectors.type.namespaces;
-              selectorIssueTitle += ' (namespaced)';
+          case 'attribute':
+            selector = 'attribute';
+            if (s.insensitive) {
+              selector = 'attribute/case_insensitive_modifier';
             }
-
-            break;
-
-          case 'universal':
-            selectorIssues['universal'] = compatData.css.selectors.universal;
-            selectorIssueTitle = 'Universal';
-
-            if (selector['_namespace']) {
-              selectorIssues['universal.namespaces'] = compatData.css.selectors.universal.namespaces;
-              selectorIssueTitle += ' (namespaced)';
+            if (['s', 'S'].includes((s.raws as any).insensitiveFlag)) {
+              selector = 'attribute/case_sensitive_modifier';
             }
-
             break;
         }
-      });
-    }).processSync(this.selectorString);
-
-    Object.keys(selectorIssues).forEach(issueKey => {
-      const issueSupport = selectorIssues[issueKey];
-
-      Object.keys(issueSupport).forEach((browser: BrowserKey) => {
-        if (!browsers.get(browser)) return;
-
-        const unsupportedVersions =
-          Helpers.getUnsupportedVersions(browser, issueSupport[browser].version_added, issueSupport[browser].version_removed);
-
-        unsupportedVersions.forEach(version => {
-          const title = `${selectorIssueTitle} selector`;
-          if (!issues[browser][version][title]) {
-            issues[browser][version][title] = {
-              type: 'selector',
-              title: title,
-              data: issueSupport,
-              instances: []
-            };
-          }
-          issues[browser][version][title].instances.push({
-            source: this.source.id,
-            start: this.rule.source.start,
-            end: this.rule.source.end
+        const [mainKey, subKey] = selector.split('/');
+        const mainSelectorData = compatData.css.selectors[mainKey];
+        const selectorData = (!subKey) ? mainSelectorData : compatData.css.selectors[mainKey][subKey];
+        if (!selector || !selectorData) {
+          return;
+        }
+        for (const browser in selectorData.__compat.support) {
+          const support = Helpers.getSupportUnit(selectorData.__compat.support[browser]);
+          const unsupportedVersions =
+            Helpers.getUnsupportedVersions(browser as BrowserKey, support.version_added, support.version_removed);
+          unsupportedVersions.forEach(version => {
+            if (!issues[browser][version][selector]) {
+              issues[browser][version][selector] = {
+                type: 'selector',
+                title: selectorData.__compat.description,
+                data: mainSelectorData,
+                instances: []
+              };
+            }
+            issues[browser][version][selector].instances.push({
+              source: this.source.id,
+              start: this.rule.source.start,
+              end: this.rule.source.end
+            });
           });
-        });
+        }
       });
-    });
+    }).processSync(this.rule.selector);
   }
 
 }

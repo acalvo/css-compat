@@ -17,8 +17,8 @@
       <ol>
         <li v-for="prop in range.data" v-bind:key="prop">
           <span class="property">
-            <a v-if="prop.data.__compat" :href="prop.data.__compat.mdn_url">{{ prop.title }}</a>
-            <template v-else>{{ prop.title }}</template>
+            <a v-if="prop.data.__compat" :href="prop.data.__compat.mdn_url" v-html="prop.title"></a>
+            <template v-else v-html="prop.title"></template>
           </span>
           <span class="additional-info">
             (used
