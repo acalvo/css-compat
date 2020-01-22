@@ -8,6 +8,9 @@ export class AtRule {
   }
 
   public process(issues: Issues) {
+    if (!compatData.css['at-rules'][this.node.name]) {
+      return;
+    }
     const atRuleIssues = {};
     atRuleIssues[this.node.name] = compatData.css['at-rules'][this.node.name];
     const properties = Object.keys(atRuleIssues[this.node.name]).filter(p => {
