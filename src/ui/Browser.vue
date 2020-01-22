@@ -1,18 +1,18 @@
 <template>
   <div>
-    <div>{{ browsers.get(browserKey).name.replace('Internet Explorer', 'IE') }}</div>
+    <div>{{ browsers.get(browser).name.replace('Internet Explorer', 'IE') }}</div>
     <div>
       <button
-        v-if="browserKey === 'edge'"
+        v-if="browser === 'edge'"
         style="background: royalblue"
-        @click="$emit('select', { browserKey, undefined })"
+        @click="$emit('select', { browser })"
       >79 - {{ Array.from(browsers.get('chrome').releases)[browsers.get('chrome').releases.size-1][0] }}</button>
       <button
-        v-for="range in browserCompat"
-        :key="range"
-        :title="`${Object.keys(range.data).length} unsupported properties`"
-        :style="'background: ' + (Object.keys(range.data).length ? `#ff${Math.ceil(99 / Object.keys(range.data).length).toString().padStart(2, '0')}00` : 'green')"
-        @click="$emit('select', { browserKey, range })"
+        v-for="range in issueRangeList"
+        :key="range.versions.first"
+        :title="`${Object.keys(range.issues).length} unsupported properties`"
+        :style="'background: ' + (Object.keys(range.issues).length ? `#ff${Math.ceil(99 / Object.keys(range.issues).length).toString().padStart(2, '0')}00` : 'green')"
+        @click="$emit('select', range)"
       >
         {{ range.versions.first }}
         <template v-if="range.versions.last">- {{ range.versions.last }}</template>
@@ -24,11 +24,12 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { browsers } from "../lib/browsers";
+import { IssueRange } from "../lib/types";
 
 @Component
 export default class Browser extends Vue {
-  @Prop() public browserKey: string;
-  @Prop() public browserCompat: any;
+  @Prop() public browser: string;
+  @Prop() public issueRangeList: any;
   public browsers = browsers;
 }
 </script>

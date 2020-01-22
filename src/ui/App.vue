@@ -3,16 +3,16 @@
     <div class="main">
       <div class="grid">
         <Browser
-          v-for="(browserCompat, browserKey) in compat"
-          :key="browserKey"
-          :browserKey="browserKey"
-          :browserCompat="browserCompat"
+          v-for="(issueRangeList, browser) in issues"
+          :key="browser"
+          :browser="browser"
+          :issueRangeList="issueRangeList"
           @select="showInfo"
         ></Browser>
       </div>
     </div>
     <div class="sidebar">
-      <Sidebar :browserKey="selectedBrowserKey" :range="selectedRange"></Sidebar>
+      <Sidebar :range="selectedRange"></Sidebar>
     </div>
   </div>
 </template>
@@ -21,6 +21,8 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 import Browser from "./Browser.vue";
 import Sidebar from "./Sidebar.vue";
+import { Stylesheets } from "../lib/stylesheets";
+import { IssueRange } from "../lib/types";
 
 @Component({
   components: {
@@ -29,13 +31,12 @@ import Sidebar from "./Sidebar.vue";
   }
 })
 export default class App extends Vue {
-  @Prop() public compat: any;
-  public selectedBrowserKey: string;
-  public selectedRange: any = {};
+  @Prop() public stylesheets: Stylesheets;
+  public issues = this.stylesheets.getIssues();
+  public selectedRange: IssueRange = {} as any;
 
-  public showInfo(value: { browserKey: string; range: any }) {
-    this.selectedBrowserKey = value.browserKey;
-    this.selectedRange = value.range;
+  public showInfo(range: IssueRange) {
+    this.selectedRange = range;
   }
 }
 </script>

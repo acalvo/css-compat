@@ -33,6 +33,21 @@ export interface Issues {
   };
 }
 
+export interface GroupedIssues {
+  [browserKey: string]: Array<IssueRange>;
+}
+
+export interface IssueRange {
+  browser: string;
+  versions: {
+    first: string;
+    last: string;
+  };
+  issues: {
+    [property: string]: Issue;
+  };
+}
+
 export interface SupportUnit {
   version_added?: string;
   version_removed?: string;

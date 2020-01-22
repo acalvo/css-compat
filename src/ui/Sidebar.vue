@@ -1,21 +1,21 @@
 <template>
-  <div v-if="browserKey === 'edge' && !range">
-    <h2>{{ browsers.get(browserKey).name }} 79 - {{ Array.from(browsers.get('chrome').releases)[browsers.get('chrome').releases.size-1][0] }}</h2>
+  <div v-if="range.browser === 'edge' && !range.issues">
+    <h2>{{ browsers.get(range.browser).name }} 79 - {{ Array.from(browsers.get('chrome').releases)[browsers.get('chrome').releases.size-1][0] }}</h2>
     <div class="sub">(released: January 2020 - present)</div>
     <p>Edge 79 onwards shares the same engine as Chrome. Please, see its compatibility data for this version range.</p>
   </div>
-  <div v-else-if="browserKey">
+  <div v-else-if="range.browser">
     <h2>
-      {{ browsers.get(browserKey).name }} {{ range.versions.first }}
+      {{ browsers.get(range.browser).name }} {{ range.versions.first }}
       <template
         v-if="range.versions.last"
       >- {{ range.versions.last }}</template>
     </h2>
     <div class="sub">(released: {{ getReleaseDates(range.versions.first, range.versions.last) }})</div>
-    <div v-if="Object.keys(range.data).length > 0">
+    <div v-if="Object.keys(range.issues).length > 0">
       <p>Missing CSS features:</p>
       <ol>
-        <li v-for="prop in range.data" v-bind:key="prop">
+        <li v-for="prop in range.issues" v-bind:key="prop">
           <span class="property">
             <a v-if="prop.data.__compat" :href="prop.data.__compat.mdn_url" v-html="prop.title"></a>
             <template v-else v-html="prop.title"></template>
@@ -47,11 +47,11 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { browsers } from "../lib/browsers";
+import { IssueRange } from "../lib/types";
 
 @Component
 export default class Sidebar extends Vue {
-  @Prop() public browserKey: string;
-  @Prop() public range: any;
+  @Prop() public range: IssueRange;
   public browsers = browsers;
 
   public localizeDate(strDate: string): string {
@@ -65,11 +65,11 @@ export default class Sidebar extends Vue {
   }
   public getReleaseDates(v1: string, v2: string): string {
     let result = this.localizeDate(
-      browsers.get(this.browserKey).releases.get(v1)["release_date"]
+      browsers.get(this.range.browser).releases.get(v1)["release_date"]
     );
     if (v2) {
       result = `${result} - ${this.localizeDate(
-        browsers.get(this.browserKey).releases.get(v2)["release_date"]
+        browsers.get(this.range.browser).releases.get(v2)["release_date"]
       )}`;
     }
     return result;

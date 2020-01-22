@@ -1,47 +1,43 @@
-import { Stylesheet } from './lib/stylesheet';
-import { Issues, Source } from './lib/types';
+import { Stylesheets } from './lib/stylesheets';
 import Vue from 'vue';
 import App from './ui/App.vue';
 import Error from './ui/Error.vue';
-import { browsers } from './lib/browsers';
-import { getAllCssSources, manageThemeColorChange, reloadOnNavigation } from './lib/browser-tasks';
+import { BrowserTasks } from './lib/browser-tasks';
 
-manageThemeColorChange();
-reloadOnNavigation();
-
-getAllCssSources().then((sources: Array<Source>) => {
-  const stylesheets = new Stylesheet();
-  sources.forEach(stylesheetData => {
-    stylesheets.add(stylesheetData);
-  });
-  return stylesheets.parse();
-}).then(compat => {
-  new Vue({
-    el: '#app',
-    components: {
-      App
-    },
-    render(h) {
-      return h('App', {
-        props: {
-          compat
-        }
-      });
-    }
-  });
-}).catch(error => {
-  console.error(error);
-  new Vue({
-    el: '#app',
-    components: {
-      Error
-    },
-    render(h) {
-      return h('Error', {
-        props: {
-          error
-        }
-      });
-    }
-  });
-});
+(async () => {
+  try {
+    BrowserTasks.manageThemeColorChange();
+    BrowserTasks.reloadOnNavigation();
+    const sources = await BrowserTasks.getAllCssSources();
+    const stylesheets = new Stylesheets();
+    await Promise.all(sources.map(source => stylesheets.add(source)));
+    new Vue({
+      el: '#app',
+      components: {
+        App
+      },
+      render(h) {
+        return h('App', {
+          props: {
+            stylesheets
+          }
+        });
+      }
+    });
+  } catch (error) {
+    console.error(error);
+    new Vue({
+      el: '#app',
+      components: {
+        Error
+      },
+      render(h) {
+        return h('Error', {
+          props: {
+            error
+          }
+        });
+      }
+    });
+  }
+})();
