@@ -20,6 +20,21 @@
             <a v-if="prop.data.__compat" :href="prop.data.__compat.mdn_url" v-html="prop.title"></a>
             <template v-else v-html="prop.title"></template>
           </span>
+          <span
+            v-if="prop.data.__compat.status.experimental"
+            class="icon experimental"
+            title="experimental feature"
+          ></span>
+          <span
+            v-if="!prop.data.__compat.status.standard_track"
+            class="icon non-standard"
+            title="non-standard feature"
+          ></span>
+          <span
+            v-if="prop.data.__compat.status.deprecated"
+            class="icon deprecated"
+            title="deprecated feature"
+          ></span>
           <span class="additional-info">
             (used
             <template v-if="prop.instances.length > 1">{{ prop.instances.length }} times</template>
@@ -88,11 +103,35 @@ li {
   margin: 8px 0;
   font-size: 14px;
 }
+.icon {
+  height: 12px;
+  width: 12px;
+  content: "";
+  display: inline-block;
+  margin-left: 3px;
+  vertical-align: middle;
+}
+.experimental {
+  background-color: darkseagreen;
+  mask: url(images/icon-experimental.svg);
+  mask-size: cover;
+}
+.non-standard {
+  background-color: crimson;
+  mask: url(images/icon-nonstandard.svg);
+  mask-size: cover;
+}
+.deprecated {
+  background-color: crimson;
+  mask: url(images/icon-deprecated.svg);
+  mask-size: cover;
+}
 .property {
   font-size: 16px;
   font-family: Courier, "Lucida Console", monospace;
 }
 .additional-info {
   font-size: 12px;
+  margin-left: 3px;
 }
 </style>
