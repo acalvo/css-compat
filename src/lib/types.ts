@@ -64,3 +64,9 @@ export interface SupportUnit {
 }
 
 export type Support = SupportUnit | Array<SupportUnit>
+
+export interface StatusFilter {
+  experimental: boolean;
+  nonstandard: boolean;
+  deprecated: boolean;
+}

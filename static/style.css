@@ -1,14 +1,14 @@
 :root[data-theme="light"] {
   --default-color: #38383D;
-  --background-color: #FFFFFF;
-  --background-sidebar-color: #F9F9FA;
+  --background-primary-color: #FFFFFF;
+  --background-secondary-color: #F9F9FA;
   --separator-color: #E0E0E2;
 }
 
 :root[data-theme="dark"] {
   --default-color: #B1B1B3;
-  --background-color: #232327;
-  --background-sidebar-color: #18181A;
+  --background-primary-color: #232327;
+  --background-secondary-color: #18181A;
   --separator-color: #38383D;
 }
 
@@ -16,7 +16,7 @@ body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
-  background: var(--background-color);
+  background: var(--separator-color);
   color: var(--default-color);
 }
 

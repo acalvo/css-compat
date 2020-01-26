@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <Topbar @change="filter"></Topbar>
     <div class="main">
       <div class="grid">
         <Browser
@@ -19,40 +20,50 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
+import Topbar from "./Topbar.vue";
 import Browser from "./Browser.vue";
 import Sidebar from "./Sidebar.vue";
 import { Stylesheets } from "../lib/stylesheets";
-import { IssueRange } from "../lib/types";
+import { StatusFilter, GroupedIssues, IssueRange } from "../lib/types";
 
 @Component({
   components: {
+    Topbar,
     Browser,
     Sidebar
   }
 })
 export default class App extends Vue {
   @Prop() public stylesheets: Stylesheets;
-  public issues = this.stylesheets.getIssues();
+  public issues: GroupedIssues = {};
   public selectedRange: IssueRange = {} as any;
 
   public showInfo(range: IssueRange) {
     this.selectedRange = range;
+  }
+
+  public filter(status: StatusFilter) {
+    this.selectedRange = {} as any;
+    this.issues = this.stylesheets.getIssues(status);
   }
 }
 </script>
 
 <style scoped>
 .container {
-  display: flex;
-  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(700px, 1fr) 500px;
+  grid-template-rows: auto 1fr;
+  grid-column-gap: 1px;
+  grid-row-gap: 1px;
+  height: 100vh;
 }
 .main {
-  flex-grow: 1;
-  padding: 20px 50px;
-  border-right: 1px solid var(--separator-color);
+  background: var(--background-primary-color);
+  overflow: auto;
 }
 .grid {
-  margin: 0 auto;
+  margin: 20px auto;
   width: 600px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -61,8 +72,7 @@ export default class App extends Vue {
 }
 .sidebar {
   padding: 0 50px 25px 25px;
-  background: var(--background-sidebar-color);
-  flex-basis: 500px;
-  min-width: 500px;
+  background: var(--background-secondary-color);
+  overflow: auto;
 }
 </style>

@@ -14,7 +14,7 @@ export class AtRule {
     const atRuleIssues = {};
     atRuleIssues[this.node.name] = compatData.css['at-rules'][this.node.name];
     const properties = Object.keys(atRuleIssues[this.node.name]).filter(p => {
-      return atRuleIssues[this.node.name][p].__compat?.status.deprecated === false;
+      return atRuleIssues[this.node.name][p].__compat;
     });
 
     if (this.node.name === 'media') {

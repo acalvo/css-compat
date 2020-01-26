@@ -20,7 +20,7 @@ export class Match {
     const propertyCompatData = compatData.css.properties[property];
     const prefixRE = new RegExp(`(${Helpers.getPossiblePrefixes().join('|')})$`);
     for (const value in propertyCompatData) {
-      if (!propertyCompatData[value].__compat || propertyCompatData[value].__compat.status.deprecated) {
+      if (!propertyCompatData[value].__compat) {
         continue;
       }
       const pos = text.indexOf(value);

@@ -1,4 +1,4 @@
-import { GroupedIssues, Issues, Source } from './types';
+import { GroupedIssues, Issues, Source, StatusFilter } from './types';
 import { AtRule } from './at-rule';
 import { Declaration } from './declaration';
 import { browsers } from './browsers';
@@ -32,14 +32,30 @@ export class Stylesheets {
       });
   }
 
-  public getIssues(): GroupedIssues {
-    const groupedIssues: GroupedIssues = {};
+  public getIssues(status: StatusFilter): GroupedIssues {
+    const filteredIssues: Issues = {};
     for (const browser in this.issues) {
+      filteredIssues[browser] = {};
+      for (const version in this.issues[browser]) {
+        filteredIssues[browser][version] = {};
+        for (const property in this.issues[browser][version]) {
+          const s = this.issues[browser][version][property].data.__compat.status;
+          const showProperty = (status.experimental || !s.experimental)
+            && (status.nonstandard || s.standard_track)
+            && (status.deprecated || !s.deprecated);
+          if (showProperty) {
+            filteredIssues[browser][version][property] = this.issues[browser][version][property];
+          }
+        }
+      }
+    }
+    const groupedIssues: GroupedIssues = {};
+    for (const browser in filteredIssues) {
       groupedIssues[browser] = [];
       const releases = browsers.get(browser).releases.entries();
       let result = releases.next();
       while (!result.done) {
-        const releaseIssues = this.issues[browser][result.value[0]];
+        const releaseIssues = filteredIssues[browser][result.value[0]];
         if (groupedIssues[browser].length === 0
           || Object.keys(groupedIssues[browser][0].issues).length !== Object.keys(releaseIssues).length
           || Object.keys(releaseIssues).length !==
