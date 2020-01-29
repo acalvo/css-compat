@@ -42,9 +42,9 @@ export default class App extends Vue {
     this.selectedRange = range;
   }
 
-  public filter(status: StatusFilter) {
+  public filter(data: { status: StatusFilter; year: string }) {
     this.selectedRange = {} as any;
-    this.issues = this.stylesheets.getIssues(status);
+    this.issues = this.stylesheets.getIssues(data.status, data.year);
   }
 }
 </script>

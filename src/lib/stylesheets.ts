@@ -32,11 +32,16 @@ export class Stylesheets {
       });
   }
 
-  public getIssues(status: StatusFilter): GroupedIssues {
+  public getIssues(status: StatusFilter, year: string): GroupedIssues {
+    const minDate = new Date(year || '1970');
     const filteredIssues: Issues = {};
     for (const browser in this.issues) {
       filteredIssues[browser] = {};
+      const browserReleases = browsers.get(browser).releases;
       for (const version in this.issues[browser]) {
+        if (new Date(browserReleases.get(version).release_date) < minDate) {
+          continue;
+        }
         filteredIssues[browser][version] = {};
         for (const property in this.issues[browser][version]) {
           const s = this.issues[browser][version][property].data.__compat.status;
@@ -48,14 +53,18 @@ export class Stylesheets {
           }
         }
       }
+      if (Object.keys(filteredIssues[browser]).length === 0) {
+        delete filteredIssues[browser];
+      }
     }
     const groupedIssues: GroupedIssues = {};
     for (const browser in filteredIssues) {
       groupedIssues[browser] = [];
-      const releases = browsers.get(browser).releases.entries();
-      let result = releases.next();
-      while (!result.done) {
-        const releaseIssues = filteredIssues[browser][result.value[0]];
+      Array.from(browsers.get(browser).releases.keys()).forEach(key => {
+        const releaseIssues = filteredIssues[browser][key];
+        if (!releaseIssues) {
+          return;
+        }
         if (groupedIssues[browser].length === 0
           || Object.keys(groupedIssues[browser][0].issues).length !== Object.keys(releaseIssues).length
           || Object.keys(releaseIssues).length !==
@@ -63,16 +72,15 @@ export class Stylesheets {
           groupedIssues[browser].unshift({
             browser,
             versions: {
-              first: result.value[0],
+              first: key,
               last: undefined
             },
             issues: releaseIssues
           });
         } else {
-          groupedIssues[browser][0].versions.last = result.value[0];
+          groupedIssues[browser][0].versions.last = key;
         }
-        result = releases.next();
-      }
+      });
     }
     return groupedIssues;
   }
