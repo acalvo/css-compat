@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "CSS Compat",
   "description": "Shows a report of CSS compatibility issues across browsers.",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "author": "Alberto Calvo",
   "homepage_url": "https://github.com/acalvo/css-compat",
   "icons": {
