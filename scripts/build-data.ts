@@ -10,7 +10,7 @@ import { browsers } from './../src/lib/browsers';
     return;
   }
   Object.keys(browsersJson[b].releases).forEach(r => {
-    if (browsersJson[b].releases[r].status === 'planned') {
+    if (browsersJson[b].releases[r].status === 'planned' || (b === 'edge' && parseInt(r) > 18)) {
       delete browsersJson[b].releases[r];
     }
   });
