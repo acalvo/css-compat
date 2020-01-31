@@ -1,54 +1,72 @@
 <template>
   <div class="topbar">
-    <div class="about">{{ getExtensionInfo() }}</div>
+    <div class="about">
+      {{ getExtensionInfo() }}
+    </div>
     <div>
       Include CSS features that are:
       <input
-        type="checkbox"
         id="experimental"
         v-model="status.experimental"
+        type="checkbox"
         @change="$emit('change', { status, year })"
-      />
+      >
       <label for="experimental">experimental</label>
       <input
-        type="checkbox"
         id="non-standard"
         v-model="status.nonstandard"
+        type="checkbox"
         @change="$emit('change', { status, year })"
-      />
+      >
       <label for="non-standard">non-standard</label>
       <input
-        type="checkbox"
         id="deprecated"
         v-model="status.deprecated"
+        type="checkbox"
         @change="$emit('change', { status, year })"
-      />
+      >
       <label for="deprecated">deprecated</label>
     </div>
     <div>
       <label for="browsers">Show only browsers from:</label>
       <select
-        name="browsers"
         id="browsers"
         v-model="year"
+        name="browsers"
         @change="$emit('change', { status, year })"
       >
-        <option value>Anytime</option>
-        <option value="2019">2019+</option>
-        <option value="2018">2018+</option>
-        <option value="2017">2017+</option>
-        <option value="2016">2016+</option>
-        <option value="2015">2015+</option>
-        <option value="2013">2013+</option>
-        <option value="2009">2009+</option>
+        <option value>
+          Anytime
+        </option>
+        <option value="2019">
+          2019+
+        </option>
+        <option value="2018">
+          2018+
+        </option>
+        <option value="2017">
+          2017+
+        </option>
+        <option value="2016">
+          2016+
+        </option>
+        <option value="2015">
+          2015+
+        </option>
+        <option value="2013">
+          2013+
+        </option>
+        <option value="2009">
+          2009+
+        </option>
       </select>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import browser from "webextension-polyfill";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import browser from 'webextension-polyfill';
 
 @Component
 export default class Topbar extends Vue {
@@ -57,10 +75,10 @@ export default class Topbar extends Vue {
     nonstandard: true,
     deprecated: true
   };
-  public year = "";
+  public year = '';
 
   public mounted() {
-    this.$emit("change", { status: this.status, year: this.year });
+    this.$emit('change', { status: this.status, year: this.year });
   }
 
   public getExtensionInfo() {

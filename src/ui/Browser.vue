@@ -6,7 +6,9 @@
         v-if="browser === 'edge'"
         style="background: royalblue"
         @click="$emit('select', { browser })"
-      >79 - {{ Array.from(browsers.get('chrome').releases)[browsers.get('chrome').releases.size-1][0] }}</button>
+      >
+        79 - {{ Array.from(browsers.get('chrome').releases)[browsers.get('chrome').releases.size-1][0] }}
+      </button>
       <button
         v-for="range in issueRangeList"
         :key="range.versions.first"
@@ -15,16 +17,18 @@
         @click="$emit('select', range)"
       >
         {{ range.versions.first }}
-        <template v-if="range.versions.last">- {{ range.versions.last }}</template>
+        <template v-if="range.versions.last">
+          - {{ range.versions.last }}
+        </template>
       </button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import { browsers } from "../lib/browsers";
-import { IssueRange } from "../lib/types";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import { browsers } from '../lib/browsers';
+import { IssueRange } from '../lib/types';
 
 @Component
 export default class Browser extends Vue {

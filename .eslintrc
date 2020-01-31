@@ -1,11 +1,13 @@
 {
-  "parser": "@typescript-eslint/parser",
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:vue/recommended"
   ],
+  "parser": "vue-eslint-parser",
   "parserOptions": {
+    "parser": "@typescript-eslint/parser",
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
@@ -21,6 +23,17 @@
     "quotes": [
       "error",
       "single"
+    ],
+    "vue/no-v-html": "off",
+    "vue/html-self-closing": [
+      "error",
+      {
+        "html": {
+          "void": "never",
+          "normal": "never",
+          "component": "never"
+        }
+      }
     ],
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/no-explicit-any": "off",

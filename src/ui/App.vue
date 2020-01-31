@@ -7,7 +7,7 @@
           v-for="(issueRangeList, browser) in issues"
           :key="browser"
           :browser="browser"
-          :issueRangeList="issueRangeList"
+          :issue-range-list="issueRangeList"
           @select="showInfo"
         ></Browser>
       </div>
@@ -19,12 +19,12 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import Topbar from "./Topbar.vue";
-import Browser from "./Browser.vue";
-import Sidebar from "./Sidebar.vue";
-import { Stylesheets } from "../lib/stylesheets";
-import { StatusFilter, GroupedIssues, IssueRange } from "../lib/types";
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import Topbar from './Topbar.vue';
+import Browser from './Browser.vue';
+import Sidebar from './Sidebar.vue';
+import { Stylesheets } from '../lib/stylesheets';
+import { GroupedIssues, IssueRange, StatusFilter } from '../lib/types';
 
 @Component({
   components: {
