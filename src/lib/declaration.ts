@@ -56,23 +56,23 @@ export class Declaration {
             unsupportedVersions = unsupportedVersions.filter(version => prefixedUnsupportedVersions.includes(version));
           }
         });
+        const propertyTitle = hasMainVariant ? prop : prefixes.map(p => `${p}${prop}`).join('/');
         unsupportedVersions.forEach(version => {
-          const title = hasMainVariant ? prop : prefixes.map(p => `${p}${prop}`).join('/');
-          if (!issues[browser][version][title]) {
-            issues[browser][version][title] = {
+          if (!issues[browser][version][propertyTitle]) {
+            issues[browser][version][propertyTitle] = {
               type: 'property',
-              title: title,
+              title: propertyTitle,
               data: propertyCompatData,
               instances: []
             };
           }
-          issues[browser][version][title].instances.push({
+          issues[browser][version][propertyTitle].instances.push({
             source: this.source.id,
             start: declarations[prop].instances[0].source.start,
             end: declarations[prop].instances[0].source.end
           });
         });
-        Object.keys(values).forEach(value => {
+        for (const value in values) {
           const s = values[value].has('') ? Helpers.getSupportUnit(propertyCompatData[value].__compat.support[browser]) : {};
           let unsupportedVersions = Helpers.getUnsupportedVersions(browser as BrowserKey, s.version_added, s.version_removed);
           const prefixes = Array.from(values[value].values()).filter(p => p);
@@ -84,23 +84,26 @@ export class Declaration {
               unsupportedVersions = unsupportedVersions.filter(version => prefixedUnsupportedVersions.includes(version));
             }
           });
+          const valueTitle = `${prop}: ${values[value].has('') ? value : prefixes.map(p => `${p}${value}`).join('/')}`;
           unsupportedVersions.forEach(version => {
-            const title = `${prop}: ${values[value].has('') ? value : prefixes.map(p => `${p}${value}`).join('/')}`;
-            if (!issues[browser][version][title]) {
-              issues[browser][version][title] = {
+            if (issues[browser][version][propertyTitle]) {
+              return;
+            }
+            if (!issues[browser][version][valueTitle]) {
+              issues[browser][version][valueTitle] = {
                 type: 'value',
-                title: title,
+                title: valueTitle,
                 data: propertyCompatData,
                 instances: []
               };
             }
-            issues[browser][version][title].instances.push({
+            issues[browser][version][valueTitle].instances.push({
               source: this.source.id,
               start: declarations[prop].instances[0].source.start,
               end: declarations[prop].instances[0].source.end
             });
           });
-        });
+        }
       }
     }
   }
