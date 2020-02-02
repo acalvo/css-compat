@@ -20,8 +20,8 @@ export class Stylesheets {
 
   public add(source: Source) {
     const plugin = postcss.plugin('postcss-css-report', (opts) => (css, result) => {
-      css.walkRules((rule) => this.processRule(source, rule));
-      css.walkAtRules((node) => this.processAtRule(source, node));
+      css.walkRules((rule) => this.processRule(rule));
+      css.walkAtRules((node) => this.processAtRule(node));
     });
     return postcss([plugin])
       .process(source.content, { from: undefined })
@@ -32,7 +32,8 @@ export class Stylesheets {
       });
   }
 
-  public getIssues(status: StatusFilter, year: string): GroupedIssues {
+  public getIssues(sources: Array<Source>, status: StatusFilter, year: string): GroupedIssues {
+    const sourcesIndexes = sources.map(s => this.sources.indexOf(s));
     const minDate = new Date(year || '1970');
     const filteredIssues: Issues = {};
     for (const browser in this.issues) {
@@ -49,7 +50,11 @@ export class Stylesheets {
             && (status.nonstandard || s.standard_track)
             && (status.deprecated || !s.deprecated);
           if (showProperty) {
-            filteredIssues[browser][version][property] = this.issues[browser][version][property];
+            const prop = { ...this.issues[browser][version][property] };
+            prop.instances = prop.instances.filter(i => sourcesIndexes.includes(i.source));
+            if (prop.instances.length > 0) {
+              filteredIssues[browser][version][property] = prop;
+            }
           }
         }
       }
@@ -85,26 +90,24 @@ export class Stylesheets {
     return groupedIssues;
   }
 
-  private processAtRule(source: Source, node: postcss.AtRule) {
-    const atRule = new AtRule(node, source);
+  public getSources() {
+    return this.sources;
+  }
+
+  private processAtRule(node: postcss.AtRule) {
+    const atRule = new AtRule(node);
     atRule.process(this.issues);
   }
 
-  private processRule(source: Source, rule: postcss.Rule) {
+  private processRule(rule: postcss.Rule) {
     // Process selector
     if (rule.selector) {
-      const selector = new Selector(
-        rule,
-        source
-      );
+      const selector = new Selector(rule);
       selector.process(this.issues);
     }
 
     // Process declarations
-    const declaration = new Declaration(
-      rule,
-      source
-    );
+    const declaration = new Declaration(rule);
     declaration.process(this.issues);
   }
 }

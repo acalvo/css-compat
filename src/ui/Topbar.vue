@@ -90,9 +90,8 @@ export default class Topbar extends Vue {
 
 <style scoped>
 .topbar {
-  grid-column: 1 / 3;
+  grid-column: 1 / 4;
   background: var(--background-secondary-color);
-  font-size: 12px;
   display: flex;
   align-items: baseline;
 }

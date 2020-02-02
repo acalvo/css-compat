@@ -2,7 +2,7 @@ export type BrowserKey = 'chrome' | 'firefox' | 'safari' | 'edge' | 'ie';
 export type Version = string | boolean | undefined;
 
 export interface Source {
-  id: string | number; // URL in case of external, int id in case of inline
+  id: string;
   content: string;
   external: boolean;
 }
@@ -12,7 +12,7 @@ export interface Issue {
   title: string;
   data: any;
   instances: Array<{
-    source: Source['id'];
+    source: number;
     start: {
       column: number;
       line: number;

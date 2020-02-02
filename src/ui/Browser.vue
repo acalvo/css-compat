@@ -1,6 +1,8 @@
 <template>
-  <div>
-    <div>{{ browsers.get(browser).name.replace('Internet Explorer', 'IE') }}</div>
+  <div class="browser">
+    <div class="title">
+      {{ browsers.get(browser).name.replace('Internet Explorer', 'IE') }}
+    </div>
     <div>
       <button
         v-if="browser === 'edge'"
@@ -39,6 +41,12 @@ export default class Browser extends Vue {
 </script>
 
 <style scoped>
+.browser {
+  font-size: 14px;
+}
+.title {
+  margin-bottom: 10px;
+}
 button {
   color: white;
   text-shadow: 1px 1px 0 #444444;

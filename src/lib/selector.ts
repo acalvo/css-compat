@@ -6,10 +6,7 @@ import postcssSelectorParser from 'postcss-selector-parser';
 import postcss from 'postcss';
 
 export class Selector {
-  constructor(
-    private rule: postcss.Rule,
-    private source: Source
-  ) {
+  constructor(private rule: postcss.Rule) {
   }
 
   public process(issues: Issues) {
@@ -51,7 +48,7 @@ export class Selector {
               };
             }
             issues[browser][version][selector].instances.push({
-              source: this.source.id,
+              source: Helpers.getSourceIndex(this.rule.source.input.id),
               start: this.rule.source.start,
               end: this.rule.source.end
             });

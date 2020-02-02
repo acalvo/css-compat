@@ -29,4 +29,8 @@ export class Helpers {
     return ['-webkit-', '-moz-', '-ms-'];
   }
 
+  public static getSourceIndex(cssInputId: string): number {
+    return parseInt(cssInputId.slice(11, -1), 10) - 1;
+  }
+
 }

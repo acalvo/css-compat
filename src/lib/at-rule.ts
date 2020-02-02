@@ -4,7 +4,7 @@ import { Helpers } from './helpers';
 import { AtRule as postcssAtRule } from 'postcss';
 
 export class AtRule {
-  constructor(private node: postcssAtRule, private source: Source) {
+  constructor(private node: postcssAtRule) {
   }
 
   public process(issues: Issues) {
@@ -49,9 +49,9 @@ export class AtRule {
               };
             }
             issues[browser][version][`@${issueKey}`].instances.push({
+              source: Helpers.getSourceIndex(this.node.source.input.id),
               start: this.node.source.start,
-              end: this.node.source.end,
-              source: this.source.id
+              end: this.node.source.end
             });
           }
         });

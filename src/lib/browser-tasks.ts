@@ -31,7 +31,7 @@ export class BrowserTasks {
         return inlineStylesheets
           .filter(c => typeof c === 'string' && c.length > 0)
           .map((content, i) => ({
-            id: i + 1,
+            id: `<inline style sheet #${i + 1}>`,
             content,
             external: false
           } as Source));

@@ -6,10 +6,7 @@ import postcss from 'postcss';
 
 export class Declaration {
 
-  constructor(
-    private rule: postcss.Rule,
-    private source: Source,
-  ) {
+  constructor(private rule: postcss.Rule) {
   }
 
   public process(issues: Issues) {
@@ -67,7 +64,7 @@ export class Declaration {
             };
           }
           issues[browser][version][propertyTitle].instances.push({
-            source: this.source.id,
+            source: Helpers.getSourceIndex(declarations[prop].instances[0].source.input.id),
             start: declarations[prop].instances[0].source.start,
             end: declarations[prop].instances[0].source.end
           });
@@ -98,7 +95,7 @@ export class Declaration {
               };
             }
             issues[browser][version][valueTitle].instances.push({
-              source: this.source.id,
+              source: Helpers.getSourceIndex(declarations[prop].instances[0].source.input.id),
               start: declarations[prop].instances[0].source.start,
               end: declarations[prop].instances[0].source.end
             });
