@@ -1,8 +1,8 @@
-import { Match } from './match';
-import { BrowserKey, Issues, Source } from './types';
+import postcss from 'postcss';
 import compatData from './data.json';
 import { Helpers } from './helpers';
-import postcss from 'postcss';
+import { Match } from './match';
+import { BrowserKey, Issues } from './types';
 
 export class Declaration {
 

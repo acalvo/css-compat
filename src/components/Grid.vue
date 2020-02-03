@@ -13,8 +13,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import { Stylesheets } from '../lib/stylesheets';
-import { GroupedIssues, IssueRange, Source, StatusFilter } from '../lib/types';
+import { GroupedIssues } from '../lib/types';
 import GridBrowser from './GridBrowser.vue';
 
 @Component({

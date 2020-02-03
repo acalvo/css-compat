@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
-import { BrowserNames } from 'mdn-browser-compat-data/types';
 import { browsers as browsersJson, css } from 'mdn-browser-compat-data';
+import { BrowserNames } from 'mdn-browser-compat-data/types';
 import { browsers } from './../src/lib/browsers';
 
 (Object.keys(browsersJson) as Array<BrowserNames>).forEach(b => {

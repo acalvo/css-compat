@@ -1,6 +1,6 @@
-import webpack from 'webpack';
-import { VueLoaderPlugin } from 'vue-loader';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
+import { VueLoaderPlugin } from 'vue-loader';
+import webpack from 'webpack';
 
 const config: webpack.Configuration = {
   mode: 'production',

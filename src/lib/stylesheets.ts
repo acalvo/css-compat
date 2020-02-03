@@ -1,9 +1,9 @@
-import { GroupedIssues, Issues, Source, StatusFilter } from './types';
-import { AtRule } from './at-rule';
-import { Declaration } from './declaration';
-import { browsers } from './browsers';
 import postcss from 'postcss';
+import { AtRule } from './at-rule';
+import { browsers } from './browsers';
+import { Declaration } from './declaration';
 import { Selector } from './selector';
+import { GroupedIssues, Issues, Source, StatusFilter } from './types';
 
 export class Stylesheets {
   private issues: Issues = {};

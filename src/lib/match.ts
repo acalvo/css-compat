@@ -1,6 +1,6 @@
-import { Helpers } from './helpers';
 import postcss from 'postcss';
 import compatData from './data.json';
+import { Helpers } from './helpers';
 
 export class Match {
 

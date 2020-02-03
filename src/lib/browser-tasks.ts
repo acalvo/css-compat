@@ -1,5 +1,5 @@
-import { Source } from './types';
 import browser from 'webextension-polyfill';
+import { Source } from './types';
 
 export class BrowserTasks {
 

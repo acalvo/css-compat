@@ -3,7 +3,12 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:vue/recommended"
+    "plugin:vue/recommended",
+    "plugin:import/errors",
+    "plugin:import/typescript"
+  ],
+  "plugins": [
+    "unused-imports"
   ],
   "parser": "vue-eslint-parser",
   "parserOptions": {
@@ -12,6 +17,12 @@
     "sourceType": "module"
   },
   "rules": {
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 1
+      }
+    ],
     "prefer-template": "error",
     "semi": "error",
     "sort-imports": [
@@ -23,6 +34,16 @@
     "quotes": [
       "error",
       "single"
+    ],
+    "unused-imports/no-unused-imports-ts": "error",
+    "import/default": "off",
+    "import/order": [
+      "error",
+      {
+        "alphabetize": {
+          "order": "asc"
+        }
+      }
     ],
     "vue/no-v-html": "off",
     "vue/html-self-closing": [

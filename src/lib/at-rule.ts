@@ -1,7 +1,7 @@
-import { BrowserKey, Issues, Source } from './types';
+import { AtRule as postcssAtRule } from 'postcss';
 import compatData from './data.json';
 import { Helpers } from './helpers';
-import { AtRule as postcssAtRule } from 'postcss';
+import { BrowserKey, Issues } from './types';
 
 export class AtRule {
   constructor(private node: postcssAtRule) {

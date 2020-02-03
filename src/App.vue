@@ -20,12 +20,11 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Vue } from 'vue-property-decorator';
 import Error from './components/Error.vue';
 import Main from './components/Main.vue';
 import { BrowserTasks } from './lib/browser-tasks';
 import { Stylesheets } from './lib/stylesheets';
-import { Source } from './lib/types';
 
 @Component({
   components: {
@@ -49,7 +48,6 @@ export default class App extends Vue {
       console.error(error);
       this.error = error;
     }
-
   }
 
   public isEmpty(obj: object) {

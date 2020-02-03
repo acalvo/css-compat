@@ -1,9 +1,9 @@
-import { Match } from './match';
-import { BrowserKey, Issues, Source } from './types';
+import postcss from 'postcss';
+import postcssSelectorParser from 'postcss-selector-parser';
 import compatData from './data.json';
 import { Helpers } from './helpers';
-import postcssSelectorParser from 'postcss-selector-parser';
-import postcss from 'postcss';
+import { Match } from './match';
+import { BrowserKey, Issues } from './types';
 
 export class Selector {
   constructor(private rule: postcss.Rule) {

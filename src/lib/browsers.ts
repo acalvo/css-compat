@@ -1,6 +1,6 @@
-import { BrowserKey } from './types';
-import { browsers as browsersJson } from './data.json';
 import semverCompare from 'semver-compare';
+import { browsers as browsersJson } from './data.json';
+import { BrowserKey } from './types';
 
 const browsersOrder: Array<BrowserKey> = [
   'chrome',
