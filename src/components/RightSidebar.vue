@@ -94,6 +94,7 @@ export default class Sidebar extends Vue {
       month: 'long'
     });
   }
+
   public getReleaseDates(v1: string, v2: string): string {
     let result = this.localizeDate(
       browsers.get(this.range.browser).releases.get(v1)['release_date']

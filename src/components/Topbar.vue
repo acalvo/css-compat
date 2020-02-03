@@ -5,27 +5,17 @@
     </div>
     <div>
       Include CSS features that are:
-      <input
-        id="experimental"
-        v-model="status.experimental"
-        type="checkbox"
-        @change="$emit('change', { status, year })"
+      <label
+        v-for="s in statuses"
+        :key="s"
       >
-      <label for="experimental">experimental</label>
-      <input
-        id="non-standard"
-        v-model="status.nonstandard"
-        type="checkbox"
-        @change="$emit('change', { status, year })"
-      >
-      <label for="non-standard">non-standard</label>
-      <input
-        id="deprecated"
-        v-model="status.deprecated"
-        type="checkbox"
-        @change="$emit('change', { status, year })"
-      >
-      <label for="deprecated">deprecated</label>
+        <input
+          v-model="status[s]"
+          type="checkbox"
+          @change="$emit('change', { status, year })"
+        >
+        {{ s }}
+      </label>
     </div>
     <div>
       <label for="browsers">Show only browsers from:</label>
@@ -38,26 +28,12 @@
         <option value>
           Anytime
         </option>
-        <option value="2019">
-          2019+
-        </option>
-        <option value="2018">
-          2018+
-        </option>
-        <option value="2017">
-          2017+
-        </option>
-        <option value="2016">
-          2016+
-        </option>
-        <option value="2015">
-          2015+
-        </option>
-        <option value="2013">
-          2013+
-        </option>
-        <option value="2009">
-          2009+
+        <option
+          v-for="year in years"
+          :key="year"
+          :value="year"
+        >
+          {{ year }}+
         </option>
       </select>
     </div>
@@ -70,6 +46,8 @@ import browser from 'webextension-polyfill';
 
 @Component
 export default class Topbar extends Vue {
+  public years = ['2019', '2018', '2017', '2016', '2015', '2013', '2009'];
+  public statuses = ['experimental', 'nonstandard', 'deprecated'];
   public status = {
     experimental: true,
     nonstandard: true,

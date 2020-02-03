@@ -1,5 +1,5 @@
 <template>
-  <div class="simple">
+  <div>
     <h2>An error occurred</h2>
     <template v-if="error.code === 'E_PROTOCOLERROR'">
       <p>This is a restricted webpage, for security reasons extensions cannot be executed in it.</p>

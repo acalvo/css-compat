@@ -7,16 +7,16 @@
       <button
         v-if="browser === 'edge'"
         style="background: royalblue"
-        @click="$emit('select', { browser })"
+        @click="$parent.$emit('select', { browser })"
       >
-        79 - {{ Array.from(browsers.get('chrome').releases)[browsers.get('chrome').releases.size-1][0] }}
+        79 - {{ latestChromeRelease }}
       </button>
       <button
         v-for="range in issueRangeList"
         :key="range.versions.first"
         :title="`${Object.keys(range.issues).length} unsupported properties`"
         :style="'background: ' + (Object.keys(range.issues).length ? `#ff${Math.ceil(99 / Object.keys(range.issues).length).toString().padStart(2, '0')}00` : 'green')"
-        @click="$emit('select', range)"
+        @click="$parent.$emit('select', range)"
       >
         {{ range.versions.first }}
         <template v-if="range.versions.last">
@@ -33,10 +33,13 @@ import { browsers } from '../lib/browsers';
 import { IssueRange } from '../lib/types';
 
 @Component
-export default class Browser extends Vue {
+export default class GridBrowser extends Vue {
   @Prop() public browser: string;
-  @Prop() public issueRangeList: any;
+  @Prop() public issueRangeList: Array<IssueRange>;
   public browsers = browsers;
+  public get latestChromeRelease() {
+    return Array.from(this.browsers.get('chrome').releases)[this.browsers.get('chrome').releases.size - 1][0];
+  }
 }
 </script>
 

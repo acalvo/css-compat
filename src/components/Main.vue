@@ -6,39 +6,32 @@
       @change="filterSources"
     >
     </LeftSidebar>
-    <div class="main">
-      <div class="grid">
-        <Browser
-          v-for="(issueRangeList, browser) in issues"
-          :key="browser"
-          :browser="browser"
-          :issue-range-list="issueRangeList"
-          @select="showInfo"
-        ></Browser>
-      </div>
-    </div>
+    <Grid
+      :issues="issues"
+      @select="showInfo"
+    ></Grid>
     <RightSidebar :range="selectedRange"></RightSidebar>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import Topbar from './Topbar.vue';
-import LeftSidebar from './LeftSidebar.vue';
-import Browser from './Browser.vue';
-import RightSidebar from './RightSidebar.vue';
 import { Stylesheets } from '../lib/stylesheets';
 import { GroupedIssues, IssueRange, Source, StatusFilter } from '../lib/types';
+import Grid from './Grid.vue';
+import LeftSidebar from './LeftSidebar.vue';
+import RightSidebar from './RightSidebar.vue';
+import Topbar from './Topbar.vue';
 
 @Component({
   components: {
     Topbar,
     LeftSidebar,
-    Browser,
+    Grid,
     RightSidebar
   }
 })
-export default class App extends Vue {
+export default class Main extends Vue {
   @Prop() public stylesheets: Stylesheets;
   public sources = this.stylesheets.getSources();
   public issues: GroupedIssues = {};
@@ -77,19 +70,5 @@ export default class App extends Vue {
   grid-column-gap: 1px;
   grid-row-gap: 1px;
   height: 100vh;
-}
-.main {
-  background: var(--background-primary-color);
-  overflow: auto;
-}
-.grid {
-  margin: 15px auto;
-  max-width: 550px;
-  min-width: 500px;
-  width: calc(100% - 50px);
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-gap: 10px;
-  text-align: center;
 }
 </style>
