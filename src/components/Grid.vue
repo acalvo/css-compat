@@ -28,17 +28,17 @@ export default class Grid extends Vue {
 
 <style scoped>
 .main {
-  background: var(--background-primary-color);
   overflow: auto;
+  background: var(--background-primary-color);
 }
 .grid {
-  margin: 15px auto;
-  max-width: 550px;
-  min-width: 500px;
-  width: calc(100% - 50px);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 10px;
+  width: calc(100% - 50px);
+  min-width: 500px;
+  max-width: 550px;
+  margin: 15px auto;
   text-align: center;
 }
 </style>

@@ -112,8 +112,8 @@ export default class Sidebar extends Vue {
 <style scoped>
 .sidebar {
   padding: 0 25px 25px 25px;
-  background: var(--background-secondary-color);
   overflow: auto;
+  background: var(--background-secondary-color);
 }
 h2 {
   margin-bottom: 0;
@@ -125,12 +125,12 @@ li {
   margin: 8px 0;
 }
 .icon {
-  height: 12px;
-  width: 12px;
-  content: "";
   display: inline-block;
+  width: 12px;
+  height: 12px;
   margin-left: 3px;
   vertical-align: middle;
+  content: "";
 }
 .experimental {
   background-color: darkseagreen;
@@ -148,8 +148,8 @@ li {
   mask-size: cover;
 }
 .property {
-  font-size: 13px;
   font-family: Courier, "Lucida Console", monospace;
+  font-size: 13px;
 }
 .additional-info {
   margin-left: 3px;

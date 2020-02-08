@@ -65,10 +65,10 @@ export default class Main extends Vue {
 <style scoped>
 .container {
   display: grid;
-  grid-template-columns: 300px minmax(550px, 1fr) 400px;
   grid-template-rows: auto 1fr;
-  grid-column-gap: 1px;
+  grid-template-columns: 300px minmax(550px, 1fr) 400px;
   grid-row-gap: 1px;
+  grid-column-gap: 1px;
   height: 100vh;
 }
 </style>

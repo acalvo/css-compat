@@ -59,7 +59,7 @@ export default class App extends Vue {
 <style>
 :root[data-theme="light"] {
   --default-color: #38383d;
-  --background-primary-color: #ffffff;
+  --background-primary-color: #fff;
   --background-secondary-color: #f9f9fa;
   --separator-color: #e0e0e2;
 }
@@ -73,12 +73,12 @@ body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 12px;
-  background: var(--separator-color);
   color: var(--default-color);
+  background: var(--separator-color);
 }
 .simple {
-  margin: 75px auto;
   width: max-content;
+  margin: 75px auto;
   font-size: 16px;
 }
 a {

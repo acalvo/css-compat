@@ -68,17 +68,17 @@ export default class Topbar extends Vue {
 
 <style scoped>
 .topbar {
-  grid-column: 1 / 4;
-  background: var(--background-secondary-color);
   display: flex;
+  grid-column: 1 / 4;
   align-items: baseline;
+  background: var(--background-secondary-color);
 }
 .topbar > div {
   padding: 3px 15px;
 }
 .about {
-  border-right: 1px solid var(--separator-color);
   align-self: center;
+  border-right: 1px solid var(--separator-color);
 }
 label {
   margin-right: 5px;

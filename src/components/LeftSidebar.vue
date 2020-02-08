@@ -30,8 +30,8 @@ export default class LeftSidebar extends Vue {
 .sidebar {
   padding-right: 25px;
   padding-left: 10px;
-  background: var(--background-secondary-color);
   overflow: auto;
+  background: var(--background-secondary-color);
 }
 label {
   display: flex;
@@ -43,7 +43,7 @@ label:last-child {
   border-bottom: none;
 }
 .name {
-  overflow-wrap: anywhere;
   margin-left: 10px;
+  overflow-wrap: anywhere;
 }
 </style>

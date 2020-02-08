@@ -6,7 +6,7 @@
     <div>
       <button
         v-if="browser === 'edge'"
-        style="background: royalblue"
+        style="background: royalblue;"
         @click="$parent.$emit('select', { browser })"
       >
         79 - {{ latestChromeRelease }}
@@ -51,14 +51,14 @@ export default class GridBrowser extends Vue {
   margin-bottom: 10px;
 }
 button {
-  color: white;
-  text-shadow: 1px 1px 0 #444444;
-  margin-top: 5px;
-  padding: 5px;
   display: block;
-  font-size: inherit;
-  border: none;
   width: 100%;
+  padding: 5px;
+  margin-top: 5px;
+  font-size: inherit;
+  color: white;
+  text-shadow: 1px 1px 0 #444;
   cursor: pointer;
+  border: none;
 }
 </style>
