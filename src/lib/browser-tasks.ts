@@ -6,14 +6,15 @@ export class BrowserTasks {
   public static getAllCssSources(): Promise<Array<Source>> {
     const getExternalStyles = () => {
       return Array.from(document.querySelectorAll('link[rel=stylesheet]')).map(node => {
-        const href = node.getAttribute('href');
+        const href = node.getAttribute('href').trim();
         if (href.indexOf('//') === 0) {
           return window.location.protocol + href;
         }
+        const base = document.querySelector('base')?.href || '';
         if (href.indexOf('/') === 0) {
-          return window.location.origin + href;
+          return (base.slice(0, -1) || window.location.origin) + href;
         }
-        return href;
+        return (href.includes('://') ? '' : base) + href;
       });
     };
     const getInlineStyles = () => {
