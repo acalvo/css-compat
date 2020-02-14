@@ -2,7 +2,7 @@
   <div class="sidebar">
     <div v-if="range.browser === 'edge' && !range.issues">
       <h2>{{ browsers.get(range.browser).name }} 79 - {{ Array.from(browsers.get('chrome').releases)[browsers.get('chrome').releases.size-1][0] }}</h2>
-      <div>
+      <div class="release-date">
         (released: January 2020 - present)
       </div>
       <p>Edge 79 onwards shares the same engine as Chrome. Please, see its compatibility data for this version range.</p>
@@ -14,50 +14,26 @@
           - {{ range.versions.last }}
         </template>
       </h2>
-      <div>
+      <div class="release-date">
         (released: {{ getReleaseDates(range.versions.first, range.versions.last) }})
       </div>
-      <div v-if="Object.keys(range.issues).length > 0">
-        <p>Missing CSS features:</p>
-        <ol>
-          <li
-            v-for="prop in range.issues"
-            :key="prop"
-          >
-            <span class="property">
-              <a
-                v-if="prop.data.__compat"
-                :href="prop.data.__compat.mdn_url"
-                v-html="prop.title"
-              ></a>
-              <template
-                v-else
-                v-html="prop.title"
-              ></template>
-            </span>
-            <span
-              v-if="prop.data.__compat.status.experimental"
-              class="icon experimental"
-              title="experimental feature"
-            ></span>
-            <span
-              v-if="!prop.data.__compat.status.standard_track"
-              class="icon non-standard"
-              title="non-standard feature"
-            ></span>
-            <span
-              v-if="prop.data.__compat.status.deprecated"
-              class="icon deprecated"
-              title="deprecated feature"
-            ></span>
-            <span class="additional-info">
-              (used
-              <template v-if="prop.instances.length > 1">{{ prop.instances.length }} times</template>
-              <template v-else>once</template>)
-            </span>
-          </li>
-        </ol>
-      </div>
+      <template v-if="Object.keys(range.issues).length > 0">
+        <RightSidebarIssues
+          type="selectors"
+          :issues="Object.values(range.issues).filter(i => i.type === 'selector')"
+        >
+        </RightSidebarIssues>
+        <RightSidebarIssues
+          type="at rules"
+          :issues="Object.values(range.issues).filter(i => i.type === 'at-rule')"
+        >
+        </RightSidebarIssues>
+        <RightSidebarIssues
+          type="properties"
+          :issues="Object.values(range.issues).filter(i => i.type === 'property' || i.type === 'value')"
+        >
+        </RightSidebarIssues>
+      </template>
       <div v-else>
         <p>All the CSS seems to be supported in this browser. Don't forget to try it out, though!</p>
       </div>
@@ -79,9 +55,14 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { browsers } from '../lib/browsers';
 import { IssueRange } from '../lib/types';
+import RightSidebarIssues from './RightSidebarIssues.vue';
 
-@Component
-export default class Sidebar extends Vue {
+@Component({
+  components: {
+    RightSidebarIssues
+  }
+})
+export default class RightSidebar extends Vue {
   @Prop() public range: IssueRange;
   public browsers = browsers;
 
@@ -118,40 +99,10 @@ export default class Sidebar extends Vue {
 h2 {
   margin-bottom: 0;
 }
+.release-date {
+  margin-bottom: 1.5em;
+}
 p {
   line-height: 1.4em;
-}
-li {
-  margin: 8px 0;
-}
-.icon {
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  margin-left: 3px;
-  vertical-align: middle;
-  content: "";
-}
-.experimental {
-  background-color: darkseagreen;
-  mask: url(images/icon-experimental.svg);
-  mask-size: cover;
-}
-.non-standard {
-  background-color: crimson;
-  mask: url(images/icon-nonstandard.svg);
-  mask-size: cover;
-}
-.deprecated {
-  background-color: crimson;
-  mask: url(images/icon-deprecated.svg);
-  mask-size: cover;
-}
-.property {
-  font-family: Courier, "Lucida Console", monospace;
-  font-size: 13px;
-}
-.additional-info {
-  margin-left: 3px;
 }
 </style>
