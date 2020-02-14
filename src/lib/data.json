@@ -553,19 +553,26 @@
         "79": {
           "release_date": "2019-12-10",
           "release_notes": "https://chromereleases.googleblog.com/2019/12/stable-channel-update-for-desktop.html",
-          "status": "current",
+          "status": "retired",
           "engine": "Blink",
           "engine_version": "79"
         },
         "80": {
-          "status": "beta",
+          "release_date": "2020-02-04",
+          "release_notes": "https://chromereleases.googleblog.com/2020/02/stable-channel-update-for-desktop.html",
+          "status": "current",
           "engine": "Blink",
           "engine_version": "80"
         },
         "81": {
-          "status": "nightly",
+          "status": "beta",
           "engine": "Blink",
           "engine_version": "81"
+        },
+        "82": {
+          "status": "nightly",
+          "engine": "Blink",
+          "engine_version": "82"
         }
       }
     },
@@ -3191,6 +3198,33 @@
             }
           }
         },
+        "nested-queries": {
+          "__compat": {
+            "description": "Nested media queries",
+            "support": {
+              "chrome": {
+                "version_added": "26"
+              },
+              "edge": {
+                "version_added": "12"
+              },
+              "firefox": {
+                "version_added": "11"
+              },
+              "ie": {
+                "version_added": false
+              },
+              "safari": {
+                "version_added": "6.1"
+              }
+            },
+            "status": {
+              "experimental": false,
+              "standard_track": true,
+              "deprecated": false
+            }
+          }
+        },
         "orientation": {
           "__compat": {
             "description": "<code>orientation</code> media feature",
@@ -5240,6 +5274,222 @@
           }
         }
       },
+      "-ms-grid-column-align": {
+        "__compat": {
+          "support": {
+            "chrome": {
+              "version_added": false
+            },
+            "edge": {
+              "version_added": "12",
+              "version_removed": "16"
+            },
+            "firefox": {
+              "version_added": false
+            },
+            "ie": {
+              "version_added": "10"
+            },
+            "safari": {
+              "version_added": false
+            }
+          },
+          "status": {
+            "experimental": false,
+            "standard_track": false,
+            "deprecated": true
+          }
+        }
+      },
+      "-ms-grid-column-span": {
+        "__compat": {
+          "support": {
+            "chrome": {
+              "version_added": false
+            },
+            "edge": {
+              "version_added": "12",
+              "version_removed": "16"
+            },
+            "firefox": {
+              "version_added": false
+            },
+            "ie": {
+              "version_added": "10"
+            },
+            "safari": {
+              "version_added": false
+            }
+          },
+          "status": {
+            "experimental": false,
+            "standard_track": false,
+            "deprecated": true
+          }
+        }
+      },
+      "-ms-grid-column": {
+        "__compat": {
+          "support": {
+            "chrome": {
+              "version_added": false
+            },
+            "edge": {
+              "version_added": "12",
+              "version_removed": "16"
+            },
+            "firefox": {
+              "version_added": false
+            },
+            "ie": {
+              "version_added": "10"
+            },
+            "safari": {
+              "version_added": false
+            }
+          },
+          "status": {
+            "experimental": false,
+            "standard_track": false,
+            "deprecated": true
+          }
+        }
+      },
+      "-ms-grid-columns": {
+        "__compat": {
+          "support": {
+            "chrome": {
+              "version_added": false
+            },
+            "edge": {
+              "version_added": "12",
+              "version_removed": "16"
+            },
+            "firefox": {
+              "version_added": false
+            },
+            "ie": {
+              "version_added": "10"
+            },
+            "safari": {
+              "version_added": false
+            }
+          },
+          "status": {
+            "experimental": false,
+            "standard_track": false,
+            "deprecated": true
+          }
+        }
+      },
+      "-ms-grid-row-align": {
+        "__compat": {
+          "support": {
+            "chrome": {
+              "version_added": false
+            },
+            "edge": {
+              "version_added": "12",
+              "version_removed": "16"
+            },
+            "firefox": {
+              "version_added": false
+            },
+            "ie": {
+              "version_added": "10"
+            },
+            "safari": {
+              "version_added": false
+            }
+          },
+          "status": {
+            "experimental": false,
+            "standard_track": false,
+            "deprecated": true
+          }
+        }
+      },
+      "-ms-grid-row-span": {
+        "__compat": {
+          "support": {
+            "chrome": {
+              "version_added": false
+            },
+            "edge": {
+              "version_added": "12",
+              "version_removed": "16"
+            },
+            "firefox": {
+              "version_added": false
+            },
+            "ie": {
+              "version_added": "10"
+            },
+            "safari": {
+              "version_added": false
+            }
+          },
+          "status": {
+            "experimental": false,
+            "standard_track": false,
+            "deprecated": true
+          }
+        }
+      },
+      "-ms-grid-row": {
+        "__compat": {
+          "support": {
+            "chrome": {
+              "version_added": false
+            },
+            "edge": {
+              "version_added": "12",
+              "version_removed": "16"
+            },
+            "firefox": {
+              "version_added": false
+            },
+            "ie": {
+              "version_added": "10"
+            },
+            "safari": {
+              "version_added": false
+            }
+          },
+          "status": {
+            "experimental": false,
+            "standard_track": false,
+            "deprecated": true
+          }
+        }
+      },
+      "-ms-grid-rows": {
+        "__compat": {
+          "support": {
+            "chrome": {
+              "version_added": false
+            },
+            "edge": {
+              "version_added": "12",
+              "version_removed": "16"
+            },
+            "firefox": {
+              "version_added": false
+            },
+            "ie": {
+              "version_added": "10"
+            },
+            "safari": {
+              "version_added": false
+            }
+          },
+          "status": {
+            "experimental": false,
+            "standard_track": false,
+            "deprecated": true
+          }
+        }
+      },
       "-ms-scrollbar-track-color": {
         "__compat": {
           "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/-ms-scrollbar-track-color",
@@ -6630,7 +6880,7 @@
                 "version_added": false
               },
               "firefox": {
-                "version_added": false
+                "version_added": "67"
               },
               "ie": {
                 "version_added": false
@@ -7371,6 +7621,11 @@
                 "prefix": "-moz-"
               },
               {
+                "version_added": "64",
+                "partial_implementation": true,
+                "prefix": "-webkit-"
+              },
+              {
                 "version_added": "62",
                 "partial_implementation": true,
                 "prefix": "-webkit-",
@@ -7849,7 +8104,7 @@
             },
             "edge": {
               "version_added": false,
-              "notes": "EdgeHTML 18 has an <i>Enable CSS background-blend-mode property</i> flag, however the feature is an early prototype with no discernable end-user effect."
+              "notes": "EdgeHTML 18 has an <em>Enable CSS background-blend-mode property</em> flag, however the feature is an early prototype with no discernable end-user effect."
             },
             "firefox": {
               "version_added": "30"
@@ -13461,379 +13716,6 @@
             "standard_track": true,
             "deprecated": false
           }
-        },
-        "alpha": {
-          "__compat": {
-            "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/color_value#rgba()",
-            "description": "Alpha color values (<code>rgba()</code>, <code>hsla()</code>)",
-            "support": {
-              "chrome": {
-                "version_added": "1"
-              },
-              "edge": {
-                "version_added": "12"
-              },
-              "firefox": {
-                "version_added": "3"
-              },
-              "ie": {
-                "version_added": "9"
-              },
-              "safari": {
-                "version_added": "3.1"
-              }
-            },
-            "status": {
-              "experimental": false,
-              "standard_track": true,
-              "deprecated": false
-            }
-          }
-        },
-        "alpha_hexadecimal_notation": {
-          "__compat": {
-            "description": "RGBA hexadecimal notation (<code>#RRGGBBAA</code>, <code>#RGBA</code>)",
-            "matches": {
-              "regex_token": "^#[0-9a-fA-F]{4}(?:[0-9a-fA-F]{4})?$"
-            },
-            "support": {
-              "chrome": [
-                {
-                  "version_added": "62"
-                },
-                {
-                  "version_added": "52",
-                  "flags": [
-                    {
-                      "type": "preference",
-                      "name": "Enable experimental Web Platform features"
-                    }
-                  ]
-                }
-              ],
-              "edge": {
-                "version_added": false
-              },
-              "firefox": {
-                "version_added": "49"
-              },
-              "ie": {
-                "version_added": false
-              },
-              "safari": {
-                "version_added": "9.1"
-              }
-            },
-            "status": {
-              "experimental": false,
-              "standard_track": true,
-              "deprecated": false
-            }
-          }
-        },
-        "currentcolor": {
-          "__compat": {
-            "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/color_value#currentColor",
-            "description": "<code>currentcolor</code>",
-            "support": {
-              "chrome": {
-                "version_added": "1"
-              },
-              "edge": {
-                "version_added": "12"
-              },
-              "firefox": {
-                "version_added": "1.5"
-              },
-              "ie": {
-                "version_added": "9"
-              },
-              "safari": {
-                "version_added": "4"
-              }
-            },
-            "status": {
-              "experimental": false,
-              "standard_track": true,
-              "deprecated": false
-            }
-          }
-        },
-        "floats_in_rgb_rgba": {
-          "__compat": {
-            "description": "Allow floats in <code>rgb()</code> and <code>rgba()</code>",
-            "support": {
-              "chrome": {
-                "version_added": "66"
-              },
-              "edge": {
-                "version_added": false
-              },
-              "firefox": {
-                "version_added": "52"
-              },
-              "ie": {
-                "version_added": false
-              },
-              "safari": {
-                "version_added": "12.1"
-              }
-            },
-            "status": {
-              "experimental": false,
-              "standard_track": true,
-              "deprecated": false
-            }
-          }
-        },
-        "hsl": {
-          "__compat": {
-            "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/color_value#hsl()",
-            "description": "HSL color values (<code>hsl()</code>)",
-            "support": {
-              "chrome": {
-                "version_added": "1"
-              },
-              "edge": {
-                "version_added": "12"
-              },
-              "firefox": {
-                "version_added": "1"
-              },
-              "ie": {
-                "version_added": "9"
-              },
-              "safari": {
-                "version_added": "3.1"
-              }
-            },
-            "status": {
-              "experimental": false,
-              "standard_track": true,
-              "deprecated": false
-            }
-          }
-        },
-        "hsl_function_accepts_alpha": {
-          "__compat": {
-            "description": "<code>hsl()</code> can accept alpha values",
-            "support": {
-              "chrome": {
-                "version_added": "65"
-              },
-              "edge": {
-                "version_added": false
-              },
-              "firefox": {
-                "version_added": "52"
-              },
-              "ie": {
-                "version_added": false
-              },
-              "safari": {
-                "version_added": "12.1"
-              }
-            },
-            "status": {
-              "experimental": false,
-              "standard_track": true,
-              "deprecated": false
-            }
-          }
-        },
-        "keyword_color_values": {
-          "__compat": {
-            "description": "Keyword color values",
-            "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/color_value#Color_keywords",
-            "support": {
-              "chrome": {
-                "version_added": "1"
-              },
-              "edge": {
-                "version_added": "12"
-              },
-              "firefox": {
-                "version_added": "1"
-              },
-              "ie": {
-                "version_added": "3",
-                "notes": "Internet Explorer 8 and later support gray color keywords spelled with an <em>e</em> (<code>grey</code>, <code>darkgrey</code>, <code>darkslategrey</code>, <code>dimgrey</code>, <code>lightgrey</code>, and <code>lightslategrey</code>). Internet Explorer 3 to Internet Explorer 7 only support the keywords spelled with <em>a</em> (<code>gray</code>, <code>darkgray</code>, <code>darkslategray</code>, <code>dimgray</code>, <code>lightgray</code>, and <code>lightslategray</code>)."
-              },
-              "safari": {
-                "version_added": "1"
-              }
-            },
-            "status": {
-              "experimental": false,
-              "standard_track": true,
-              "deprecated": false
-            }
-          }
-        },
-        "rebeccapurple": {
-          "__compat": {
-            "description": "<code>rebeccapurple</code>",
-            "support": {
-              "chrome": {
-                "version_added": "38"
-              },
-              "edge": {
-                "version_added": "12"
-              },
-              "firefox": {
-                "version_added": "33"
-              },
-              "ie": {
-                "version_added": "11"
-              },
-              "safari": {
-                "version_added": "9"
-              }
-            },
-            "status": {
-              "experimental": false,
-              "standard_track": true,
-              "deprecated": false
-            }
-          }
-        },
-        "rgb_function_accepts_alpha": {
-          "__compat": {
-            "description": "<code>rgb()</code> can accept alpha values",
-            "support": {
-              "chrome": {
-                "version_added": "65"
-              },
-              "edge": {
-                "version_added": false
-              },
-              "firefox": {
-                "version_added": "52"
-              },
-              "ie": {
-                "version_added": false
-              },
-              "safari": {
-                "version_added": "12.1"
-              }
-            },
-            "status": {
-              "experimental": false,
-              "standard_track": true,
-              "deprecated": false
-            }
-          }
-        },
-        "rgb_functional_notation": {
-          "__compat": {
-            "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/color_value#rgb()",
-            "description": "RGB functional notation (<code>rgb()</code>)",
-            "support": {
-              "chrome": {
-                "version_added": "1"
-              },
-              "edge": {
-                "version_added": "12"
-              },
-              "firefox": {
-                "version_added": "1"
-              },
-              "ie": {
-                "version_added": "4"
-              },
-              "safari": {
-                "version_added": "1"
-              }
-            },
-            "status": {
-              "experimental": false,
-              "standard_track": true,
-              "deprecated": false
-            }
-          }
-        },
-        "rgb_hexadecimal_notation": {
-          "__compat": {
-            "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/color_value#rgb()",
-            "description": "RGB hexadecimal notation (<code>#RRGGBB</code>, <code>#RGB</code>)",
-            "support": {
-              "chrome": {
-                "version_added": "1"
-              },
-              "edge": {
-                "version_added": "12"
-              },
-              "firefox": {
-                "version_added": "1"
-              },
-              "ie": {
-                "version_added": "3"
-              },
-              "safari": {
-                "version_added": "1"
-              }
-            },
-            "status": {
-              "experimental": false,
-              "standard_track": true,
-              "deprecated": false
-            }
-          }
-        },
-        "space_separated_functional_notation": {
-          "__compat": {
-            "description": "Space-separated functional color notations",
-            "support": {
-              "chrome": {
-                "version_added": "65"
-              },
-              "edge": {
-                "version_added": false
-              },
-              "firefox": {
-                "version_added": "52"
-              },
-              "ie": {
-                "version_added": false
-              },
-              "safari": {
-                "version_added": "12.1"
-              }
-            },
-            "status": {
-              "experimental": false,
-              "standard_track": true,
-              "deprecated": false
-            }
-          }
-        },
-        "transparent": {
-          "__compat": {
-            "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/color_value#transparent",
-            "description": "<code>transparent</code>",
-            "support": {
-              "chrome": {
-                "version_added": "1"
-              },
-              "edge": {
-                "version_added": "12"
-              },
-              "firefox": {
-                "version_added": "3"
-              },
-              "ie": {
-                "version_added": "9"
-              },
-              "safari": {
-                "version_added": "3.1"
-              }
-            },
-            "status": {
-              "experimental": false,
-              "standard_track": true,
-              "deprecated": false
-            }
-          }
         }
       },
       "column-count": {
@@ -13865,6 +13747,7 @@
               {
                 "prefix": "-moz-",
                 "version_added": "1.5",
+                "version_removed": "74",
                 "notes": "Prior to version 37, multiple columns didn't work with <code>display: table-caption</code> elements."
               }
             ],
@@ -13904,7 +13787,8 @@
               },
               {
                 "prefix": "-moz-",
-                "version_added": "13"
+                "version_added": "13",
+                "version_removed": "74"
               }
             ],
             "ie": {
@@ -13924,6 +13808,33 @@
             "experimental": false,
             "standard_track": true,
             "deprecated": false
+          }
+        },
+        "balance-all": {
+          "__compat": {
+            "description": "<code>balance-all</code>",
+            "support": {
+              "chrome": {
+                "version_added": false
+              },
+              "edge": {
+                "version_added": "12"
+              },
+              "firefox": {
+                "version_added": "13"
+              },
+              "ie": {
+                "version_added": "10"
+              },
+              "safari": {
+                "version_added": "8"
+              }
+            },
+            "status": {
+              "experimental": false,
+              "standard_track": true,
+              "deprecated": false
+            }
           }
         }
       },
@@ -14056,6 +13967,7 @@
                 {
                   "prefix": "-moz-",
                   "version_added": "1.5",
+                  "version_removed": "74",
                   "notes": "Before Firefox 3, the default value for the <code>normal</code> keyword was <code>0</code> and not <code>1em</code>."
                 }
               ],
@@ -14162,7 +14074,8 @@
               },
               {
                 "prefix": "-moz-",
-                "version_added": "3.5"
+                "version_added": "3.5",
+                "version_removed": "74"
               }
             ],
             "ie": {
@@ -14213,7 +14126,8 @@
               },
               {
                 "prefix": "-moz-",
-                "version_added": "3.5"
+                "version_added": "3.5",
+                "version_removed": "74"
               }
             ],
             "ie": {
@@ -14264,7 +14178,8 @@
               },
               {
                 "prefix": "-moz-",
-                "version_added": "3.5"
+                "version_added": "3.5",
+                "version_removed": "74"
               }
             ],
             "ie": {
@@ -14316,6 +14231,7 @@
               {
                 "prefix": "-moz-",
                 "version_added": "3.5",
+                "version_removed": "74",
                 "notes": "Before Firefox 3, the default value for the <code>normal</code> keyword was <code>0</code> and not <code>1em</code>."
               }
             ],
@@ -14425,6 +14341,7 @@
               {
                 "prefix": "-moz-",
                 "version_added": "1.5",
+                "version_removed": "74",
                 "notes": "Prior to version 37, multiple columns didn't work with <code>display: table-caption</code> elements."
               }
             ],
@@ -14504,6 +14421,7 @@
               {
                 "prefix": "-moz-",
                 "version_added": "9",
+                "version_removed": "74",
                 "notes": "Prior to version 37, multiple columns didn't work with <code>display: table-caption</code> elements."
               }
             ],
@@ -16696,7 +16614,7 @@
               },
               {
                 "prefix": "-webkit-",
-                "version_added": "21"
+                "version_added": "22"
               }
             ],
             "edge": [
@@ -16765,7 +16683,7 @@
             "description": "<code>auto</code>",
             "support": {
               "chrome": {
-                "version_added": "21"
+                "version_added": "22"
               },
               "edge": {
                 "version_added": "12"
@@ -17030,7 +16948,7 @@
               },
               {
                 "prefix": "-webkit-",
-                "version_added": "21"
+                "version_added": "22"
               }
             ],
             "edge": [
@@ -17123,7 +17041,7 @@
               },
               {
                 "prefix": "-webkit-",
-                "version_added": "21"
+                "version_added": "22"
               }
             ],
             "edge": [
@@ -20174,7 +20092,9 @@
               "version_added": false
             },
             "safari": {
-              "version_added": "10"
+              "version_added": "10",
+              "partial_implementation": true,
+              "notes": "The <code>force-end</code> keyword is recognized but has no effect."
             }
           },
           "status": {
@@ -43576,6 +43496,407 @@
           }
         }
       },
+      "color": {
+        "__compat": {
+          "description": "&lt;color&gt;",
+          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/color_value",
+          "support": {
+            "chrome": {
+              "version_added": "1"
+            },
+            "edge": {
+              "version_added": "12"
+            },
+            "firefox": {
+              "version_added": "1"
+            },
+            "ie": {
+              "version_added": "3"
+            },
+            "safari": {
+              "version_added": "1"
+            }
+          },
+          "status": {
+            "experimental": false,
+            "standard_track": true,
+            "deprecated": false
+          }
+        },
+        "alpha": {
+          "__compat": {
+            "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/color_value#rgba()",
+            "description": "Alpha color values (<code>rgba()</code>, <code>hsla()</code>)",
+            "support": {
+              "chrome": {
+                "version_added": "1"
+              },
+              "edge": {
+                "version_added": "12"
+              },
+              "firefox": {
+                "version_added": "3"
+              },
+              "ie": {
+                "version_added": "9"
+              },
+              "safari": {
+                "version_added": "3.1"
+              }
+            },
+            "status": {
+              "experimental": false,
+              "standard_track": true,
+              "deprecated": false
+            }
+          }
+        },
+        "alpha_hexadecimal_notation": {
+          "__compat": {
+            "description": "RGBA hexadecimal notation (<code>#RRGGBBAA</code>, <code>#RGBA</code>)",
+            "matches": {
+              "regex_token": "^#[0-9a-fA-F]{4}(?:[0-9a-fA-F]{4})?$"
+            },
+            "support": {
+              "chrome": [
+                {
+                  "version_added": "62"
+                },
+                {
+                  "version_added": "52",
+                  "flags": [
+                    {
+                      "type": "preference",
+                      "name": "Enable experimental Web Platform features"
+                    }
+                  ]
+                }
+              ],
+              "edge": {
+                "version_added": false
+              },
+              "firefox": {
+                "version_added": "49"
+              },
+              "ie": {
+                "version_added": false
+              },
+              "safari": {
+                "version_added": "9.1"
+              }
+            },
+            "status": {
+              "experimental": false,
+              "standard_track": true,
+              "deprecated": false
+            }
+          }
+        },
+        "currentcolor": {
+          "__compat": {
+            "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/color_value#currentColor",
+            "description": "<code>currentcolor</code>",
+            "support": {
+              "chrome": {
+                "version_added": "1"
+              },
+              "edge": {
+                "version_added": "12"
+              },
+              "firefox": {
+                "version_added": "1.5"
+              },
+              "ie": {
+                "version_added": "9"
+              },
+              "safari": {
+                "version_added": "4"
+              }
+            },
+            "status": {
+              "experimental": false,
+              "standard_track": true,
+              "deprecated": false
+            }
+          }
+        },
+        "floats_in_rgb_rgba": {
+          "__compat": {
+            "description": "Allow floats in <code>rgb()</code> and <code>rgba()</code>",
+            "support": {
+              "chrome": {
+                "version_added": "66"
+              },
+              "edge": {
+                "version_added": false
+              },
+              "firefox": {
+                "version_added": "52"
+              },
+              "ie": {
+                "version_added": false
+              },
+              "safari": {
+                "version_added": "12.1"
+              }
+            },
+            "status": {
+              "experimental": false,
+              "standard_track": true,
+              "deprecated": false
+            }
+          }
+        },
+        "hsl": {
+          "__compat": {
+            "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/color_value#hsl()",
+            "description": "HSL color values (<code>hsl()</code>)",
+            "support": {
+              "chrome": {
+                "version_added": "1"
+              },
+              "edge": {
+                "version_added": "12"
+              },
+              "firefox": {
+                "version_added": "1"
+              },
+              "ie": {
+                "version_added": "9"
+              },
+              "safari": {
+                "version_added": "3.1"
+              }
+            },
+            "status": {
+              "experimental": false,
+              "standard_track": true,
+              "deprecated": false
+            }
+          }
+        },
+        "hsl_function_accepts_alpha": {
+          "__compat": {
+            "description": "<code>hsl()</code> can accept alpha values",
+            "support": {
+              "chrome": {
+                "version_added": "65"
+              },
+              "edge": {
+                "version_added": false
+              },
+              "firefox": {
+                "version_added": "52"
+              },
+              "ie": {
+                "version_added": false
+              },
+              "safari": {
+                "version_added": "12.1"
+              }
+            },
+            "status": {
+              "experimental": false,
+              "standard_track": true,
+              "deprecated": false
+            }
+          }
+        },
+        "keyword_color_values": {
+          "__compat": {
+            "description": "Keyword color values",
+            "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/color_value#Color_keywords",
+            "support": {
+              "chrome": {
+                "version_added": "1"
+              },
+              "edge": {
+                "version_added": "12"
+              },
+              "firefox": {
+                "version_added": "1"
+              },
+              "ie": {
+                "version_added": "3",
+                "notes": "Internet Explorer 8 and later support gray color keywords spelled with an <em>e</em> (<code>grey</code>, <code>darkgrey</code>, <code>darkslategrey</code>, <code>dimgrey</code>, <code>lightgrey</code>, and <code>lightslategrey</code>). Internet Explorer 3 to Internet Explorer 7 only support the keywords spelled with <em>a</em> (<code>gray</code>, <code>darkgray</code>, <code>darkslategray</code>, <code>dimgray</code>, <code>lightgray</code>, and <code>lightslategray</code>)."
+              },
+              "safari": {
+                "version_added": "1"
+              }
+            },
+            "status": {
+              "experimental": false,
+              "standard_track": true,
+              "deprecated": false
+            }
+          }
+        },
+        "rebeccapurple": {
+          "__compat": {
+            "description": "<code>rebeccapurple</code>",
+            "support": {
+              "chrome": {
+                "version_added": "38"
+              },
+              "edge": {
+                "version_added": "12"
+              },
+              "firefox": {
+                "version_added": "33"
+              },
+              "ie": {
+                "version_added": "11"
+              },
+              "safari": {
+                "version_added": "9"
+              }
+            },
+            "status": {
+              "experimental": false,
+              "standard_track": true,
+              "deprecated": false
+            }
+          }
+        },
+        "rgb_function_accepts_alpha": {
+          "__compat": {
+            "description": "<code>rgb()</code> can accept alpha values",
+            "support": {
+              "chrome": {
+                "version_added": "65"
+              },
+              "edge": {
+                "version_added": false
+              },
+              "firefox": {
+                "version_added": "52"
+              },
+              "ie": {
+                "version_added": false
+              },
+              "safari": {
+                "version_added": "12.1"
+              }
+            },
+            "status": {
+              "experimental": false,
+              "standard_track": true,
+              "deprecated": false
+            }
+          }
+        },
+        "rgb_functional_notation": {
+          "__compat": {
+            "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/color_value#rgb()",
+            "description": "RGB functional notation (<code>rgb()</code>)",
+            "support": {
+              "chrome": {
+                "version_added": "1"
+              },
+              "edge": {
+                "version_added": "12"
+              },
+              "firefox": {
+                "version_added": "1"
+              },
+              "ie": {
+                "version_added": "4"
+              },
+              "safari": {
+                "version_added": "1"
+              }
+            },
+            "status": {
+              "experimental": false,
+              "standard_track": true,
+              "deprecated": false
+            }
+          }
+        },
+        "rgb_hexadecimal_notation": {
+          "__compat": {
+            "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/color_value#rgb()",
+            "description": "RGB hexadecimal notation (<code>#RRGGBB</code>, <code>#RGB</code>)",
+            "support": {
+              "chrome": {
+                "version_added": "1"
+              },
+              "edge": {
+                "version_added": "12"
+              },
+              "firefox": {
+                "version_added": "1"
+              },
+              "ie": {
+                "version_added": "3"
+              },
+              "safari": {
+                "version_added": "1"
+              }
+            },
+            "status": {
+              "experimental": false,
+              "standard_track": true,
+              "deprecated": false
+            }
+          }
+        },
+        "space_separated_functional_notation": {
+          "__compat": {
+            "description": "Space-separated functional color notations",
+            "support": {
+              "chrome": {
+                "version_added": "65"
+              },
+              "edge": {
+                "version_added": false
+              },
+              "firefox": {
+                "version_added": "52"
+              },
+              "ie": {
+                "version_added": false
+              },
+              "safari": {
+                "version_added": "12.1"
+              }
+            },
+            "status": {
+              "experimental": false,
+              "standard_track": true,
+              "deprecated": false
+            }
+          }
+        },
+        "transparent": {
+          "__compat": {
+            "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/color_value#transparent",
+            "description": "<code>transparent</code>",
+            "support": {
+              "chrome": {
+                "version_added": "1"
+              },
+              "edge": {
+                "version_added": "12"
+              },
+              "firefox": {
+                "version_added": "3"
+              },
+              "ie": {
+                "version_added": "9"
+              },
+              "safari": {
+                "version_added": "3.1"
+              }
+            },
+            "status": {
+              "experimental": false,
+              "standard_track": true,
+              "deprecated": false
+            }
+          }
+        }
+      },
       "counter": {
         "__compat": {
           "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/counter",
@@ -43657,6 +43978,115 @@
             "experimental": false,
             "standard_track": true,
             "deprecated": false
+          }
+        }
+      },
+      "easing-function": {
+        "__compat": {
+          "description": "<code>&lt;easing-function&gt;</code>",
+          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/easing-function",
+          "support": {
+            "chrome": {
+              "version_added": "4"
+            },
+            "edge": {
+              "version_added": "12"
+            },
+            "firefox": {
+              "version_added": "4"
+            },
+            "ie": {
+              "version_added": "10"
+            },
+            "safari": {
+              "version_added": "3.1"
+            }
+          },
+          "status": {
+            "experimental": false,
+            "standard_track": true,
+            "deprecated": false
+          }
+        },
+        "cubic-bezier": {
+          "__compat": {
+            "description": "<code>cubic-bezier()</code> with ordinate ∉ [0,1]",
+            "support": {
+              "chrome": {
+                "version_added": "16"
+              },
+              "edge": {
+                "version_added": "12"
+              },
+              "firefox": {
+                "version_added": "4"
+              },
+              "ie": {
+                "version_added": "10"
+              },
+              "safari": {
+                "version_added": "6"
+              }
+            },
+            "status": {
+              "experimental": false,
+              "standard_track": true,
+              "deprecated": false
+            }
+          }
+        },
+        "steps": {
+          "__compat": {
+            "description": "<code>steps()</code> with <code>start</code>, <code>end</code> or no direction",
+            "support": {
+              "chrome": {
+                "version_added": "8"
+              },
+              "edge": {
+                "version_added": "12"
+              },
+              "firefox": {
+                "version_added": "4"
+              },
+              "ie": {
+                "version_added": "10"
+              },
+              "safari": {
+                "version_added": "5.1"
+              }
+            },
+            "status": {
+              "experimental": false,
+              "standard_track": true,
+              "deprecated": false
+            }
+          },
+          "jump": {
+            "__compat": {
+              "description": "<code>jump-</code> keywords for <code>steps()</code>",
+              "support": {
+                "chrome": {
+                  "version_added": "77"
+                },
+                "edge": {
+                  "version_added": false
+                },
+                "firefox": {
+                  "version_added": "65"
+                },
+                "ie": {
+                  "version_added": false
+                },
+                "safari": {
+                  "version_added": false
+                }
+              },
+              "status": {
+                "experimental": false,
+                "standard_track": true,
+                "deprecated": false
+              }
+            }
           }
         }
       },
@@ -46547,115 +46977,6 @@
             "experimental": false,
             "standard_track": true,
             "deprecated": false
-          }
-        }
-      },
-      "timing-function": {
-        "__compat": {
-          "description": "<code>&lt;timing-function&gt;</code>",
-          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/timing-function",
-          "support": {
-            "chrome": {
-              "version_added": "4"
-            },
-            "edge": {
-              "version_added": "12"
-            },
-            "firefox": {
-              "version_added": "4"
-            },
-            "ie": {
-              "version_added": "10"
-            },
-            "safari": {
-              "version_added": "3.1"
-            }
-          },
-          "status": {
-            "experimental": false,
-            "standard_track": true,
-            "deprecated": false
-          }
-        },
-        "cubic-bezier": {
-          "__compat": {
-            "description": "<code>cubic-bezier()</code> with ordinate ∉ [0,1]",
-            "support": {
-              "chrome": {
-                "version_added": "16"
-              },
-              "edge": {
-                "version_added": "12"
-              },
-              "firefox": {
-                "version_added": "4"
-              },
-              "ie": {
-                "version_added": "10"
-              },
-              "safari": {
-                "version_added": "6"
-              }
-            },
-            "status": {
-              "experimental": false,
-              "standard_track": true,
-              "deprecated": false
-            }
-          }
-        },
-        "steps": {
-          "__compat": {
-            "description": "<code>steps()</code> with <code>start</code>, <code>end</code> or no direction",
-            "support": {
-              "chrome": {
-                "version_added": "8"
-              },
-              "edge": {
-                "version_added": "12"
-              },
-              "firefox": {
-                "version_added": "4"
-              },
-              "ie": {
-                "version_added": "10"
-              },
-              "safari": {
-                "version_added": "5.1"
-              }
-            },
-            "status": {
-              "experimental": false,
-              "standard_track": true,
-              "deprecated": false
-            }
-          },
-          "jump": {
-            "__compat": {
-              "description": "<code>jump-</code> keywords for <code>steps()</code>",
-              "support": {
-                "chrome": {
-                  "version_added": "77"
-                },
-                "edge": {
-                  "version_added": false
-                },
-                "firefox": {
-                  "version_added": "65"
-                },
-                "ie": {
-                  "version_added": false
-                },
-                "safari": {
-                  "version_added": false
-                }
-              },
-              "status": {
-                "experimental": false,
-                "standard_track": true,
-                "deprecated": false
-              }
-            }
           }
         }
       },
