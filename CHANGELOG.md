@@ -1,3 +1,20 @@
+# [0.6.0](https://github.com/acalvo/css-compat/compare/v0.5.0...v0.6.0) (2020-02-14)
+
+
+### Bug Fixes
+
+* support pages that have a <base> tag ([ef7b1a4](https://github.com/acalvo/css-compat/commit/ef7b1a41fdbeeae6923967acb4070ad9d3d2ed17))
+
+
+### Features
+
+* ability to filter out style sheets ([4c3a6a0](https://github.com/acalvo/css-compat/commit/4c3a6a07d3a2b910b4e86e9bf522069942bbbd32))
+* classify issues in categories ([ceb404b](https://github.com/acalvo/css-compat/commit/ceb404b32b1a4f325a651cef73f897fc137491ab))
+* don't report value support if version doesn't support the property at all ([5e0c68e](https://github.com/acalvo/css-compat/commit/5e0c68ecb6348cb15314091e4cb3bd5005611a93))
+* update dependencies ([fbde2e3](https://github.com/acalvo/css-compat/commit/fbde2e33ad14fbcad8b51509383964cda8ad229f))
+
+
+
 # [0.5.0](https://github.com/acalvo/css-compat/compare/v0.4.0...v0.5.0) (2020-01-31)
 
 
