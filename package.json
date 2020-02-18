@@ -13,7 +13,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@types/firefox-webext-browser": "^70.0.1",
+    "@types/chrome": "0.0.95",
     "@types/node": "^13.7.1",
     "@types/semver-compare": "^1.0.1",
     "@types/webpack": "^4.41.6",
@@ -45,7 +45,6 @@
     "vue-property-decorator": "^8.4.0",
     "vue-template-compiler": "^2.6.11",
     "web-ext": "^4.1.0",
-    "webextension-polyfill": "^0.6.0",
     "webpack": "^4.41.6",
     "webpack-cli": "^3.3.11"
   }

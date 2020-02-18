@@ -1,7 +1,5 @@
-import browser from 'webextension-polyfill';
-
-browser.devtools.panels.create(
+chrome.devtools.panels.create(
   'CSS Compat',
-  `/images/icon-check-${browser.devtools.panels.themeName}.svg`,
+  `/images/icon-check-${chrome.devtools.panels.themeName}.svg`,
   'panel.html'
 );

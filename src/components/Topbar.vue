@@ -42,7 +42,6 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import browser from 'webextension-polyfill';
 
 @Component
 export default class Topbar extends Vue {
@@ -60,7 +59,7 @@ export default class Topbar extends Vue {
   }
 
   public getExtensionInfo() {
-    const manifest = browser.runtime.getManifest();
+    const manifest = window.chrome.runtime.getManifest();
     return `${manifest.name} ${manifest.version}`;
   }
 }
