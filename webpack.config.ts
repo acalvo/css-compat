@@ -33,7 +33,8 @@ const config: webpack.Configuration = {
             options: {
               url: false
             }
-          }
+          },
+          { loader: 'postcss-loader' }
         ]
       },
       {
