@@ -1,6 +1,6 @@
 # CSS Compat
 
-> Firefox extension to check CSS compatibility issues across browsers.
+> WebExtension to check CSS compatibility issues across browsers.
 
 ## Overview
 
@@ -9,4 +9,4 @@ Based on the legacy [Compat Report](https://github.com/eduardoboucas/compat-repo
 
 ## Installation
 
-<https://addons.mozilla.org/en-US/firefox/addon/css-compat/>
+* Firefox: <https://addons.mozilla.org/en-US/firefox/addon/css-compat/>

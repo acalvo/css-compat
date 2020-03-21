@@ -70,5 +70,6 @@ export default class Main extends Vue {
   grid-row-gap: 1px;
   grid-column-gap: 1px;
   height: 100vh;
+  background: var(--separator-color);
 }
 </style>

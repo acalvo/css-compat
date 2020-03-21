@@ -57,24 +57,36 @@ export default class App extends Vue {
 </script>
 
 <style>
-:root[data-theme="light"] {
+:root[data-theme="ff-light"] {
   --default-color: #38383d;
   --background-primary-color: #fff;
   --background-secondary-color: #f9f9fa;
   --separator-color: #e0e0e2;
 }
-:root[data-theme="dark"] {
+:root[data-theme="ff-dark"] {
   --default-color: #b1b1b3;
   --background-primary-color: #232327;
   --background-secondary-color: #18181a;
   --separator-color: #38383d;
+}
+:root[data-theme="ch-default"] {
+  --default-color: #38383d;
+  --background-primary-color: #fff;
+  --background-secondary-color: #f3f3f3;
+  --separator-color: #d9d9d9;
+}
+:root[data-theme="ch-dark"] {
+  --default-color: #a5a5a5;
+  --background-primary-color: #242424;
+  --background-secondary-color: #333;
+  --separator-color: #525252;
 }
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 12px;
   color: var(--default-color);
-  background: var(--separator-color);
+  background: var(--background-primary-color);
 }
 .simple {
   width: max-content;

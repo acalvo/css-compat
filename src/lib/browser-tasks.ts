@@ -69,7 +69,7 @@ export class BrowserTasks {
 
   public static manageThemeColorChange() {
     window.addEventListener('DOMContentLoaded', () => {
-      const setTheme = theme => document.documentElement.dataset.theme = theme;
+      const setTheme = theme => document.documentElement.dataset.theme = `${window['browser'] ? 'ff' : 'ch'}-${theme}`;
       setTheme(chrome.devtools.panels.themeName);
       (window as any).browser?.devtools.panels.onThemeChanged.addListener(setTheme);
     });
