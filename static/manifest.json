@@ -8,8 +8,5 @@
   "icons": {
     "512": "images/logo.png"
   },
-  "permissions": [
-    "<all_urls>"
-  ],
   "devtools_page": "index.html"
 }
