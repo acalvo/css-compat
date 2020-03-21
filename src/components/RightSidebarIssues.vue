@@ -33,9 +33,7 @@
           title="deprecated feature"
         ></span>
         <span class="additional-info">
-          (used
-          <template v-if="prop.instances.length > 1">{{ prop.instances.length }} times</template>
-          <template v-else>once</template>)
+          (x{{ prop.instances.length }})
         </span>
       </li>
     </ol>
