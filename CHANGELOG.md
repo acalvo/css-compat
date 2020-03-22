@@ -1,3 +1,19 @@
+# [0.7.0](https://github.com/acalvo/css-compat/compare/v0.6.0...v0.7.0) (2020-03-22)
+
+
+### Bug Fixes
+
+* remove unnecessary permission ([657dc7f](https://github.com/acalvo/css-compat/commit/657dc7f26f593c55fb2829aae228e01b23dbdd99))
+
+
+### Features
+
+* support Chromium-based browsers ([49e105b](https://github.com/acalvo/css-compat/commit/49e105bfd9753f9e7674f81de8adc5cecbb91fa5))
+* simplify the display of the number of occurrences ([b9f5400](https://github.com/acalvo/css-compat/commit/b9f54002962772859f8063c8812c8f2a8e9557b5))
+* update dependencies ([41287cf](https://github.com/acalvo/css-compat/commit/41287cf62f8116c662c7106bc1d9a78838f1a1d3))
+
+
+
 # [0.6.0](https://github.com/acalvo/css-compat/compare/v0.5.0...v0.6.0) (2020-02-14)
 
 
