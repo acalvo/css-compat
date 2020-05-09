@@ -560,19 +560,26 @@
         "80": {
           "release_date": "2020-02-04",
           "release_notes": "https://chromereleases.googleblog.com/2020/02/stable-channel-update-for-desktop.html",
-          "status": "current",
+          "status": "retired",
           "engine": "Blink",
           "engine_version": "80"
         },
         "81": {
-          "status": "beta",
+          "release_date": "2020-04-07",
+          "release_notes": "https://chromereleases.googleblog.com/2020/04/stable-channel-update-for-desktop_7.html",
+          "status": "current",
           "engine": "Blink",
           "engine_version": "81"
         },
-        "82": {
+        "83": {
+          "status": "beta",
+          "engine": "Blink",
+          "engine_version": "83"
+        },
+        "84": {
           "status": "nightly",
           "engine": "Blink",
-          "engine_version": "82"
+          "engine_version": "84"
         }
       }
     },
@@ -1149,23 +1156,37 @@
         "74": {
           "release_date": "2020-03-10",
           "release_notes": "https://developer.mozilla.org/docs/Mozilla/Firefox/Releases/74",
-          "status": "current",
+          "status": "retired",
           "engine": "Gecko",
           "engine_version": "74"
         },
         "75": {
           "release_date": "2020-04-07",
           "release_notes": "https://developer.mozilla.org/docs/Mozilla/Firefox/Releases/75",
-          "status": "beta",
+          "status": "retired",
           "engine": "Gecko",
           "engine_version": "75"
         },
         "76": {
           "release_date": "2020-05-05",
           "release_notes": "https://developer.mozilla.org/docs/Mozilla/Firefox/Releases/76",
-          "status": "nightly",
+          "status": "current",
           "engine": "Gecko",
           "engine_version": "76"
+        },
+        "77": {
+          "release_date": "2020-06-02",
+          "release_notes": "https://developer.mozilla.org/docs/Mozilla/Firefox/Releases/77",
+          "status": "beta",
+          "engine": "Gecko",
+          "engine_version": "77"
+        },
+        "78": {
+          "release_date": "2020-06-30",
+          "release_notes": "https://developer.mozilla.org/docs/Mozilla/Firefox/Releases/78",
+          "status": "nightly",
+          "engine": "Gecko",
+          "engine_version": "78"
         },
         "1.5": {
           "release_date": "2005-11-29",
@@ -1344,9 +1365,13 @@
         "13": {
           "release_date": "2019-09-19",
           "release_notes": "https://developer.apple.com/documentation/safari_release_notes/safari_13_release_notes",
-          "status": "current",
+          "status": "retired",
           "engine": "WebKit",
           "engine_version": "608.2.11"
+        },
+        "14": {
+          "status": "beta",
+          "engine": "WebKit"
         },
         "1.1": {
           "release_date": "2003-10-24",
@@ -1377,12 +1402,6 @@
           "status": "retired",
           "engine": "WebKit",
           "engine_version": "525.26"
-        },
-        "4.1": {
-          "release_date": "2010-06-07",
-          "status": "retired",
-          "engine": "WebKit",
-          "engine_version": "533.16"
         },
         "5.1": {
           "release_date": "2011-07-20",
@@ -1425,8 +1444,11 @@
           "engine_version": "607.1.40"
         },
         "13.1": {
-          "status": "beta",
-          "engine": "WebKit"
+          "release_date": "2020-03-24",
+          "release_notes": "https://developer.apple.com/documentation/safari_release_notes/safari_13_1_beta_release_notes",
+          "status": "current",
+          "engine": "WebKit",
+          "engine_version": "609.1.20"
         }
       }
     }
@@ -2191,6 +2213,33 @@
               "standard_track": true,
               "deprecated": false
             }
+          },
+          "format_keyword": {
+            "__compat": {
+              "description": "Support for <code>format</code> keywords",
+              "support": {
+                "chrome": {
+                  "version_added": false
+                },
+                "edge": {
+                  "version_added": false
+                },
+                "firefox": {
+                  "version_added": false
+                },
+                "ie": {
+                  "version_added": false
+                },
+                "safari": {
+                  "version_added": "4"
+                }
+              },
+              "status": {
+                "experimental": false,
+                "standard_track": true,
+                "deprecated": false
+              }
+            }
           }
         },
         "unicode-range": {
@@ -2758,7 +2807,7 @@
                 "version_added": "9"
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -3291,7 +3340,7 @@
                 "version_added": "9"
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -4278,10 +4327,10 @@
             "description": "<code>selector()</code>",
             "support": {
               "chrome": {
-                "version_added": "82"
+                "version_added": "83"
               },
               "edge": {
-                "version_added": "82"
+                "version_added": "83"
               },
               "firefox": [
                 {
@@ -7301,7 +7350,9 @@
               }
             ],
             "ie": {
-              "version_added": "10"
+              "version_added": "10",
+              "partial_implementation": true,
+              "notes": "Once the element has loaded, changing the value of this property has no effect."
             },
             "safari": [
               {
@@ -9012,7 +9063,7 @@
                 "version_added": "9"
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -9059,7 +9110,7 @@
             },
             "safari": [
               {
-                "version_added": "4.1"
+                "version_added": "5"
               },
               {
                 "prefix": "-webkit-",
@@ -9091,7 +9142,7 @@
                 "version_added": "9"
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -11291,7 +11342,7 @@
               },
               "safari": {
                 "version_added": "3",
-                "notes": "Before Safari 4.1, the slash <code>/</code> notation is unsupported. If two values are specified, then an elliptical border is drawn on all four corners. <code>-webkit-border-radius: 40px 10px;</code> is equivalent to <code>border-radius: 40px / 10px;</code>."
+                "notes": "Before Safari 5, the slash <code>/</code> notation is unsupported. If two values are specified, then an elliptical border is drawn on all four corners. <code>-webkit-border-radius: 40px 10px;</code> is equivalent to <code>border-radius: 40px / 10px;</code>."
               }
             },
             "status": {
@@ -11346,7 +11397,7 @@
                 "version_added": "9"
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -13832,12 +13883,12 @@
           "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/color-adjust",
           "support": {
             "chrome": {
-              "prefix": "-webkit-",
-              "version_added": "49"
+              "version_added": "49",
+              "alternative_name": "-webkit-print-color-adjust"
             },
             "edge": {
-              "prefix": "-webkit-",
-              "version_added": "79"
+              "version_added": "79",
+              "alternative_name": "-webkit-print-color-adjust"
             },
             "firefox": {
               "version_added": "48"
@@ -13846,8 +13897,8 @@
               "version_added": false
             },
             "safari": {
-              "prefix": "-webkit-",
-              "version_added": "6"
+              "version_added": "6",
+              "alternative_name": "-webkit-print-color-adjust"
             }
           },
           "status": {
@@ -14676,6 +14727,33 @@
             "experimental": false,
             "standard_track": true,
             "deprecated": false
+          }
+        },
+        "alt_text": {
+          "__compat": {
+            "description": "Alternative text after <code>/</code>",
+            "support": {
+              "chrome": {
+                "version_added": "77"
+              },
+              "edge": {
+                "version_added": "79"
+              },
+              "firefox": {
+                "version_added": false
+              },
+              "ie": {
+                "version_added": false
+              },
+              "safari": {
+                "version_added": false
+              }
+            },
+            "status": {
+              "experimental": false,
+              "standard_track": true,
+              "deprecated": false
+            }
           }
         },
         "element_replacement": {
@@ -18946,10 +19024,15 @@
               "ie": {
                 "version_added": false
               },
-              "safari": {
-                "version_added": "10.1",
-                "alternative_name": "grid-gap"
-              }
+              "safari": [
+                {
+                  "version_added": "10.1",
+                  "alternative_name": "grid-gap"
+                },
+                {
+                  "version_added": "12"
+                }
+              ]
             },
             "status": {
               "experimental": false,
@@ -19849,46 +19932,46 @@
               "deprecated": false
             }
           }
-        }
-      },
-      "subgrid": {
-        "__compat": {
-          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/CSS_Grid_Layout/Subgrid",
-          "description": "<code>subgrid</code>",
-          "support": {
-            "chrome": {
-              "version_added": false
-            },
-            "edge": {
-              "version_added": false
-            },
-            "firefox": [
-              {
-                "version_added": "71"
+        },
+        "subgrid": {
+          "__compat": {
+            "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/CSS_Grid_Layout/Subgrid",
+            "description": "<code>subgrid</code>",
+            "support": {
+              "chrome": {
+                "version_added": false
               },
-              {
-                "version_added": "69",
-                "notes": "Enabled by default in Firefox Nightly.",
-                "flags": [
-                  {
-                    "type": "preference",
-                    "name": "layout.css.grid-template-subgrid-value.enabled",
-                    "value_to_set": "true"
-                  }
-                ]
+              "edge": {
+                "version_added": false
+              },
+              "firefox": [
+                {
+                  "version_added": "71"
+                },
+                {
+                  "version_added": "69",
+                  "notes": "Enabled by default in Firefox Nightly.",
+                  "flags": [
+                    {
+                      "type": "preference",
+                      "name": "layout.css.grid-template-subgrid-value.enabled",
+                      "value_to_set": "true"
+                    }
+                  ]
+                }
+              ],
+              "ie": {
+                "version_added": false
+              },
+              "safari": {
+                "version_added": false
               }
-            ],
-            "ie": {
-              "version_added": false
             },
-            "safari": {
-              "version_added": false
+            "status": {
+              "experimental": false,
+              "standard_track": true,
+              "deprecated": false
             }
-          },
-          "status": {
-            "experimental": false,
-            "standard_track": true,
-            "deprecated": false
           }
         }
       },
@@ -23096,7 +23179,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -23124,7 +23207,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -23152,7 +23235,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -23185,7 +23268,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -23273,7 +23356,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -23301,7 +23384,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -23328,7 +23411,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -23415,7 +23498,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -23448,7 +23531,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -23475,7 +23558,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -23562,7 +23645,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -23671,7 +23754,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -23699,7 +23782,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -23727,7 +23810,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -23755,7 +23838,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -23783,7 +23866,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -23811,7 +23894,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -23867,7 +23950,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -23895,7 +23978,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -23923,7 +24006,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -23951,7 +24034,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -23979,7 +24062,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -24007,7 +24090,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -24035,7 +24118,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -24063,7 +24146,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -24091,7 +24174,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -24119,7 +24202,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -24147,7 +24230,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -24269,7 +24352,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -24302,7 +24385,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -24330,7 +24413,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -24358,7 +24441,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -24538,7 +24621,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -24625,7 +24708,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -24739,7 +24822,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -24848,7 +24931,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -24903,7 +24986,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -24963,7 +25046,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -24990,7 +25073,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -25023,7 +25106,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -25051,7 +25134,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -25084,7 +25167,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -25112,7 +25195,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -25145,7 +25228,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -25173,7 +25256,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -25267,7 +25350,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -25414,7 +25497,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -25447,7 +25530,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -25474,7 +25557,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -25502,7 +25585,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -25530,7 +25613,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -25558,7 +25641,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -25586,7 +25669,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -25614,7 +25697,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -25789,7 +25872,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -25844,7 +25927,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -25899,7 +25982,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -26049,10 +26132,24 @@
           "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/margin-block",
           "support": {
             "chrome": {
-              "version_added": "69"
+              "version_added": "69",
+              "flags": [
+                {
+                  "type": "preference",
+                  "name": "Experimental Web Platform features",
+                  "value_to_set": "Enabled"
+                }
+              ]
             },
             "edge": {
-              "version_added": "79"
+              "version_added": "79",
+              "flags": [
+                {
+                  "type": "preference",
+                  "name": "Experimental Web Platform features",
+                  "value_to_set": "Enabled"
+                }
+              ]
             },
             "firefox": {
               "version_added": "66"
@@ -26256,10 +26353,24 @@
           "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/margin-inline",
           "support": {
             "chrome": {
-              "version_added": "69"
+              "version_added": "69",
+              "flags": [
+                {
+                  "type": "preference",
+                  "name": "Experimental Web Platform features",
+                  "value_to_set": "Enabled"
+                }
+              ]
             },
             "edge": {
-              "version_added": "79"
+              "version_added": "79",
+              "flags": [
+                {
+                  "type": "preference",
+                  "name": "Experimental Web Platform features",
+                  "value_to_set": "Enabled"
+                }
+              ]
             },
             "firefox": {
               "version_added": "66"
@@ -29569,7 +29680,7 @@
       },
       "overflow-clip-box-block": {
         "__compat": {
-          "mdn_url": "https://developer.mozilla.org/docs/Mozilla/CSS/overflow-clip-box-block",
+          "mdn_url": "https://developer.mozilla.org/docs/Mozilla/Gecko/Chrome/CSS/overflow-clip-box-block",
           "support": {
             "chrome": {
               "version_added": false
@@ -29596,7 +29707,7 @@
       },
       "overflow-clip-box-inline": {
         "__compat": {
-          "mdn_url": "https://developer.mozilla.org/docs/Mozilla/CSS/overflow-clip-box-inline",
+          "mdn_url": "https://developer.mozilla.org/docs/Mozilla/Gecko/Chrome/CSS/overflow-clip-box-inline",
           "support": {
             "chrome": {
               "version_added": false
@@ -29623,7 +29734,7 @@
       },
       "overflow-clip-box": {
         "__compat": {
-          "mdn_url": "https://developer.mozilla.org/docs/Mozilla/CSS/overflow-clip-box",
+          "mdn_url": "https://developer.mozilla.org/docs/Mozilla/Gecko/Chrome/CSS/overflow-clip-box",
           "support": {
             "chrome": {
               "version_added": false
@@ -30237,10 +30348,24 @@
           "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/padding-block",
           "support": {
             "chrome": {
-              "version_added": "69"
+              "version_added": "69",
+              "flags": [
+                {
+                  "type": "preference",
+                  "name": "Experimental Web Platform features",
+                  "value_to_set": "Enabled"
+                }
+              ]
             },
             "edge": {
-              "version_added": "79"
+              "version_added": "79",
+              "flags": [
+                {
+                  "type": "preference",
+                  "name": "Experimental Web Platform features",
+                  "value_to_set": "Enabled"
+                }
+              ]
             },
             "firefox": {
               "version_added": "66"
@@ -30415,10 +30540,24 @@
           "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/padding-inline",
           "support": {
             "chrome": {
-              "version_added": "69"
+              "version_added": "69",
+              "flags": [
+                {
+                  "type": "preference",
+                  "name": "Experimental Web Platform features",
+                  "value_to_set": "Enabled"
+                }
+              ]
             },
             "edge": {
-              "version_added": "79"
+              "version_added": "79",
+              "flags": [
+                {
+                  "type": "preference",
+                  "name": "Experimental Web Platform features",
+                  "value_to_set": "Enabled"
+                }
+              ]
             },
             "firefox": {
               "version_added": "66"
@@ -34214,24 +34353,14 @@
         "__compat": {
           "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/text-emphasis-color",
           "support": {
-            "chrome": [
-              {
-                "version_added": "25"
-              },
-              {
-                "prefix": "-webkit-",
-                "version_added": "25"
-              }
-            ],
-            "edge": [
-              {
-                "version_added": "79"
-              },
-              {
-                "prefix": "-webkit-",
-                "version_added": "79"
-              }
-            ],
+            "chrome": {
+              "prefix": "-webkit-",
+              "version_added": "25"
+            },
+            "edge": {
+              "prefix": "-webkit-",
+              "version_added": "79"
+            },
             "firefox": [
               {
                 "version_added": "46"
@@ -34272,24 +34401,14 @@
         "__compat": {
           "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/text-emphasis-position",
           "support": {
-            "chrome": [
-              {
-                "version_added": "25"
-              },
-              {
-                "prefix": "-webkit-",
-                "version_added": "25"
-              }
-            ],
-            "edge": [
-              {
-                "version_added": "79"
-              },
-              {
-                "prefix": "-webkit-",
-                "version_added": "79"
-              }
-            ],
+            "chrome": {
+              "prefix": "-webkit-",
+              "version_added": "25"
+            },
+            "edge": {
+              "prefix": "-webkit-",
+              "version_added": "79"
+            },
             "firefox": [
               {
                 "version_added": "46"
@@ -34357,24 +34476,14 @@
         "__compat": {
           "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/text-emphasis-style",
           "support": {
-            "chrome": [
-              {
-                "version_added": "25"
-              },
-              {
-                "prefix": "-webkit-",
-                "version_added": "25"
-              }
-            ],
-            "edge": [
-              {
-                "version_added": "79"
-              },
-              {
-                "prefix": "-webkit-",
-                "version_added": "79"
-              }
-            ],
+            "chrome": {
+              "prefix": "-webkit-",
+              "version_added": "25"
+            },
+            "edge": {
+              "prefix": "-webkit-",
+              "version_added": "79"
+            },
             "firefox": [
               {
                 "version_added": "46"
@@ -34415,24 +34524,14 @@
         "__compat": {
           "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/text-emphasis",
           "support": {
-            "chrome": [
-              {
-                "version_added": "25"
-              },
-              {
-                "prefix": "-webkit-",
-                "version_added": "25"
-              }
-            ],
-            "edge": [
-              {
-                "version_added": "79"
-              },
-              {
-                "prefix": "-webkit-",
-                "version_added": "79"
-              }
-            ],
+            "chrome": {
+              "prefix": "-webkit-",
+              "version_added": "25"
+            },
+            "edge": {
+              "prefix": "-webkit-",
+              "version_added": "79"
+            },
             "firefox": [
               {
                 "version_added": "46"
@@ -35977,7 +36076,8 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "6"
+                "version_added": "6",
+                "notes": "Only supported for transformations applied using the CSS <code>transform</code> property (e.g. <code>.className { transform: rotate(45deg); transform-origin: center; }</code>). It has no effect on transformations applied using the <code>transform</code> SVG attribute (e.g. <code>&lt;rect style=&quot;transform-origin: center;&quot; transform=&quot;rotate(45)&quot; /&gt;</code>)."
               }
             },
             "status": {
@@ -36007,7 +36107,7 @@
                 "version_added": "9"
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -37687,7 +37787,7 @@
                 "version_added": false
               },
               "safari": {
-                "prefix": "-webkit-",
+                "alternative_name": "-webkit-fill-available",
                 "version_added": "6.1"
               }
             },
@@ -39194,7 +39294,7 @@
               "version_added": false
             },
             "safari": {
-              "version_added": "4.1"
+              "version_added": "5"
             }
           },
           "status": {
@@ -39363,7 +39463,7 @@
               "version_added": false
             },
             "safari": {
-              "version_added": "4.1",
+              "version_added": "5",
               "version_removed": "5.1"
             }
           },
@@ -39461,7 +39561,7 @@
       "-webkit-resizer": {
         "__compat": {
           "description": "::-webkit-resizer",
-          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/::-webkit-resizer",
+          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/::-webkit-scrollbar",
           "support": {
             "chrome": {
               "version_added": "2"
@@ -39490,7 +39590,7 @@
       "-webkit-scrollbar-button": {
         "__compat": {
           "description": "::-webkit-scrollbar-button",
-          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/::-webkit-scrollbar-button",
+          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/::-webkit-scrollbar",
           "support": {
             "chrome": {
               "version_added": "2"
@@ -39519,7 +39619,7 @@
       "-webkit-scrollbar-corner": {
         "__compat": {
           "description": "::-webkit-scrollbar-corner",
-          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/::-webkit-scrollbar-corner",
+          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/::-webkit-scrollbar",
           "support": {
             "chrome": {
               "version_added": "2"
@@ -39548,7 +39648,7 @@
       "-webkit-scrollbar-thumb": {
         "__compat": {
           "description": "::-webkit-scrollbar-thumb",
-          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/::-webkit-scrollbar-thumb",
+          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/::-webkit-scrollbar",
           "support": {
             "chrome": {
               "version_added": "2"
@@ -39577,7 +39677,7 @@
       "-webkit-scrollbar-track-piece": {
         "__compat": {
           "description": "::-webkit-scrollbar-track-piece",
-          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/::-webkit-scrollbar-track-piece",
+          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/::-webkit-scrollbar",
           "support": {
             "chrome": {
               "version_added": "2"
@@ -39606,7 +39706,7 @@
       "-webkit-scrollbar-track": {
         "__compat": {
           "description": "::-webkit-scrollbar-track",
-          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/::-webkit-scrollbar-track",
+          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/::-webkit-scrollbar",
           "support": {
             "chrome": {
               "version_added": "2"
@@ -39775,7 +39875,7 @@
       "adjacent_sibling": {
         "__compat": {
           "description": "Adjacent sibling combinator (<code>A + B</code>)",
-          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/Adjacent_sibling_selectors",
+          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/Adjacent_sibling_combinator",
           "support": {
             "chrome": {
               "version_added": "1"
@@ -40255,19 +40355,26 @@
           "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/:checked",
           "support": {
             "chrome": {
-              "version_added": "1"
+              "version_added": "1",
+              "notes": "On macOS, styling <code>&lt;option&rt;</code> elements has no effect."
             },
             "edge": {
-              "version_added": "12"
+              "version_added": "12",
+              "notes": "On macOS, styling <code>&lt;option&rt;</code> elements has no effect."
             },
             "firefox": {
-              "version_added": "1"
+              "version_added": "1",
+              "notes": [
+                "From Firefox 56, <code>&lt;option&rt;</code> elements cannot be styled.",
+                "On macOS, styling <code>&lt;option&rt;</code> elements has no effect."
+              ]
             },
             "ie": {
               "version_added": "9"
             },
             "safari": {
-              "version_added": "3.1"
+              "version_added": "3.1",
+              "notes": "Styling <code>&lt;option&rt;</code> elements has no effect."
             }
           },
           "status": {
@@ -40280,7 +40387,7 @@
       "child": {
         "__compat": {
           "description": "Child combinator (<code>A &gt; B</code>)",
-          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/Child_selectors",
+          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/Child_combinator",
           "support": {
             "chrome": {
               "version_added": "1"
@@ -40375,10 +40482,7 @@
             },
             "firefox": {
               "version_added": "55",
-              "notes": [
-                "Firefox currently does not support a parameter on <code>::cue</code>.",
-                "Correct limitations to the CSS properties permitted within <code>::cue</code> were implemented in Firefox 69. See <a href='https://developer.mozilla.org/docs/Web/CSS/::cue#Permitted_properties'>Permitted properties</a> for a list of the allowed properties."
-              ]
+              "notes": "From Firefox 69, only allowed properties apply to the <code>::cue</code> pseudo-element with no argument. See <a href='https://developer.mozilla.org/docs/Web/CSS/::cue#Permitted_properties'>Permitted properties</a> for a list of the allowed properties."
             },
             "ie": {
               "version_added": false
@@ -40391,6 +40495,33 @@
             "experimental": false,
             "standard_track": true,
             "deprecated": false
+          }
+        },
+        "selector_argument": {
+          "__compat": {
+            "description": "<code>::cue(&lt;selector&gt;)</code>",
+            "support": {
+              "chrome": {
+                "version_added": "26"
+              },
+              "edge": {
+                "version_added": "79"
+              },
+              "firefox": {
+                "version_added": false
+              },
+              "ie": {
+                "version_added": false
+              },
+              "safari": {
+                "version_added": "6.1"
+              }
+            },
+            "status": {
+              "experimental": false,
+              "standard_track": true,
+              "deprecated": false
+            }
           }
         }
       },
@@ -40453,7 +40584,7 @@
       "descendant": {
         "__compat": {
           "description": "Descendant combinator (<code>A B</code>)",
-          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/Descendant_selectors",
+          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/Descendant_combinator",
           "support": {
             "chrome": [
               {
@@ -40678,7 +40809,7 @@
             "ie": {
               "version_added": "7",
               "notes": [
-                "Internet Explorer 7 doesn't update  <code>:first-child</code> styles when elements are added dynamically.",
+                "Internet Explorer 7 doesn't update <code>:first-child</code> styles when elements are added dynamically.",
                 "In Internet Explorer 8, if an element is inserted dynamically by clicking on a link, then the <code>:first-child</code> style isn't applied until the link loses focus."
               ]
             },
@@ -41108,7 +41239,7 @@
       "general_sibling": {
         "__compat": {
           "description": "General sibling combinator (<code>A ~ B</code>)",
-          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/General_sibling_selectors",
+          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/General_sibling_combinator",
           "support": {
             "chrome": {
               "version_added": "1"
@@ -42440,7 +42571,7 @@
               "version_added": false
             },
             "safari": {
-              "version_added": false
+              "version_added": "13.1"
             }
           },
           "status": {
@@ -46303,7 +46434,7 @@
                 "version_added": "9"
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -46756,7 +46887,7 @@
                 "version_added": "9"
               },
               "safari": {
-                "version_added": "4.1"
+                "version_added": "5"
               }
             },
             "status": {
@@ -47241,7 +47372,7 @@
               "version_added": "9"
             },
             "safari": {
-              "version_added": "4.1"
+              "version_added": "5"
             }
           },
           "status": {
@@ -47261,7 +47392,14 @@
                 "version_added": false
               },
               "firefox": {
-                "version_added": "70"
+                "version_added": "70",
+                "flags": [
+                  {
+                    "type": "preference",
+                    "name": "layout.css.aspect-ratio-number.enabled",
+                    "value_to_set": "true"
+                  }
+                ]
               },
               "ie": {
                 "version_added": false
