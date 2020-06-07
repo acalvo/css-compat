@@ -1,3 +1,17 @@
+## [0.7.2](https://github.com/acalvo/css-compat/compare/v0.7.1...v0.7.2) (2020-06-07)
+
+
+### Bug Fixes
+
+* replace copyrighted icon with Firefox's Photon icon ([bf24e77](https://github.com/acalvo/css-compat/commit/bf24e7769bdd62931470cef228ec3f99e4a7c51f)), closes [#1](https://github.com/acalvo/css-compat/issues/1)
+
+
+### Features
+
+* update dependencies ([8f39f65](https://github.com/acalvo/css-compat/commit/8f39f65c9f988522338f48466e3418fac1e399a0))
+
+
+
 ## [0.7.1](https://github.com/acalvo/css-compat/compare/v0.7.0...v0.7.1) (2020-05-09)
 
 
