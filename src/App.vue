@@ -50,7 +50,7 @@ export default class App extends Vue {
     }
   }
 
-  public isEmpty(obj: object) {
+  public isEmpty(obj: Record<string, unknown>) {
     return Object.keys(obj).length === 0;
   }
 }

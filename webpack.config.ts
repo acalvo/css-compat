@@ -47,12 +47,14 @@ const config: webpack.Configuration = {
     fs: 'empty'
   },
   plugins: [
-    new CopyWebpackPlugin([
-      {
-        from: 'static',
-        to: '.'
-      }
-    ]),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: 'static',
+          to: '.'
+        }
+      ]
+    }),
     new VueLoaderPlugin()
   ],
   performance: {

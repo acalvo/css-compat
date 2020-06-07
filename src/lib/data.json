@@ -567,19 +567,26 @@
         "81": {
           "release_date": "2020-04-07",
           "release_notes": "https://chromereleases.googleblog.com/2020/04/stable-channel-update-for-desktop_7.html",
-          "status": "current",
+          "status": "retired",
           "engine": "Blink",
           "engine_version": "81"
         },
         "83": {
-          "status": "beta",
+          "release_date": "2020-05-19",
+          "release_notes": "https://chromereleases.googleblog.com/2020/05/stable-channel-update-for-desktop_19.html",
+          "status": "current",
           "engine": "Blink",
           "engine_version": "83"
         },
         "84": {
-          "status": "nightly",
+          "status": "beta",
           "engine": "Blink",
           "engine_version": "84"
+        },
+        "85": {
+          "status": "nightly",
+          "engine": "Blink",
+          "engine_version": "85"
         }
       }
     },
@@ -1170,23 +1177,30 @@
         "76": {
           "release_date": "2020-05-05",
           "release_notes": "https://developer.mozilla.org/docs/Mozilla/Firefox/Releases/76",
-          "status": "current",
+          "status": "retired",
           "engine": "Gecko",
           "engine_version": "76"
         },
         "77": {
           "release_date": "2020-06-02",
           "release_notes": "https://developer.mozilla.org/docs/Mozilla/Firefox/Releases/77",
-          "status": "beta",
+          "status": "current",
           "engine": "Gecko",
           "engine_version": "77"
         },
         "78": {
           "release_date": "2020-06-30",
           "release_notes": "https://developer.mozilla.org/docs/Mozilla/Firefox/Releases/78",
-          "status": "nightly",
+          "status": "beta",
           "engine": "Gecko",
           "engine_version": "78"
+        },
+        "79": {
+          "release_date": "2020-07-28",
+          "release_notes": "https://developer.mozilla.org/docs/Mozilla/Firefox/Releases/79",
+          "status": "nightly",
+          "engine": "Gecko",
+          "engine_version": "79"
         },
         "1.5": {
           "release_date": "2005-11-29",
@@ -16101,7 +16115,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": false
+                "version_added": "13"
               }
             },
             "status": {
@@ -17659,12 +17673,17 @@
         "__compat": {
           "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/font-kerning",
           "support": {
-            "chrome": {
-              "prefix": "-webkit-",
-              "version_added": "32"
-            },
+            "chrome": [
+              {
+                "version_added": "33"
+              },
+              {
+                "prefix": "-webkit-",
+                "version_added": "29",
+                "version_removed": "33"
+              }
+            ],
             "edge": {
-              "prefix": "-webkit-",
               "version_added": "79"
             },
             "firefox": [
@@ -17686,9 +17705,15 @@
             "ie": {
               "version_added": false
             },
-            "safari": {
-              "version_added": "7"
-            }
+            "safari": [
+              {
+                "version_added": "9"
+              },
+              {
+                "version_added": "6",
+                "prefix": "-webkit"
+              }
+            ]
           },
           "status": {
             "experimental": false,
@@ -21606,10 +21631,10 @@
           "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/image-orientation",
           "support": {
             "chrome": {
-              "version_added": false
+              "version_added": "81"
             },
             "edge": {
-              "version_added": false
+              "version_added": "81"
             },
             "firefox": {
               "version_added": "26"
@@ -28671,7 +28696,8 @@
                 },
                 {
                   "alternative_name": "min-intrinsic",
-                  "version_added": "25"
+                  "version_added": "25",
+                  "version_removed": "48"
                 }
               ],
               "edge": [
@@ -28680,10 +28706,6 @@
                 },
                 {
                   "prefix": "-webkit-",
-                  "version_added": "79"
-                },
-                {
-                  "alternative_name": "min-intrinsic",
                   "version_added": "79"
                 }
               ],
@@ -37630,6 +37652,11 @@
                 {
                   "prefix": "-webkit-",
                   "version_added": "22"
+                },
+                {
+                  "alternative_name": "intrinsic",
+                  "version_added": "1",
+                  "version_removed": "48"
                 }
               ],
               "edge": [
@@ -37655,6 +37682,10 @@
                 {
                   "prefix": "-webkit-",
                   "version_added": "6.1"
+                },
+                {
+                  "alternative_name": "intrinsic",
+                  "version_added": "2"
                 }
               ]
             },
@@ -37726,18 +37757,13 @@
                 },
                 {
                   "alternative_name": "min-intrinsic",
-                  "version_added": "22"
+                  "version_added": "1",
+                  "version_removed": "48"
                 }
               ],
-              "edge": [
-                {
-                  "version_added": "79"
-                },
-                {
-                  "alternative_name": "min-intrinsic",
-                  "version_added": "79"
-                }
-              ],
+              "edge": {
+                "version_added": "79"
+              },
               "firefox": [
                 {
                   "version_added": "66"
@@ -41008,13 +41034,15 @@
               "version_added": "1"
             },
             "edge": {
-              "version_added": "12"
+              "version_added": "12",
+              "notes": "Before Edge 16, Microsoft Edge treats all unknown elements (such as custom elements) as the same element type."
             },
             "firefox": {
               "version_added": "3.5"
             },
             "ie": {
-              "version_added": "9"
+              "version_added": "9",
+              "notes": "Internet Explorer treats all unknown elements (such as custom elements) as the same element type."
             },
             "safari": {
               "version_added": "3.2"
@@ -41827,14 +41855,30 @@
                 "notes": "Doesn't support combinators."
               }
             ],
-            "firefox": {
-              "version_added": "4",
-              "alternative_name": ":-moz-any()",
-              "notes": [
-                "Doesn't support combinators.",
-                "See <a href='https://bugzil.la/906353'>bug 906353</a>"
-              ]
-            },
+            "firefox": [
+              {
+                "version_added": "78"
+              },
+              {
+                "version_added": "77",
+                "flags": [
+                  {
+                    "type": "preference",
+                    "name": "layout.css.is-where-selectors.enabled",
+                    "value_to_set": "enabled"
+                  }
+                ],
+                "notes": "Enabled by default in Firefox Nightly."
+              },
+              {
+                "version_added": "4",
+                "alternative_name": ":-moz-any()",
+                "notes": [
+                  "Doesn't support combinators.",
+                  "See <a href='https://bugzil.la/906353'>bug 906353</a>"
+                ]
+              }
+            ],
             "ie": {
               "version_added": false
             },
@@ -41949,13 +41993,15 @@
               "version_added": "1"
             },
             "edge": {
-              "version_added": "12"
+              "version_added": "12",
+              "notes": "Before Edge 16, Microsoft Edge treats all unknown elements (such as custom elements) as the same element type."
             },
             "firefox": {
               "version_added": "3.5"
             },
             "ie": {
-              "version_added": "9"
+              "version_added": "9",
+              "notes": "Internet Explorer treats all unknown elements (such as custom elements) as the same element type."
             },
             "safari": {
               "version_added": "3.2"
@@ -42082,7 +42128,7 @@
               "version_added": false
             },
             "safari": {
-              "version_added": false
+              "version_added": "11.1"
             }
           },
           "status": {
@@ -42354,13 +42400,15 @@
               "version_added": "4"
             },
             "edge": {
-              "version_added": "12"
+              "version_added": "12",
+              "notes": "Before Edge 16, Microsoft Edge treats all unknown elements (such as custom elements) as the same element type."
             },
             "firefox": {
               "version_added": "3.5"
             },
             "ie": {
-              "version_added": "9"
+              "version_added": "9",
+              "notes": "Internet Explorer treats all unknown elements (such as custom elements) as the same element type."
             },
             "safari": {
               "version_added": "3.2"
@@ -42382,13 +42430,15 @@
               "version_added": "1"
             },
             "edge": {
-              "version_added": "12"
+              "version_added": "12",
+              "notes": "Before Edge 16, Microsoft Edge treats all unknown elements (such as custom elements) as the same element type."
             },
             "firefox": {
               "version_added": "3.5"
             },
             "ie": {
-              "version_added": "9"
+              "version_added": "9",
+              "notes": "Internet Explorer treats all unknown elements (such as custom elements) as the same element type."
             },
             "safari": {
               "version_added": "3.1"
@@ -42465,13 +42515,15 @@
               "version_added": "1"
             },
             "edge": {
-              "version_added": "12"
+              "version_added": "12",
+              "notes": "Before Edge 16, Microsoft Edge treats all unknown elements (such as custom elements) as the same element type."
             },
             "firefox": {
               "version_added": "3.5"
             },
             "ie": {
-              "version_added": "9"
+              "version_added": "9",
+              "notes": "Internet Explorer treats all unknown elements (such as custom elements) as the same element type."
             },
             "safari": {
               "version_added": "3.2"
@@ -42708,11 +42760,15 @@
             "edge": {
               "version_added": "13"
             },
-            "firefox": {
-              "prefix": "-moz-",
-              "version_added": "1.5",
-              "notes": "See <a href='https://bugzil.la/312971'>bug 312971</a> for unprefixed status."
-            },
+            "firefox": [
+              {
+                "version_added": "78"
+              },
+              {
+                "prefix": "-moz-",
+                "version_added": "1.5"
+              }
+            ],
             "ie": {
               "version_added": false
             },
@@ -42738,11 +42794,15 @@
             "edge": {
               "version_added": "13"
             },
-            "firefox": {
-              "prefix": "-moz-",
-              "version_added": "1.5",
-              "notes": "See <a href='https://bugzil.la/312971'>bug 312971</a> for unprefixed status."
-            },
+            "firefox": [
+              {
+                "version_added": "78"
+              },
+              {
+                "prefix": "-moz-",
+                "version_added": "1.5"
+              }
+            ],
             "ie": {
               "version_added": false
             },
@@ -42754,33 +42814,6 @@
             "experimental": false,
             "standard_track": true,
             "deprecated": false
-          }
-        },
-        "matches_editable_elements": {
-          "__compat": {
-            "description": "Matches editable elements that are neither <code>&lt;input&gt;</code> elements nor <code>&lt;textarea&gt;</code> elements",
-            "support": {
-              "chrome": {
-                "version_added": false
-              },
-              "edge": {
-                "version_added": false
-              },
-              "firefox": {
-                "version_added": "1.5"
-              },
-              "ie": {
-                "version_added": false
-              },
-              "safari": {
-                "version_added": false
-              }
-            },
-            "status": {
-              "experimental": false,
-              "standard_track": true,
-              "deprecated": false
-            }
           }
         }
       },
@@ -43313,6 +43346,47 @@
               "standard_track": true,
               "deprecated": false
             }
+          }
+        }
+      },
+      "where": {
+        "__compat": {
+          "description": "<code>:where()</code>",
+          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/:where",
+          "support": {
+            "chrome": {
+              "version_added": false
+            },
+            "edge": {
+              "version_added": false
+            },
+            "firefox": [
+              {
+                "version_added": "78"
+              },
+              {
+                "version_added": "77",
+                "flags": [
+                  {
+                    "type": "preference",
+                    "name": "layout.css.is-where-selectors.enabled",
+                    "value_to_set": "enabled"
+                  }
+                ],
+                "notes": "Enabled by default in Firefox Nightly."
+              }
+            ],
+            "ie": {
+              "version_added": false
+            },
+            "safari": {
+              "version_added": false
+            }
+          },
+          "status": {
+            "experimental": false,
+            "standard_track": true,
+            "deprecated": false
           }
         }
       }
@@ -44222,7 +44296,7 @@
               "version_added": false
             },
             "safari": {
-              "version_added": false
+              "version_added": "13.1"
             }
           },
           "status": {
