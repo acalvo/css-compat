@@ -1,3 +1,12 @@
+## [0.7.3](https://github.com/acalvo/css-compat/compare/v0.7.2...v0.7.3) (2020-11-01)
+
+
+### Features
+
+* update dependencies ([3223a50](https://github.com/acalvo/css-compat/commit/3223a5008786a94a4419d9e24b691b903c13e685))
+
+
+
 ## [0.7.2](https://github.com/acalvo/css-compat/compare/v0.7.1...v0.7.2) (2020-06-07)
 
 

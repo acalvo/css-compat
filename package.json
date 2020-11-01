@@ -1,6 +1,6 @@
 {
   "name": "css-compat",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "description": "WebExtension to check CSS compatibility issues across browsers.",
   "author": "Alberto Calvo",
   "license": "MPL-2.0",
