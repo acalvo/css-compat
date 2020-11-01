@@ -574,19 +574,40 @@
         "83": {
           "release_date": "2020-05-19",
           "release_notes": "https://chromereleases.googleblog.com/2020/05/stable-channel-update-for-desktop_19.html",
-          "status": "current",
+          "status": "retired",
           "engine": "Blink",
           "engine_version": "83"
         },
         "84": {
-          "status": "beta",
+          "release_date": "2020-07-27",
+          "release_notes": "https://chromereleases.googleblog.com/2020/07/stable-channel-update-for-desktop_27.html",
+          "status": "retired",
           "engine": "Blink",
           "engine_version": "84"
         },
         "85": {
-          "status": "nightly",
+          "release_date": "2020-08-25",
+          "release_notes": "https://chromereleases.googleblog.com/2020/08/stable-channel-update-for-desktop_25.html",
+          "status": "retired",
           "engine": "Blink",
           "engine_version": "85"
+        },
+        "86": {
+          "release_date": "2020-10-20",
+          "release_notes": "https://chromereleases.googleblog.com/2020/10/stable-channel-update-for-desktop_20.html",
+          "status": "current",
+          "engine": "Blink",
+          "engine_version": "86"
+        },
+        "87": {
+          "status": "beta",
+          "engine": "Blink",
+          "engine_version": "87"
+        },
+        "88": {
+          "status": "nightly",
+          "engine": "Blink",
+          "engine_version": "88"
         }
       }
     },
@@ -1184,23 +1205,58 @@
         "77": {
           "release_date": "2020-06-02",
           "release_notes": "https://developer.mozilla.org/docs/Mozilla/Firefox/Releases/77",
-          "status": "current",
+          "status": "retired",
           "engine": "Gecko",
           "engine_version": "77"
         },
         "78": {
           "release_date": "2020-06-30",
           "release_notes": "https://developer.mozilla.org/docs/Mozilla/Firefox/Releases/78",
-          "status": "beta",
+          "status": "retired",
           "engine": "Gecko",
           "engine_version": "78"
         },
         "79": {
           "release_date": "2020-07-28",
           "release_notes": "https://developer.mozilla.org/docs/Mozilla/Firefox/Releases/79",
-          "status": "nightly",
+          "status": "retired",
           "engine": "Gecko",
           "engine_version": "79"
+        },
+        "80": {
+          "release_date": "2020-08-25",
+          "release_notes": "https://developer.mozilla.org/docs/Mozilla/Firefox/Releases/80",
+          "status": "retired",
+          "engine": "Gecko",
+          "engine_version": "80"
+        },
+        "81": {
+          "release_date": "2020-09-22",
+          "release_notes": "https://developer.mozilla.org/docs/Mozilla/Firefox/Releases/81",
+          "status": "retired",
+          "engine": "Gecko",
+          "engine_version": "81"
+        },
+        "82": {
+          "release_date": "2020-10-20",
+          "release_notes": "https://developer.mozilla.org/docs/Mozilla/Firefox/Releases/82",
+          "status": "current",
+          "engine": "Gecko",
+          "engine_version": "82"
+        },
+        "83": {
+          "release_date": "2020-11-17",
+          "release_notes": "https://developer.mozilla.org/docs/Mozilla/Firefox/Releases/83",
+          "status": "beta",
+          "engine": "Gecko",
+          "engine_version": "83"
+        },
+        "84": {
+          "release_date": "2020-12-15",
+          "release_notes": "https://developer.mozilla.org/docs/Mozilla/Firefox/Releases/84",
+          "status": "nightly",
+          "engine": "Gecko",
+          "engine_version": "84"
         },
         "1.5": {
           "release_date": "2005-11-29",
@@ -1384,8 +1440,11 @@
           "engine_version": "608.2.11"
         },
         "14": {
-          "status": "beta",
-          "engine": "WebKit"
+          "release_date": "2020-09-16",
+          "release_notes": "https://developer.apple.com/documentation/safari-release-notes/safari-14-beta-release-notes",
+          "status": "current",
+          "engine": "WebKit",
+          "engine_version": "610.1.28"
         },
         "1.1": {
           "release_date": "2003-10-24",
@@ -1459,8 +1518,8 @@
         },
         "13.1": {
           "release_date": "2020-03-24",
-          "release_notes": "https://developer.apple.com/documentation/safari_release_notes/safari_13_1_beta_release_notes",
-          "status": "current",
+          "release_notes": "https://developer.apple.com/documentation/safari-release-notes/safari-13_1-release_notes",
+          "status": "retired",
           "engine": "WebKit",
           "engine_version": "609.1.20"
         }
@@ -2152,16 +2211,22 @@
               "edge": {
                 "version_added": "79"
               },
-              "firefox": {
-                "version_added": "60",
-                "flags": [
-                  {
-                    "type": "preference",
-                    "name": "layout.css.font-variations.enabled",
-                    "value_to_set": "true"
-                  }
-                ]
-              },
+              "firefox": [
+                {
+                  "version_added": "62"
+                },
+                {
+                  "version_added": "60",
+                  "version_removed": "62",
+                  "flags": [
+                    {
+                      "type": "preference",
+                      "name": "layout.css.font-variations.enabled",
+                      "value_to_set": "true"
+                    }
+                  ]
+                }
+              ],
               "ie": {
                 "version_added": false
               },
@@ -2178,6 +2243,7 @@
         },
         "font-weight": {
           "__compat": {
+            "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/@font-face/font-weight",
             "support": {
               "chrome": {
                 "version_added": "4"
@@ -2642,7 +2708,7 @@
               },
               {
                 "prefix": "-webkit-",
-                "version_added": "2"
+                "version_added": "1"
               }
             ],
             "edge": {
@@ -2650,8 +2716,7 @@
             },
             "firefox": [
               {
-                "version_added": "16",
-                "notes": "<code>@keyframes</code> is unsupported in scoped stylesheets in Firefox (<a href='https://bugzil.la/830056'>bug 830056</a>)."
+                "version_added": "16"
               },
               {
                 "version_added": "49",
@@ -3062,15 +3127,28 @@
             "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/@media/forced-colors",
             "support": {
               "chrome": {
-                "version_added": false,
+                "version_added": "79",
+                "flags": [
+                  {
+                    "type": "preference",
+                    "name": "#forced-colors",
+                    "value_to_set": "Enabled"
+                  }
+                ],
                 "notes": "See <a href='https://crbug.com/970285'>bug 970285</a>."
               },
               "edge": {
-                "version_added": false,
-                "notes": "See <a href='https://crbug.com/970285'>bug 970285</a>."
+                "version_added": "79"
               },
               "firefox": {
-                "version_added": false
+                "version_added": "81",
+                "flags": [
+                  {
+                    "type": "preference",
+                    "name": "layout.css.forced-colors.enabled",
+                    "value_to_set": "true"
+                  }
+                ]
               },
               "ie": {
                 "version_added": false
@@ -3190,34 +3268,6 @@
               },
               "safari": {
                 "version_added": "9.1"
-              }
-            },
-            "status": {
-              "experimental": false,
-              "standard_track": true,
-              "deprecated": false
-            }
-          }
-        },
-        "light-level": {
-          "__compat": {
-            "description": "<code>light-level</code> media feature",
-            "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/@media/light-level",
-            "support": {
-              "chrome": {
-                "version_added": false
-              },
-              "edge": {
-                "version_added": false
-              },
-              "firefox": {
-                "version_added": false
-              },
-              "ie": {
-                "version_added": false
-              },
-              "safari": {
-                "version_added": false
               }
             },
             "status": {
@@ -3474,6 +3524,36 @@
               "standard_track": true,
               "deprecated": false
             }
+          },
+          "no-preference": {
+            "__compat": {
+              "description": "<code>no-preference</code> value",
+              "support": {
+                "chrome": {
+                  "version_added": "76",
+                  "version_removed": "80"
+                },
+                "edge": {
+                  "version_added": "79",
+                  "version_removed": "80"
+                },
+                "firefox": {
+                  "version_added": "67",
+                  "version_removed": "79"
+                },
+                "ie": {
+                  "version_added": false
+                },
+                "safari": {
+                  "version_added": "12.1"
+                }
+              },
+              "status": {
+                "experimental": false,
+                "standard_track": false,
+                "deprecated": true
+              }
+            }
           }
         },
         "prefers-contrast": {
@@ -3488,7 +3568,14 @@
                 "version_added": false
               },
               "firefox": {
-                "version_added": false
+                "version_added": "80",
+                "flags": [
+                  {
+                    "type": "preference",
+                    "name": "layout.css.prefers-contrast.enabled",
+                    "value_to_set": "true"
+                  }
+                ]
               },
               "ie": {
                 "version_added": false
@@ -3510,12 +3597,26 @@
             "description": "<code>prefers-reduced-data</code> media feature",
             "support": {
               "chrome": {
-                "version_added": false,
-                "notes": "See <a href='https://crbug.com/1051189'>bug 1051189</a>."
+                "version_added": "85",
+                "notes": "See <a href='https://crbug.com/1051189'>bug 1051189</a>.",
+                "flags": [
+                  {
+                    "type": "preference",
+                    "name": "#enable-experimental-web-platform-features",
+                    "value_to_set": "Enabled"
+                  }
+                ]
               },
               "edge": {
-                "version_added": false,
-                "notes": "See <a href='https://crbug.com/1051189'>bug 1051189</a>."
+                "version_added": "85",
+                "notes": "See <a href='https://crbug.com/1051189'>bug 1051189</a>.",
+                "flags": [
+                  {
+                    "type": "preference",
+                    "name": "#enable-experimental-web-platform-features",
+                    "value_to_set": "Enabled"
+                  }
+                ]
               },
               "firefox": {
                 "version_added": false
@@ -4214,7 +4315,7 @@
         "page-margin-boxes": {
           "__compat": {
             "description": "Page-margin boxes",
-            "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/@page",
+            "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/@page#page-margin-box",
             "support": {
               "chrome": {
                 "version_added": false
@@ -4274,10 +4375,10 @@
           "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/@property",
           "support": {
             "chrome": {
-              "version_added": false
+              "version_added": "85"
             },
             "edge": {
-              "version_added": false
+              "version_added": "85"
             },
             "firefox": {
               "version_added": false
@@ -4383,6 +4484,7 @@
           "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/@viewport",
           "support": {
             "chrome": {
+              "version_removed": "84",
               "version_added": "29",
               "flags": [
                 {
@@ -4431,6 +4533,7 @@
             "description": "<code>height</code> descriptor",
             "support": {
               "chrome": {
+                "version_removed": "84",
                 "version_added": "29"
               },
               "edge": {
@@ -4461,6 +4564,7 @@
             "description": "<code>max-height</code> descriptor",
             "support": {
               "chrome": {
+                "version_removed": "84",
                 "version_added": "29"
               },
               "edge": {
@@ -4491,6 +4595,7 @@
             "description": "<code>max-width</code> descriptor",
             "support": {
               "chrome": {
+                "version_removed": "84",
                 "version_added": "29"
               },
               "edge": {
@@ -4521,6 +4626,7 @@
             "description": "<code>max-zoom</code> descriptor",
             "support": {
               "chrome": {
+                "version_removed": "84",
                 "version_added": "29"
               },
               "edge": {
@@ -4551,6 +4657,7 @@
             "description": "<code>min-height</code> descriptor",
             "support": {
               "chrome": {
+                "version_removed": "84",
                 "version_added": "29"
               },
               "edge": {
@@ -4581,6 +4688,7 @@
             "description": "<code>min-width</code> descriptor",
             "support": {
               "chrome": {
+                "version_removed": "84",
                 "version_added": "29"
               },
               "edge": {
@@ -4611,6 +4719,7 @@
             "description": "<code>min-zoom</code> descriptor",
             "support": {
               "chrome": {
+                "version_removed": "84",
                 "version_added": "29"
               },
               "edge": {
@@ -4672,6 +4781,7 @@
             "description": "<code>user-zoom</code> descriptor",
             "support": {
               "chrome": {
+                "version_removed": "84",
                 "version_added": "29"
               },
               "edge": {
@@ -4730,6 +4840,7 @@
             "description": "<code>width</code> descriptor",
             "support": {
               "chrome": {
+                "version_removed": "84",
                 "version_added": "29"
               },
               "edge": {
@@ -4760,6 +4871,7 @@
             "description": "<code>zoom</code> descriptor",
             "support": {
               "chrome": {
+                "version_removed": "84",
                 "version_added": "29"
               },
               "edge": {
@@ -4819,134 +4931,6 @@
           }
         }
       },
-      "-moz-border-bottom-colors": {
-        "__compat": {
-          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/-moz-border-bottom-colors",
-          "support": {
-            "chrome": {
-              "version_added": false
-            },
-            "edge": {
-              "version_added": false
-            },
-            "firefox": {
-              "version_added": "1",
-              "version_removed": "59",
-              "notes": [
-                "In Firefox 59, the property was limited to usage in chrome code only (See <a href='https://bugzil.la/1417200'>bug 1417200</a>).",
-                "In Firefox 60, the property was removed completely (See <a href='https://bugzil.la/1429723'>bug 1429723</a>)."
-              ]
-            },
-            "ie": {
-              "version_added": false
-            },
-            "safari": {
-              "version_added": false
-            }
-          },
-          "status": {
-            "experimental": false,
-            "standard_track": false,
-            "deprecated": true
-          }
-        }
-      },
-      "-moz-border-left-colors": {
-        "__compat": {
-          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/-moz-border-left-colors",
-          "support": {
-            "chrome": {
-              "version_added": false
-            },
-            "edge": {
-              "version_added": false
-            },
-            "firefox": {
-              "version_added": "1",
-              "version_removed": "59",
-              "notes": [
-                "In Firefox 59, the property was limited to usage in chrome code only (See <a href='https://bugzil.la/1417200'>bug 1417200</a>).",
-                "In Firefox 60, the property was removed completely (See <a href='https://bugzil.la/1429723'>bug 1429723</a>)."
-              ]
-            },
-            "ie": {
-              "version_added": false
-            },
-            "safari": {
-              "version_added": false
-            }
-          },
-          "status": {
-            "experimental": false,
-            "standard_track": false,
-            "deprecated": true
-          }
-        }
-      },
-      "-moz-border-right-colors": {
-        "__compat": {
-          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/-moz-border-right-colors",
-          "support": {
-            "chrome": {
-              "version_added": false
-            },
-            "edge": {
-              "version_added": false
-            },
-            "firefox": {
-              "version_added": "1",
-              "version_removed": "59",
-              "notes": [
-                "In Firefox 59, the property was limited to usage in chrome code only (See <a href='https://bugzil.la/1417200'>bug 1417200</a>).",
-                "In Firefox 60, the property was removed completely (See <a href='https://bugzil.la/1429723'>bug 1429723</a>)."
-              ]
-            },
-            "ie": {
-              "version_added": false
-            },
-            "safari": {
-              "version_added": false
-            }
-          },
-          "status": {
-            "experimental": false,
-            "standard_track": false,
-            "deprecated": true
-          }
-        }
-      },
-      "-moz-border-top-colors": {
-        "__compat": {
-          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/-moz-border-top-colors",
-          "support": {
-            "chrome": {
-              "version_added": false
-            },
-            "edge": {
-              "version_added": false
-            },
-            "firefox": {
-              "version_added": "1",
-              "version_removed": "59",
-              "notes": [
-                "In Firefox 59, the property was limited to usage in chrome code only (See <a href='https://bugzil.la/1417200'>bug 1417200</a>).",
-                "In Firefox 60, the property was removed completely (See <a href='https://bugzil.la/1429723'>bug 1429723</a>)."
-              ]
-            },
-            "ie": {
-              "version_added": false
-            },
-            "safari": {
-              "version_added": false
-            }
-          },
-          "status": {
-            "experimental": false,
-            "standard_track": false,
-            "deprecated": true
-          }
-        }
-      },
       "-moz-context-properties": {
         "__compat": {
           "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/-moz-context-properties",
@@ -4979,6 +4963,60 @@
             "experimental": true,
             "standard_track": false,
             "deprecated": false
+          }
+        }
+      },
+      "-moz-float-edge": {
+        "__compat": {
+          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/-moz-float-edge",
+          "support": {
+            "chrome": {
+              "version_added": false
+            },
+            "edge": {
+              "version_added": false
+            },
+            "firefox": {
+              "version_added": "1"
+            },
+            "ie": {
+              "version_added": false
+            },
+            "safari": {
+              "version_added": false
+            }
+          },
+          "status": {
+            "experimental": false,
+            "standard_track": false,
+            "deprecated": true
+          }
+        }
+      },
+      "-moz-force-broken-image-icon": {
+        "__compat": {
+          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/-moz-force-broken-image-icon",
+          "support": {
+            "chrome": {
+              "version_added": false
+            },
+            "edge": {
+              "version_added": false
+            },
+            "firefox": {
+              "version_added": "1"
+            },
+            "ie": {
+              "version_added": false
+            },
+            "safari": {
+              "version_added": false
+            }
+          },
+          "status": {
+            "experimental": false,
+            "standard_track": false,
+            "deprecated": true
           }
         }
       },
@@ -5092,9 +5130,9 @@
           }
         }
       },
-      "-moz-outline-radius": {
+      "-moz-outline-radius-bottomleft": {
         "__compat": {
-          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/-moz-outline-radius",
+          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/-moz-outline-radius-bottomleft",
           "support": {
             "chrome": {
               "version_added": false
@@ -5103,7 +5141,7 @@
               "version_added": false
             },
             "firefox": {
-              "version_added": "1.5"
+              "version_added": "1"
             },
             "ie": {
               "version_added": false
@@ -5119,9 +5157,9 @@
           }
         }
       },
-      "-moz-text-blink": {
+      "-moz-outline-radius-bottomright": {
         "__compat": {
-          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/-moz-text-blink",
+          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/-moz-outline-radius-bottomright",
           "support": {
             "chrome": {
               "version_added": false
@@ -5130,8 +5168,88 @@
               "version_added": false
             },
             "firefox": {
-              "version_added": "6",
-              "version_removed": "26"
+              "version_added": "1"
+            },
+            "ie": {
+              "version_added": false
+            },
+            "safari": {
+              "version_added": false
+            }
+          },
+          "status": {
+            "experimental": false,
+            "standard_track": false,
+            "deprecated": true
+          }
+        }
+      },
+      "-moz-outline-radius-topleft": {
+        "__compat": {
+          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/-moz-outline-radius-topleft",
+          "support": {
+            "chrome": {
+              "version_added": false
+            },
+            "edge": {
+              "version_added": false
+            },
+            "firefox": {
+              "version_added": "1"
+            },
+            "ie": {
+              "version_added": false
+            },
+            "safari": {
+              "version_added": false
+            }
+          },
+          "status": {
+            "experimental": false,
+            "standard_track": false,
+            "deprecated": true
+          }
+        }
+      },
+      "-moz-outline-radius-topright": {
+        "__compat": {
+          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/-moz-outline-radius-topright",
+          "support": {
+            "chrome": {
+              "version_added": false
+            },
+            "edge": {
+              "version_added": false
+            },
+            "firefox": {
+              "version_added": "1"
+            },
+            "ie": {
+              "version_added": false
+            },
+            "safari": {
+              "version_added": false
+            }
+          },
+          "status": {
+            "experimental": false,
+            "standard_track": false,
+            "deprecated": true
+          }
+        }
+      },
+      "-moz-outline-radius": {
+        "__compat": {
+          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/-moz-outline-radius",
+          "support": {
+            "chrome": {
+              "version_added": false
+            },
+            "edge": {
+              "version_added": false
+            },
+            "firefox": {
+              "version_added": "1"
             },
             "ie": {
               "version_added": false
@@ -5307,173 +5425,6 @@
           }
         }
       },
-      "-moz-window-shadow": {
-        "__compat": {
-          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/-moz-window-shadow",
-          "support": {
-            "chrome": {
-              "version_added": false
-            },
-            "edge": {
-              "version_added": false
-            },
-            "firefox": {
-              "version_added": "3.5",
-              "version_removed": "44",
-              "notes": [
-                "Supported only on macOS",
-                "In Firefox 44, the property was limited to usage in chrome code only."
-              ]
-            },
-            "ie": {
-              "version_added": false
-            },
-            "safari": {
-              "version_added": false
-            }
-          },
-          "status": {
-            "experimental": false,
-            "standard_track": false,
-            "deprecated": true
-          }
-        },
-        "default": {
-          "__compat": {
-            "support": {
-              "chrome": {
-                "version_added": false
-              },
-              "edge": {
-                "version_added": false
-              },
-              "firefox": {
-                "version_added": "3.5",
-                "version_removed": "44"
-              },
-              "ie": {
-                "version_added": false
-              },
-              "safari": {
-                "version_added": false
-              }
-            },
-            "status": {
-              "experimental": false,
-              "standard_track": false,
-              "deprecated": true
-            }
-          }
-        },
-        "menu": {
-          "__compat": {
-            "support": {
-              "chrome": {
-                "version_added": false
-              },
-              "edge": {
-                "version_added": false
-              },
-              "firefox": {
-                "version_added": "4",
-                "version_removed": "44"
-              },
-              "ie": {
-                "version_added": false
-              },
-              "safari": {
-                "version_added": false
-              }
-            },
-            "status": {
-              "experimental": false,
-              "standard_track": false,
-              "deprecated": true
-            }
-          }
-        },
-        "none": {
-          "__compat": {
-            "support": {
-              "chrome": {
-                "version_added": false
-              },
-              "edge": {
-                "version_added": false
-              },
-              "firefox": {
-                "version_added": "3.5",
-                "version_removed": "44"
-              },
-              "ie": {
-                "version_added": false
-              },
-              "safari": {
-                "version_added": false
-              }
-            },
-            "status": {
-              "experimental": false,
-              "standard_track": false,
-              "deprecated": true
-            }
-          }
-        },
-        "sheet": {
-          "__compat": {
-            "support": {
-              "chrome": {
-                "version_added": false
-              },
-              "edge": {
-                "version_added": false
-              },
-              "firefox": {
-                "version_added": "4",
-                "version_removed": "44"
-              },
-              "ie": {
-                "version_added": false
-              },
-              "safari": {
-                "version_added": false
-              }
-            },
-            "status": {
-              "experimental": false,
-              "standard_track": false,
-              "deprecated": true
-            }
-          }
-        },
-        "tooltip": {
-          "__compat": {
-            "support": {
-              "chrome": {
-                "version_added": false
-              },
-              "edge": {
-                "version_added": false
-              },
-              "firefox": {
-                "version_added": "4",
-                "version_removed": "44"
-              },
-              "ie": {
-                "version_added": false
-              },
-              "safari": {
-                "version_added": false
-              }
-            },
-            "status": {
-              "experimental": false,
-              "standard_track": false,
-              "deprecated": true
-            }
-          }
-        }
-      },
       "-ms-grid-column-align": {
         "__compat": {
           "support": {
@@ -5555,33 +5506,6 @@
           }
         }
       },
-      "-ms-grid-columns": {
-        "__compat": {
-          "support": {
-            "chrome": {
-              "version_added": false
-            },
-            "edge": {
-              "version_added": "12",
-              "version_removed": "16"
-            },
-            "firefox": {
-              "version_added": false
-            },
-            "ie": {
-              "version_added": "10"
-            },
-            "safari": {
-              "version_added": false
-            }
-          },
-          "status": {
-            "experimental": false,
-            "standard_track": false,
-            "deprecated": true
-          }
-        }
-      },
       "-ms-grid-row-align": {
         "__compat": {
           "support": {
@@ -5637,33 +5561,6 @@
         }
       },
       "-ms-grid-row": {
-        "__compat": {
-          "support": {
-            "chrome": {
-              "version_added": false
-            },
-            "edge": {
-              "version_added": "12",
-              "version_removed": "16"
-            },
-            "firefox": {
-              "version_added": false
-            },
-            "ie": {
-              "version_added": "10"
-            },
-            "safari": {
-              "version_added": false
-            }
-          },
-          "status": {
-            "experimental": false,
-            "standard_track": false,
-            "deprecated": true
-          }
-        }
-      },
-      "-ms-grid-rows": {
         "__compat": {
           "support": {
             "chrome": {
@@ -6054,6 +5951,33 @@
           }
         }
       },
+      "-webkit-tap-highlight-color": {
+        "__compat": {
+          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/-webkit-tap-highlight-color",
+          "support": {
+            "chrome": {
+              "version_added": "16"
+            },
+            "edge": {
+              "version_added": "12"
+            },
+            "firefox": {
+              "version_added": false
+            },
+            "ie": {
+              "version_added": false
+            },
+            "safari": {
+              "version_added": false
+            }
+          },
+          "status": {
+            "experimental": false,
+            "standard_track": false,
+            "deprecated": false
+          }
+        }
+      },
       "-webkit-text-fill-color": {
         "__compat": {
           "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/-webkit-text-fill-color",
@@ -6079,6 +6003,33 @@
                 ]
               }
             ],
+            "ie": {
+              "version_added": false
+            },
+            "safari": {
+              "version_added": "3"
+            }
+          },
+          "status": {
+            "experimental": false,
+            "standard_track": false,
+            "deprecated": false
+          }
+        }
+      },
+      "-webkit-text-security": {
+        "__compat": {
+          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/-webkit-text-security",
+          "support": {
+            "chrome": {
+              "version_added": "1"
+            },
+            "edge": {
+              "version_added": "79"
+            },
+            "firefox": {
+              "version_added": false
+            },
             "ie": {
               "version_added": false
             },
@@ -7035,7 +6986,7 @@
                 "prefix": "-ms-",
                 "version_added": "10",
                 "partial_implementation": true,
-                "notes": "IE10 and 11 have the property -ms-grid-column-align which acts in a similar way to align-self."
+                "notes": "Internet Explorer 10 and 11 have the property <code>-ms-grid-row-align</code>, which acts in a similar way to <code>align-self</code>."
               },
               "safari": {
                 "version_added": "10.1"
@@ -7080,10 +7031,10 @@
             "description": "<code>revert</code>",
             "support": {
               "chrome": {
-                "version_added": false
+                "version_added": "84"
               },
               "edge": {
-                "version_added": false
+                "version_added": "84"
               },
               "firefox": {
                 "version_added": "67"
@@ -7731,7 +7682,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": false
+                "version_added": "14"
               }
             },
             "status": {
@@ -7812,17 +7763,30 @@
         "__compat": {
           "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/appearance",
           "support": {
-            "chrome": {
-              "version_added": "1",
-              "partial_implementation": true,
-              "prefix": "-webkit-"
-            },
-            "edge": {
-              "version_added": "12",
-              "partial_implementation": true,
-              "prefix": "-webkit-"
-            },
+            "chrome": [
+              {
+                "version_added": "84"
+              },
+              {
+                "version_added": "1",
+                "partial_implementation": true,
+                "prefix": "-webkit-"
+              }
+            ],
+            "edge": [
+              {
+                "version_added": "84"
+              },
+              {
+                "version_added": "12",
+                "partial_implementation": true,
+                "prefix": "-webkit-"
+              }
+            ],
             "firefox": [
+              {
+                "version_added": "80"
+              },
               {
                 "version_added": "1",
                 "partial_implementation": true,
@@ -7856,7 +7820,7 @@
             }
           },
           "status": {
-            "experimental": true,
+            "experimental": false,
             "standard_track": true,
             "deprecated": false
           }
@@ -7865,13 +7829,13 @@
           "__compat": {
             "support": {
               "chrome": {
-                "version_added": false
+                "version_added": "83"
               },
               "edge": {
-                "version_added": false
+                "version_added": "83"
               },
               "firefox": {
-                "version_added": false
+                "version_added": "80"
               },
               "ie": {
                 "version_added": false
@@ -7881,62 +7845,100 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
           }
         },
-        "button": {
+        "compat-auto": {
           "__compat": {
+            "description": "<code>&lt;compat-auto&gt;</code> (compatibility values <code>searchfield</code>, <code>textarea</code>, <code>push-button</code>, <code>slider-horizontal</code>, <code>checkbox</code>, <code>radio</code>, <code>square-button</code>, <code>menulist</code>, <code>listbox</code>, <code>meter</code>, <code>progress-bar</code>, <code>button</code>)",
             "support": {
-              "chrome": {
-                "version_added": "1"
-              },
-              "edge": {
-                "version_added": "12"
-              },
-              "firefox": {
-                "version_added": "1"
-              },
+              "chrome": [
+                {
+                  "version_added": "83"
+                },
+                {
+                  "version_added": "1",
+                  "partial_implementation": true
+                }
+              ],
+              "edge": [
+                {
+                  "version_added": "83"
+                },
+                {
+                  "version_added": "12",
+                  "partial_implementation": true
+                }
+              ],
+              "firefox": [
+                {
+                  "version_added": "80"
+                },
+                {
+                  "version_added": "1",
+                  "partial_implementation": true
+                }
+              ],
               "ie": {
                 "version_added": false
               },
               "safari": {
-                "version_added": "3"
+                "version_added": "3",
+                "partial_implementation": true
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
           }
         },
-        "compat": {
+        "menulist-button": {
           "__compat": {
-            "description": "<code>&lt;compat&gt;</code> (compatibility values <code>searchfield</code>, <code>textarea</code>, <code>push-button</code>, <code>button-bevel</code>, <code>slider-horizontal</code>, <code>checkbox</code>, <code>radio</code>, <code>square-button</code>, <code>menulist</code>, <code>menulist-button</code>, <code>listbox</code>, <code>meter</code>, <code>progress-bar</code>)",
+            "description": "<code>menulist-button</code>",
             "support": {
-              "chrome": {
-                "version_added": "1"
-              },
-              "edge": {
-                "version_added": "12",
-                "partial_implementation": true
-              },
-              "firefox": {
-                "version_added": "1",
-                "partial_implementation": true
-              },
+              "chrome": [
+                {
+                  "version_added": "83"
+                },
+                {
+                  "version_added": "1",
+                  "partial_implementation": true
+                }
+              ],
+              "edge": [
+                {
+                  "version_added": "83"
+                },
+                {
+                  "version_added": "12",
+                  "partial_implementation": true
+                }
+              ],
+              "firefox": [
+                {
+                  "version_added": "80"
+                },
+                {
+                  "version_added": "1",
+                  "partial_implementation": true,
+                  "notes": "See <a href='https://bugzil.la/1481615'>bug 1481615</a>."
+                }
+              ],
               "ie": {
                 "version_added": false
               },
               "safari": {
-                "version_added": "3"
+                "version_added": "3",
+                "partial_implementation": true
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -7969,7 +7971,7 @@
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -7978,24 +7980,43 @@
         "textfield": {
           "__compat": {
             "support": {
-              "chrome": {
-                "version_added": "1"
-              },
-              "edge": {
-                "version_added": "12"
-              },
-              "firefox": {
-                "version_added": "1"
-              },
+              "chrome": [
+                {
+                  "version_added": "83"
+                },
+                {
+                  "version_added": "1",
+                  "partial_implementation": true
+                }
+              ],
+              "edge": [
+                {
+                  "version_added": "83"
+                },
+                {
+                  "version_added": "12",
+                  "partial_implementation": true
+                }
+              ],
+              "firefox": [
+                {
+                  "version_added": "80"
+                },
+                {
+                  "version_added": "1",
+                  "partial_implementation": true
+                }
+              ],
               "ie": {
                 "version_added": false
               },
               "safari": {
-                "version_added": "3"
+                "version_added": "3",
+                "partial_implementation": true
               }
             },
             "status": {
-              "experimental": true,
+              "experimental": false,
               "standard_track": true,
               "deprecated": false
             }
@@ -8007,30 +8028,39 @@
           "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/aspect-ratio",
           "support": {
             "chrome": {
-              "version_added": "79",
-              "partial_implementation": true,
-              "notes": "Chrome 79 adds internal support only for mapped values"
+              "version_added": "84",
+              "flags": [
+                {
+                  "type": "preference",
+                  "name": "#enable-experimental-web-platform-features",
+                  "value_to_set": "Enabled"
+                }
+              ]
             },
             "edge": {
-              "version_added": "79",
-              "partial_implementation": true,
-              "notes": "Edge 79 adds internal support only for mapped values"
+              "version_added": false
             },
             "firefox": [
               {
-                "version_added": "71",
+                "version_added": "83",
                 "partial_implementation": true,
-                "notes": "Firefox 71 adds internal support only for mapped values"
-              },
-              {
-                "version_added": "69",
-                "version_removed": "71",
-                "partial_implementation": true,
-                "notes": "Firefox 69 adds internal support only for mapped values",
+                "notes": "Firefox 83 implements aspect-ratio for flex items.",
                 "flags": [
                   {
                     "type": "preference",
-                    "name": "layout.css.width-and-height-map-to-aspect-ratio.enabled",
+                    "name": "layout.css.aspect-ratio.enabled",
+                    "value_to_set": "true"
+                  }
+                ]
+              },
+              {
+                "version_added": "81",
+                "partial_implementation": true,
+                "notes": "Firefox 81 implements aspect-ratio for blocks and replaced elements.",
+                "flags": [
+                  {
+                    "type": "preference",
+                    "name": "layout.css.aspect-ratio.enabled",
                     "value_to_set": "true"
                   }
                 ]
@@ -8044,49 +8074,9 @@
             }
           },
           "status": {
-            "experimental": true,
+            "experimental": false,
             "standard_track": true,
             "deprecated": false
-          }
-        },
-        "internal-value": {
-          "__compat": {
-            "description": "Internal mapping of width and height",
-            "support": {
-              "chrome": {
-                "version_added": "79"
-              },
-              "edge": {
-                "version_added": "79"
-              },
-              "firefox": [
-                {
-                  "version_added": "71"
-                },
-                {
-                  "version_added": "69",
-                  "version_removed": "71",
-                  "flags": [
-                    {
-                      "type": "preference",
-                      "name": "layout.css.width-and-height-map-to-aspect-ratio.enabled",
-                      "value_to_set": "true"
-                    }
-                  ]
-                }
-              ],
-              "ie": {
-                "version_added": false
-              },
-              "safari": {
-                "version_added": false
-              }
-            },
-            "status": {
-              "experimental": true,
-              "standard_track": true,
-              "deprecated": false
-            }
           }
         }
       },
@@ -8529,6 +8519,7 @@
         },
         "element": {
           "__compat": {
+            "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/element",
             "description": "<code>element()</code>",
             "support": {
               "chrome": {
@@ -14049,21 +14040,20 @@
                 "version_added": false
               },
               "edge": {
-                "version_added": "12",
-                "version_removed": "79"
+                "version_added": false
               },
               "firefox": {
-                "version_added": "13"
+                "version_added": false
               },
               "ie": {
-                "version_added": "10"
+                "version_added": false
               },
               "safari": {
-                "version_added": "8"
+                "version_added": false
               }
             },
             "status": {
-              "experimental": false,
+              "experimental": true,
               "standard_track": true,
               "deprecated": false
             }
@@ -14077,10 +14067,10 @@
             "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/column-gap",
             "support": {
               "chrome": {
-                "version_added": false
+                "version_added": "84"
               },
               "edge": {
-                "version_added": false
+                "version_added": "84"
               },
               "firefox": {
                 "version_added": "63"
@@ -14089,8 +14079,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": "3",
-                "prefix": "-webkit-"
+                "version_added": false
               }
             },
             "status": {
@@ -14111,11 +14100,11 @@
                 },
                 {
                   "version_added": "57",
-                  "alternative_name": "grid-gap"
+                  "alternative_name": "grid-column-gap"
                 },
                 {
                   "version_added": "29",
-                  "alternative_name": "grid-gap",
+                  "alternative_name": "grid-column-gap",
                   "flags": [
                     {
                       "type": "preference",
@@ -14130,7 +14119,7 @@
                 },
                 {
                   "version_added": "16",
-                  "alternative_name": "grid-gap"
+                  "alternative_name": "grid-column-gap"
                 }
               ],
               "firefox": [
@@ -14139,12 +14128,12 @@
                 },
                 {
                   "version_added": "52",
-                  "alternative_name": "grid-gap"
+                  "alternative_name": "grid-column-gap"
                 },
                 {
                   "version_added": "40",
                   "version_removed": "59",
-                  "alternative_name": "grid-gap",
+                  "alternative_name": "grid-column-gap",
                   "flags": [
                     {
                       "type": "preference",
@@ -14157,10 +14146,15 @@
               "ie": {
                 "version_added": false
               },
-              "safari": {
-                "version_added": "10.1",
-                "alternative_name": "grid-gap"
-              }
+              "safari": [
+                {
+                  "version_added": "12.1"
+                },
+                {
+                  "version_added": "10.1",
+                  "alternative_name": "grid-column-gap"
+                }
+              ]
             },
             "status": {
               "experimental": false,
@@ -14885,10 +14879,10 @@
           "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/counter-set",
           "support": {
             "chrome": {
-              "version_added": false
+              "version_added": "85"
             },
             "edge": {
-              "version_added": false
+              "version_added": "85"
             },
             "firefox": {
               "version_added": "68"
@@ -16954,10 +16948,15 @@
               "ie": {
                 "version_added": "11"
               },
-              "safari": {
-                "prefix": "-webkit-",
-                "version_added": "7"
-              }
+              "safari": [
+                {
+                  "version_added": "9"
+                },
+                {
+                  "prefix": "-webkit-",
+                  "version_added": "7"
+                }
+              ]
             },
             "status": {
               "experimental": false,
@@ -17711,7 +17710,7 @@
               },
               {
                 "version_added": "6",
-                "prefix": "-webkit"
+                "prefix": "-webkit-"
               }
             ]
           },
@@ -18970,10 +18969,10 @@
             "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/gap",
             "support": {
               "chrome": {
-                "version_added": false
+                "version_added": "84"
               },
               "edge": {
-                "version_added": false
+                "version_added": "84"
               },
               "firefox": {
                 "version_added": "63"
@@ -19758,9 +19757,16 @@
                 ]
               }
             ],
-            "edge": {
-              "version_added": "16"
-            },
+            "edge": [
+              {
+                "version_added": "16"
+              },
+              {
+                "alternative_name": "-ms-grid-columns",
+                "version_added": "12",
+                "version_removed": "79"
+              }
+            ],
             "firefox": [
               {
                 "version_added": "52"
@@ -19778,7 +19784,8 @@
               }
             ],
             "ie": {
-              "version_added": false
+              "version_added": "10",
+              "alternative_name": "-ms-grid-columns"
             },
             "safari": {
               "version_added": "10.1"
@@ -20018,9 +20025,16 @@
                 ]
               }
             ],
-            "edge": {
-              "version_added": "16"
-            },
+            "edge": [
+              {
+                "version_added": "16"
+              },
+              {
+                "alternative_name": "-ms-grid-rows",
+                "version_added": "12",
+                "version_removed": "79"
+              }
+            ],
             "firefox": [
               {
                 "version_added": "52"
@@ -20038,7 +20052,8 @@
               }
             ],
             "ie": {
-              "version_added": false
+              "version_added": "10",
+              "alternative_name": "-ms-grid-rows"
             },
             "safari": {
               "version_added": "10.1"
@@ -21643,7 +21658,7 @@
               "version_added": false
             },
             "safari": {
-              "version_added": false
+              "version_added": "13.1"
             }
           },
           "status": {
@@ -22872,7 +22887,10 @@
                 "version_added": "45"
               },
               "ie": {
-                "version_added": false
+                "prefix": "-ms-",
+                "version_added": "10",
+                "partial_implementation": true,
+                "notes": "Internet Explorer 10 and 11 have the property <code>-ms-grid-column-align</code>, which acts in a similar way to <code>justify-self</code>."
               },
               "safari": {
                 "version_added": "10.1"
@@ -22996,6 +23014,9 @@
               }
             ],
             "safari": [
+              {
+                "version_added": "11"
+              },
               {
                 "version_added": "3",
                 "prefix": "-webkit-"
@@ -27566,6 +27587,9 @@
               },
               "safari": [
                 {
+                  "version_added": "11"
+                },
+                {
                   "prefix": "-webkit-",
                   "version_added": "6.1"
                 },
@@ -27721,11 +27745,11 @@
             },
             "safari": [
               {
-                "prefix": "-webkit-",
-                "version_added": "10.1"
+                "version_added": "12.1"
               },
               {
-                "version_added": "12.1"
+                "prefix": "-webkit-",
+                "version_added": "10.1"
               }
             ]
           },
@@ -27890,6 +27914,9 @@
               },
               "safari": [
                 {
+                  "version_added": "11"
+                },
+                {
                   "prefix": "-webkit-",
                   "version_added": "6.1"
                 },
@@ -27942,6 +27969,9 @@
               },
               "safari": [
                 {
+                  "version_added": "11"
+                },
+                {
                   "prefix": "-webkit-",
                   "version_added": "6.1"
                 },
@@ -27993,6 +28023,9 @@
                 "version_added": false
               },
               "safari": [
+                {
+                  "version_added": "11"
+                },
                 {
                   "prefix": "-webkit-",
                   "version_added": "6.1"
@@ -28261,6 +28294,9 @@
                 "version_added": false
               },
               "safari": [
+                {
+                  "version_added": "11"
+                },
                 {
                   "prefix": "-webkit-",
                   "version_added": "6.1"
@@ -29983,9 +30019,16 @@
               "edge": {
                 "version_added": false
               },
-              "firefox": {
-                "version_added": false
-              },
+              "firefox": [
+                {
+                  "version_added": "81"
+                },
+                {
+                  "alternative_name": "-moz-hidden-unscrollable",
+                  "version_added": "3.5",
+                  "version_removed": "81"
+                }
+              ],
               "ie": {
                 "version_added": false
               },
@@ -30012,7 +30055,7 @@
               "version_added": "12"
             },
             "firefox": {
-              "version_added": "1.5"
+              "version_added": "3.5"
             },
             "ie": [
               {
@@ -30043,9 +30086,16 @@
               "edge": {
                 "version_added": false
               },
-              "firefox": {
-                "version_added": false
-              },
+              "firefox": [
+                {
+                  "version_added": "81"
+                },
+                {
+                  "alternative_name": "-moz-hidden-unscrollable",
+                  "version_added": "3.5",
+                  "version_removed": "81"
+                }
+              ],
               "ie": {
                 "version_added": false
               },
@@ -30099,9 +30149,16 @@
               "edge": {
                 "version_added": false
               },
-              "firefox": {
-                "version_added": false
-              },
+              "firefox": [
+                {
+                  "version_added": "81"
+                },
+                {
+                  "alternative_name": "-moz-hidden-unscrollable",
+                  "version_added": "1.5",
+                  "version_removed": "81"
+                }
+              ],
               "ie": {
                 "version_added": false
               },
@@ -30161,7 +30218,8 @@
               "version_added": false
             },
             "safari": {
-              "version_added": false
+              "version_added": false,
+              "notes": "See <a href='https://webkit.org/b/176454'>bug 176454</a>."
             }
           },
           "status": {
@@ -30188,7 +30246,8 @@
               "version_added": false
             },
             "safari": {
-              "version_added": false
+              "version_added": false,
+              "notes": "See <a href='https://webkit.org/b/176454'>bug 176454</a>."
             }
           },
           "status": {
@@ -30217,7 +30276,8 @@
               "version_added": false
             },
             "safari": {
-              "version_added": false
+              "version_added": false,
+              "notes": "See <a href='https://webkit.org/b/176454'>bug 176454</a>."
             }
           },
           "status": {
@@ -30246,7 +30306,8 @@
               "version_added": false
             },
             "safari": {
-              "version_added": false
+              "version_added": false,
+              "notes": "See <a href='https://webkit.org/b/176454'>bug 176454</a>."
             }
           },
           "status": {
@@ -30275,7 +30336,8 @@
               "version_added": false
             },
             "safari": {
-              "version_added": false
+              "version_added": false,
+              "notes": "See <a href='https://webkit.org/b/176454'>bug 176454</a>."
             }
           },
           "status": {
@@ -31155,7 +31217,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": false
+                "version_added": "11"
               }
             },
             "status": {
@@ -31183,7 +31245,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": false
+                "version_added": "11"
               }
             },
             "status": {
@@ -31657,10 +31719,10 @@
             "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/row-gap",
             "support": {
               "chrome": {
-                "version_added": false
+                "version_added": "84"
               },
               "edge": {
-                "version_added": false
+                "version_added": "84"
               },
               "firefox": {
                 "version_added": "63"
@@ -31736,10 +31798,15 @@
               "ie": {
                 "version_added": false
               },
-              "safari": {
-                "version_added": "10.1",
-                "alternative_name": "grid-row-gap"
-              }
+              "safari": [
+                {
+                  "version_added": "12.1"
+                },
+                {
+                  "version_added": "10.1",
+                  "alternative_name": "grid-row-gap"
+                }
+              ]
             },
             "status": {
               "experimental": false,
@@ -31891,7 +31958,7 @@
               "version_added": false
             },
             "safari": {
-              "version_added": false
+              "version_added": "14"
             }
           },
           "status": {
@@ -33195,10 +33262,15 @@
             "ie": {
               "version_added": false
             },
-            "safari": {
-              "prefix": "-webkit-",
-              "version_added": "10.1"
-            }
+            "safari": [
+              {
+                "version_added": "10.1"
+              },
+              {
+                "prefix": "-webkit-",
+                "version_added": "10.1"
+              }
+            ]
           },
           "status": {
             "experimental": false,
@@ -33829,6 +33901,10 @@
             },
             "firefox": [
               {
+                "version_added": "81",
+                "notes": "Before version 81, Firefox implemented the property as animatable. This was corrected to spec in 81."
+              },
+              {
                 "version_added": "48",
                 "notes": "Before version 48, Firefox did not implement layout support for tate-chū-yoko."
               },
@@ -33874,7 +33950,7 @@
               "partial_implementation": true,
               "alternative_name": "-webkit-text-combine",
               "version_added": "5.1",
-              "notes": "This property was initially named <code>-webkit-text-combine</code> according to a <a href='http://www.w3.org/TR/2011/WD-css3-writing-modes-20110531/#text-combine'>2011 version of the CSS3 Writing Modes specification</a>, supporting the values <code>none</code> and <code>horizontal</code> without digits."
+              "notes": "This property was initially named <code>-webkit-text-combine</code> according to a <a href='http://www.w3.org/TR/2011/WD-css3-writing-modes-20110531/#text-combine'>2011 version of the CSS3 Writing Modes specification</a>, supporting the values <code>none</code> and <code>horizontal</code> without <code>digits</code>."
             }
           },
           "status": {
@@ -34762,10 +34838,15 @@
             "ie": {
               "version_added": false
             },
-            "safari": {
-              "prefix": "-webkit-",
-              "version_added": "5.1"
-            }
+            "safari": [
+              {
+                "version_added": "14"
+              },
+              {
+                "prefix": "-webkit-",
+                "version_added": "5.1"
+              }
+            ]
           },
           "status": {
             "experimental": false,
@@ -35406,7 +35487,8 @@
           "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/text-underline-offset",
           "support": {
             "chrome": {
-              "version_added": false
+              "version_added": false,
+              "notes": "See Chrome Platform Status entry for <a href='https://chromestatus.com/feature/5747636764147712'>text-decoration-thickness, text-underline-offset and from-font keyword for text-underline-position</a>."
             },
             "edge": {
               "version_added": false
@@ -35488,7 +35570,7 @@
                 "version_added": "12.1"
               },
               {
-                "prefix": "-webkit",
+                "prefix": "-webkit-",
                 "version_added": "9"
               }
             ]
@@ -36653,7 +36735,7 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": false
+                "version_added": "14"
               }
             },
             "status": {
@@ -37058,12 +37140,12 @@
                 "version_added": "69"
               },
               {
-                "prefix": "-moz-",
-                "version_added": "1"
-              },
-              {
                 "prefix": "-webkit-",
                 "version_added": "49"
+              },
+              {
+                "prefix": "-moz-",
+                "version_added": "1"
               },
               {
                 "prefix": "-webkit-",
@@ -37379,7 +37461,34 @@
                 "version_added": false
               },
               "safari": {
-                "version_added": false
+                "version_added": "13.1"
+              }
+            },
+            "status": {
+              "experimental": false,
+              "standard_track": true,
+              "deprecated": false
+            }
+          }
+        },
+        "nowrap": {
+          "__compat": {
+            "description": "<code>nowrap</code>",
+            "support": {
+              "chrome": {
+                "version_added": "1"
+              },
+              "edge": {
+                "version_added": "12"
+              },
+              "firefox": {
+                "version_added": "1"
+              },
+              "ie": {
+                "version_added": "5.5"
+              },
+              "safari": {
+                "version_added": "1"
               }
             },
             "status": {
@@ -38120,11 +38229,17 @@
                 ]
               }
             ],
-            "ie": {
-              "prefix": "-ms-",
-              "version_added": "9",
-              "notes": "Internet Explorer's implementation differs from the specification."
-            },
+            "ie": [
+              {
+                "version_added": "9",
+                "notes": "Internet Explorer's implementation differs from the specification."
+              },
+              {
+                "prefix": "-ms-",
+                "version_added": "9",
+                "notes": "Internet Explorer's implementation differs from the specification."
+              }
+            ],
             "safari": [
               {
                 "version_added": "10.1"
@@ -38209,7 +38324,6 @@
                 "version_added": "43"
               },
               "ie": {
-                "prefix": "-ms-",
                 "version_added": "9"
               },
               "safari": {
@@ -38337,6 +38451,34 @@
       }
     },
     "selectors": {
+      "-moz-broken": {
+        "__compat": {
+          "description": "<code>:-moz-broken</code>",
+          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/:-moz-broken",
+          "support": {
+            "chrome": {
+              "version_added": false
+            },
+            "edge": {
+              "version_added": false
+            },
+            "firefox": {
+              "version_added": "3"
+            },
+            "ie": {
+              "version_added": false
+            },
+            "safari": {
+              "version_added": false
+            }
+          },
+          "status": {
+            "experimental": false,
+            "standard_track": false,
+            "deprecated": false
+          }
+        }
+      },
       "-moz-color-swatch": {
         "__compat": {
           "description": "<code>::-moz-color-swatch</code>",
@@ -38362,35 +38504,6 @@
             "experimental": false,
             "standard_track": false,
             "deprecated": false
-          }
-        }
-      },
-      "-moz-full-screen-ancestor": {
-        "__compat": {
-          "description": "<code>:-moz-full-screen-ancestor</code>",
-          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/:-moz-full-screen-ancestor",
-          "support": {
-            "chrome": {
-              "version_added": false
-            },
-            "edge": {
-              "version_added": false
-            },
-            "firefox": {
-              "version_added": "10",
-              "version_removed": "50"
-            },
-            "ie": {
-              "version_added": false
-            },
-            "safari": {
-              "version_added": false
-            }
-          },
-          "status": {
-            "experimental": false,
-            "standard_track": false,
-            "deprecated": true
           }
         }
       },
@@ -38619,305 +38732,6 @@
           }
         }
       },
-      "-moz-system-metric": {
-        "__compat": {
-          "description": "<code>:-moz-system-metric()</code>",
-          "support": {
-            "chrome": {
-              "version_added": false
-            },
-            "edge": {
-              "version_added": false
-            },
-            "firefox": {
-              "version_added": "3",
-              "version_removed": "58",
-              "notes": "Internal only since Firefox 58 (See <a href='https://bugzil.la/1396066'>bug 1396066</a>)."
-            },
-            "ie": {
-              "version_added": false
-            },
-            "safari": {
-              "version_added": false
-            }
-          },
-          "status": {
-            "experimental": false,
-            "standard_track": false,
-            "deprecated": true
-          }
-        },
-        "images-in-menus": {
-          "__compat": {
-            "description": "<code>:-moz-system-metric(images-in-menus)</code>",
-            "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/:-moz-system-metric/images-in-menus",
-            "support": {
-              "chrome": {
-                "version_added": false
-              },
-              "edge": {
-                "version_added": false
-              },
-              "firefox": {
-                "version_added": "3",
-                "version_removed": "58",
-                "notes": "Internal only since Firefox 58 (See <a href='https://bugzil.la/1396066'>bug 1396066</a>)."
-              },
-              "ie": {
-                "version_added": false
-              },
-              "safari": {
-                "version_added": false
-              }
-            },
-            "status": {
-              "experimental": false,
-              "standard_track": false,
-              "deprecated": true
-            }
-          }
-        },
-        "mac-graphite-theme": {
-          "__compat": {
-            "description": "<code>:-moz-system-metric(mac-graphite-theme)</code>",
-            "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/:-moz-system-metric/mac-graphite-theme",
-            "support": {
-              "chrome": {
-                "version_added": false
-              },
-              "edge": {
-                "version_added": false
-              },
-              "firefox": {
-                "version_added": "3",
-                "version_removed": "58",
-                "notes": "Internal only since Firefox 58 (See <a href='https://bugzil.la/1396066'>bug 1396066</a>)."
-              },
-              "ie": {
-                "version_added": false
-              },
-              "safari": {
-                "version_added": false
-              }
-            },
-            "status": {
-              "experimental": false,
-              "standard_track": false,
-              "deprecated": true
-            }
-          }
-        },
-        "scrollbar-end-backward": {
-          "__compat": {
-            "description": "<code>:-moz-system-metric(scrollbar-end-backward)</code>",
-            "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/:-moz-system-metric/scrollbar-end-backward",
-            "support": {
-              "chrome": {
-                "version_added": false
-              },
-              "edge": {
-                "version_added": false
-              },
-              "firefox": {
-                "version_added": "3",
-                "version_removed": "58",
-                "notes": "Internal only since Firefox 58 (See <a href='https://bugzil.la/1396066'>bug 1396066</a>)."
-              },
-              "ie": {
-                "version_added": false
-              },
-              "safari": {
-                "version_added": false
-              }
-            },
-            "status": {
-              "experimental": false,
-              "standard_track": false,
-              "deprecated": true
-            }
-          }
-        },
-        "scrollbar-end-forward": {
-          "__compat": {
-            "description": "<code>:-moz-system-metric(scrollbar-end-forward)</code>",
-            "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/:-moz-system-metric/scrollbar-end-forward",
-            "support": {
-              "chrome": {
-                "version_added": false
-              },
-              "edge": {
-                "version_added": false
-              },
-              "firefox": {
-                "version_added": "3",
-                "version_removed": "58",
-                "notes": "Internal only since Firefox 58 (See <a href='https://bugzil.la/1396066'>bug 1396066</a>)."
-              },
-              "ie": {
-                "version_added": false
-              },
-              "safari": {
-                "version_added": false
-              }
-            },
-            "status": {
-              "experimental": false,
-              "standard_track": false,
-              "deprecated": true
-            }
-          }
-        },
-        "scrollbar-start-backward": {
-          "__compat": {
-            "description": "<code>:-moz-system-metric(scrollbar-start-backward)</code>",
-            "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/:-moz-system-metric/scrollbar-start-backward",
-            "support": {
-              "chrome": {
-                "version_added": false
-              },
-              "edge": {
-                "version_added": false
-              },
-              "firefox": {
-                "version_added": "3",
-                "version_removed": "58",
-                "notes": "Internal only since Firefox 58 (See <a href='https://bugzil.la/1396066'>bug 1396066</a>)."
-              },
-              "ie": {
-                "version_added": false
-              },
-              "safari": {
-                "version_added": false
-              }
-            },
-            "status": {
-              "experimental": false,
-              "standard_track": false,
-              "deprecated": true
-            }
-          }
-        },
-        "scrollbar-start-forward": {
-          "__compat": {
-            "description": "<code>:-moz-system-metric(scrollbar-start-forward)</code>",
-            "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/:-moz-system-metric/scrollbar-start-forward",
-            "support": {
-              "chrome": {
-                "version_added": false
-              },
-              "edge": {
-                "version_added": false
-              },
-              "firefox": {
-                "version_added": "3",
-                "version_removed": "58",
-                "notes": "Internal only since Firefox 58 (See <a href='https://bugzil.la/1396066'>bug 1396066</a>)."
-              },
-              "ie": {
-                "version_added": false
-              },
-              "safari": {
-                "version_added": false
-              }
-            },
-            "status": {
-              "experimental": false,
-              "standard_track": false,
-              "deprecated": true
-            }
-          }
-        },
-        "scrollbar-thumb-proportional": {
-          "__compat": {
-            "description": "<code>:-moz-system-metric(scrollbar-thumb-proportional)</code>",
-            "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/:-moz-system-metric/scrollbar-thumb-proportional",
-            "support": {
-              "chrome": {
-                "version_added": false
-              },
-              "edge": {
-                "version_added": false
-              },
-              "firefox": {
-                "version_added": "3",
-                "version_removed": "58",
-                "notes": "Internal only since Firefox 58 (See <a href='https://bugzil.la/1396066'>bug 1396066</a>)."
-              },
-              "ie": {
-                "version_added": false
-              },
-              "safari": {
-                "version_added": false
-              }
-            },
-            "status": {
-              "experimental": false,
-              "standard_track": false,
-              "deprecated": true
-            }
-          }
-        },
-        "touch-enabled": {
-          "__compat": {
-            "description": "<code>:-moz-system-metric(touch-enabled)</code>",
-            "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/:-moz-system-metric/touch-enabled",
-            "support": {
-              "chrome": {
-                "version_added": false
-              },
-              "edge": {
-                "version_added": false
-              },
-              "firefox": {
-                "version_added": "3",
-                "version_removed": "58",
-                "notes": "Internal only since Firefox 58 (See <a href='https://bugzil.la/1396066'>bug 1396066</a>)."
-              },
-              "ie": {
-                "version_added": false
-              },
-              "safari": {
-                "version_added": false
-              }
-            },
-            "status": {
-              "experimental": false,
-              "standard_track": false,
-              "deprecated": true
-            }
-          }
-        },
-        "windows-default-theme": {
-          "__compat": {
-            "description": "<code>:-moz-system-metric(windows-default-theme)</code>",
-            "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/:-moz-system-metric/windows-default-theme",
-            "support": {
-              "chrome": {
-                "version_added": false
-              },
-              "edge": {
-                "version_added": false
-              },
-              "firefox": {
-                "version_added": "3",
-                "version_removed": "58",
-                "notes": "Internal only since Firefox 58 (See <a href='https://bugzil.la/1396066'>bug 1396066</a>)."
-              },
-              "ie": {
-                "version_added": false
-              },
-              "safari": {
-                "version_added": false
-              }
-            },
-            "status": {
-              "experimental": false,
-              "standard_track": false,
-              "deprecated": true
-            }
-          }
-        }
-      },
       "-moz-ui-invalid": {
         "__compat": {
           "description": "<code>:-moz-ui-invalid</code>",
@@ -39002,282 +38816,10 @@
           }
         }
       },
-      "-ms-browse": {
-        "__compat": {
-          "description": "<code>::-ms-browse</code>",
-          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/::-ms-browse",
-          "support": {
-            "chrome": {
-              "version_added": false
-            },
-            "edge": {
-              "version_added": "12",
-              "version_removed": "79"
-            },
-            "firefox": {
-              "version_added": false
-            },
-            "ie": {
-              "version_added": "10"
-            },
-            "safari": {
-              "version_added": false
-            }
-          },
-          "status": {
-            "experimental": false,
-            "standard_track": false,
-            "deprecated": false
-          }
-        }
-      },
-      "-ms-check": {
-        "__compat": {
-          "description": "<code>::-ms-check</code>",
-          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/::-ms-check",
-          "support": {
-            "chrome": {
-              "version_added": false
-            },
-            "edge": {
-              "version_added": "12",
-              "version_removed": "79"
-            },
-            "firefox": {
-              "version_added": false
-            },
-            "ie": {
-              "version_added": "10"
-            },
-            "safari": {
-              "version_added": false
-            }
-          },
-          "status": {
-            "experimental": false,
-            "standard_track": false,
-            "deprecated": false
-          }
-        }
-      },
-      "-ms-clear": {
-        "__compat": {
-          "description": "<code>::-ms-clear</code>",
-          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/::-ms-clear",
-          "support": {
-            "chrome": {
-              "version_added": false
-            },
-            "edge": {
-              "version_added": "12",
-              "notes": "In an <code>&lt;input type='text'&gt;</code> element styled with <code>text-align: right</code>, if the clear button is shown, it will clip off the right edge of the text value of the <code>&lt;input type='text'&gt;</code> element. A workaround is to hide the clear button using <code>display: none</code>.",
-              "version_removed": "79"
-            },
-            "firefox": {
-              "version_added": false
-            },
-            "ie": {
-              "version_added": "10",
-              "notes": "In an <code>&lt;input type='text'&gt;</code> element styled with <code>text-align: right</code>, if the clear button is shown, it will clip off the right edge of the text value of the <code>&lt;input type='text'&gt;</code> element. A workaround is to hide the clear button using <code>display: none</code>."
-            },
-            "safari": {
-              "version_added": false
-            }
-          },
-          "status": {
-            "experimental": false,
-            "standard_track": false,
-            "deprecated": false
-          }
-        }
-      },
-      "-ms-fill-lower": {
-        "__compat": {
-          "description": "<code>::-ms-fill-lower</code>",
-          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/::-ms-fill-lower",
-          "support": {
-            "chrome": {
-              "version_added": false
-            },
-            "edge": {
-              "version_added": "12",
-              "version_removed": "79"
-            },
-            "firefox": {
-              "version_added": false
-            },
-            "ie": {
-              "version_added": "10"
-            },
-            "safari": {
-              "version_added": false
-            }
-          },
-          "status": {
-            "experimental": false,
-            "standard_track": false,
-            "deprecated": false
-          }
-        }
-      },
-      "-ms-fill-upper": {
-        "__compat": {
-          "description": "<code>::-ms-fill-upper</code>",
-          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/::-ms-fill-upper",
-          "support": {
-            "chrome": {
-              "version_added": false
-            },
-            "edge": {
-              "version_added": "12",
-              "version_removed": "79"
-            },
-            "firefox": {
-              "version_added": false
-            },
-            "ie": {
-              "version_added": "10"
-            },
-            "safari": {
-              "version_added": false
-            }
-          },
-          "status": {
-            "experimental": false,
-            "standard_track": false,
-            "deprecated": false
-          }
-        }
-      },
-      "-ms-fill": {
-        "__compat": {
-          "description": "<code>::-ms-fill</code>",
-          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/::-ms-fill",
-          "support": {
-            "chrome": {
-              "version_added": false
-            },
-            "edge": {
-              "version_added": "12",
-              "version_removed": "79"
-            },
-            "firefox": {
-              "version_added": false
-            },
-            "ie": {
-              "version_added": "10"
-            },
-            "safari": {
-              "version_added": false
-            }
-          },
-          "status": {
-            "experimental": false,
-            "standard_track": false,
-            "deprecated": false
-          }
-        }
-      },
-      "-ms-reveal": {
-        "__compat": {
-          "description": "<code>::-ms-reveal</code>",
-          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/::-ms-reveal",
-          "support": {
-            "chrome": {
-              "version_added": false
-            },
-            "edge": {
-              "version_added": "12",
-              "version_removed": "79"
-            },
-            "firefox": {
-              "version_added": false
-            },
-            "ie": {
-              "version_added": "10"
-            },
-            "safari": {
-              "version_added": false
-            }
-          },
-          "status": {
-            "experimental": false,
-            "standard_track": false,
-            "deprecated": false
-          }
-        }
-      },
-      "-ms-value": {
-        "__compat": {
-          "description": "<code>::-ms-value</code>",
-          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/::-ms-value",
-          "support": {
-            "chrome": {
-              "version_added": false
-            },
-            "edge": [
-              {
-                "version_added": "16",
-                "version_removed": "79"
-              },
-              {
-                "version_added": "12",
-                "version_removed": "16",
-                "partial_implementation": true,
-                "notes": "Edge 12-15 do not render the <code>color</code> property on <code>&lt;input&gt;</code> elements with a pre-filled <code>value</code> until the user selects a range of text or changes the input's value."
-              }
-            ],
-            "firefox": {
-              "version_added": false
-            },
-            "ie": {
-              "version_added": "10",
-              "partial_implementation": true,
-              "notes": "IE 10-11 do not render the <code>color</code> property on <code>&lt;input&gt;</code> elements with a pre-filled <code>value</code> until the user selects a range of text or changes the input's value."
-            },
-            "safari": {
-              "version_added": false
-            }
-          },
-          "status": {
-            "experimental": false,
-            "standard_track": false,
-            "deprecated": false
-          }
-        }
-      },
       "-webkit-autofill": {
         "__compat": {
           "description": "<code>:-webkit-autofill</code>",
           "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/:-webkit-autofill",
-          "support": {
-            "chrome": {
-              "version_added": "1"
-            },
-            "edge": {
-              "version_added": "79"
-            },
-            "firefox": {
-              "version_added": false
-            },
-            "ie": {
-              "version_added": false
-            },
-            "safari": {
-              "version_added": "3"
-            }
-          },
-          "status": {
-            "experimental": false,
-            "standard_track": false,
-            "deprecated": false
-          }
-        }
-      },
-      "-webkit-file-upload-button": {
-        "__compat": {
-          "description": "<code>::-webkit-file-upload-button</code>",
-          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/::-webkit-file-upload-button",
           "support": {
             "chrome": {
               "version_added": "1"
@@ -40382,17 +39924,17 @@
           "support": {
             "chrome": {
               "version_added": "1",
-              "notes": "On macOS, styling <code>&lt;option&rt;</code> elements has no effect."
+              "notes": "On macOS, styling <code>&lt;option&gt;</code> elements has no effect."
             },
             "edge": {
               "version_added": "12",
-              "notes": "On macOS, styling <code>&lt;option&rt;</code> elements has no effect."
+              "notes": "On macOS, styling <code>&lt;option&gt;</code> elements has no effect."
             },
             "firefox": {
               "version_added": "1",
               "notes": [
-                "From Firefox 56, <code>&lt;option&rt;</code> elements cannot be styled.",
-                "On macOS, styling <code>&lt;option&rt;</code> elements has no effect."
+                "From Firefox 56, <code>&lt;option&gt;</code> elements cannot be styled.",
+                "On macOS, styling <code>&lt;option&gt;</code> elements has no effect."
               ]
             },
             "ie": {
@@ -40400,7 +39942,7 @@
             },
             "safari": {
               "version_added": "3.1",
-              "notes": "Styling <code>&lt;option&rt;</code> elements has no effect."
+              "notes": "Styling <code>&lt;option&gt;</code> elements has no effect."
             }
           },
           "status": {
@@ -40818,6 +40360,52 @@
           }
         }
       },
+      "file-selector-button": {
+        "__compat": {
+          "description": "<code>::file-selector-button</code>",
+          "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/::file-selector-button",
+          "support": {
+            "chrome": [
+              {
+                "version_added": false
+              },
+              {
+                "version_added": "1",
+                "alternative_name": "::-webkit-file-upload-button"
+              }
+            ],
+            "edge": [
+              {
+                "version_added": false
+              },
+              {
+                "version_added": "79",
+                "alternative_name": "::-webkit-file-upload-button"
+              }
+            ],
+            "firefox": {
+              "version_added": "82"
+            },
+            "ie": {
+              "version_added": false
+            },
+            "safari": [
+              {
+                "version_added": false
+              },
+              {
+                "version_added": "3",
+                "alternative_name": "::-webkit-file-upload-button"
+              }
+            ]
+          },
+          "status": {
+            "experimental": false,
+            "standard_track": true,
+            "deprecated": false
+          }
+        }
+      },
       "first-child": {
         "__compat": {
           "description": "<code>:first-child</code>",
@@ -41088,16 +40676,21 @@
           "description": "<code>:focus-visible</code>",
           "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/:focus-visible",
           "support": {
-            "chrome": {
-              "version_added": "67",
-              "flags": [
-                {
-                  "name": "#enable-experimental-web-platform-features",
-                  "type": "preference",
-                  "value_to_set": "enabled"
-                }
-              ]
-            },
+            "chrome": [
+              {
+                "version_added": "86"
+              },
+              {
+                "version_added": "67",
+                "flags": [
+                  {
+                    "name": "#enable-experimental-web-platform-features",
+                    "type": "preference",
+                    "value_to_set": "enabled"
+                  }
+                ]
+              }
+            ],
             "edge": {
               "version_added": "79",
               "flags": [
@@ -41665,7 +41258,7 @@
         },
         "checkbox": {
           "__compat": {
-            "description": "<code>type=&quot;checkbox&quot;</code>",
+            "description": "Applies to <code>&lt;input type=&quot;checkbox&quot;&gt;</code> elements",
             "support": {
               "chrome": {
                 "version_added": "1"
@@ -41692,7 +41285,7 @@
         },
         "progress": {
           "__compat": {
-            "description": "<a href='https://developer.mozilla.org/docs/Web/HTML/Element/progress'><code>&lt;progress&gt;</code></a>",
+            "description": "Applies to <code>&lt;progress&gt;</code> elements",
             "support": {
               "chrome": {
                 "version_added": "6"
@@ -41719,7 +41312,7 @@
         },
         "radio": {
           "__compat": {
-            "description": "<code>type=&quot;radio&quot;</code>",
+            "description": "Applies to <code>&lt;input type=&quot;radio&quot;&gt;</code> elements",
             "support": {
               "chrome": {
                 "version_added": "39"
@@ -41775,7 +41368,7 @@
         },
         "form": {
           "__compat": {
-            "description": "Applies to <a href='https://developer.mozilla.org/docs/Web/HTML/Element/form'>&lt;form&gt;</a> elements",
+            "description": "Applies to <code>&lt;form&gt;</code> elements",
             "support": {
               "chrome": {
                 "version_added": "40"
@@ -41812,8 +41405,8 @@
                 "flags": [
                   {
                     "type": "preference",
-                    "name": "Experimental Web Platform Features",
-                    "value_to_set": "enabled"
+                    "name": "#enable-experimental-web-platform-features",
+                    "value_to_set": "Enabled"
                   }
                 ],
                 "notes": "Combinators in the selector list argument may not match correctly (see <a href='https://crbug.com/842157'>bug 842157</a>)."
@@ -41825,8 +41418,8 @@
                 "flags": [
                   {
                     "type": "preference",
-                    "name": "Experimental Web Platform Features",
-                    "value_to_set": "enabled"
+                    "name": "#enable-experimental-web-platform-features",
+                    "value_to_set": "Enabled"
                   }
                 ],
                 "notes": "Combinators in the selector list argument may not match correctly (see <a href='https://crbug.com/842157'>bug 842157</a>)."
@@ -41843,8 +41436,8 @@
                 "flags": [
                   {
                     "type": "preference",
-                    "name": "Experimental Web Platform Features",
-                    "value_to_set": "enabled"
+                    "name": "#enable-experimental-web-platform-features",
+                    "value_to_set": "Enabled"
                   }
                 ],
                 "notes": "Combinators in the selector list argument may not match correctly (see <a href='https://crbug.com/842157'>bug 842157</a>)."
@@ -41884,6 +41477,9 @@
             },
             "safari": [
               {
+                "version_added": "14"
+              },
+              {
                 "version_added": "9",
                 "alternative_name": ":matches()"
               },
@@ -41898,6 +41494,34 @@
             "experimental": false,
             "standard_track": true,
             "deprecated": false
+          }
+        },
+        "forgiving_selector_list": {
+          "__compat": {
+            "description": "Support for forgiving selector list",
+            "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/:where",
+            "support": {
+              "chrome": {
+                "version_added": false
+              },
+              "edge": {
+                "version_added": false
+              },
+              "firefox": {
+                "version_added": "82"
+              },
+              "ie": {
+                "version_added": false
+              },
+              "safari": {
+                "version_added": false
+              }
+            },
+            "status": {
+              "experimental": false,
+              "standard_track": true,
+              "deprecated": false
+            }
           }
         }
       },
@@ -42103,24 +41727,34 @@
           "description": "<code>::marker</code>",
           "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/::marker",
           "support": {
-            "chrome": {
-              "version_added": "80",
-              "flags": [
-                {
-                  "type": "preference",
-                  "name": "Enable experimental Web Platform features"
-                }
-              ]
-            },
-            "edge": {
-              "version_added": "80",
-              "flags": [
-                {
-                  "type": "preference",
-                  "name": "Enable experimental Web Platform features"
-                }
-              ]
-            },
+            "chrome": [
+              {
+                "version_added": "86"
+              },
+              {
+                "version_added": "80",
+                "flags": [
+                  {
+                    "type": "preference",
+                    "name": "Enable experimental Web Platform features"
+                  }
+                ]
+              }
+            ],
+            "edge": [
+              {
+                "version_added": "86"
+              },
+              {
+                "version_added": "80",
+                "flags": [
+                  {
+                    "type": "preference",
+                    "name": "Enable experimental Web Platform features"
+                  }
+                ]
+              }
+            ],
             "firefox": {
               "version_added": "68"
             },
@@ -42135,6 +41769,55 @@
             "experimental": false,
             "standard_track": true,
             "deprecated": false
+          }
+        },
+        "animation_and_transition_support": {
+          "__compat": {
+            "description": "Animation and transition support",
+            "support": {
+              "chrome": [
+                {
+                  "version_added": "86"
+                },
+                {
+                  "version_added": "83",
+                  "flags": [
+                    {
+                      "type": "preference",
+                      "name": "Enable experimental Web Platform features"
+                    }
+                  ]
+                }
+              ],
+              "edge": [
+                {
+                  "version_added": "86"
+                },
+                {
+                  "version_added": "83",
+                  "flags": [
+                    {
+                      "type": "preference",
+                      "name": "Enable experimental Web Platform features"
+                    }
+                  ]
+                }
+              ],
+              "firefox": {
+                "version_added": "80"
+              },
+              "ie": {
+                "version_added": false
+              },
+              "safari": {
+                "version_added": false
+              }
+            },
+            "status": {
+              "experimental": false,
+              "standard_track": true,
+              "deprecated": false
+            }
           }
         }
       },
@@ -43240,7 +42923,7 @@
         },
         "form": {
           "__compat": {
-            "description": "Applies to <a href='https://developer.mozilla.org/docs/Web/HTML/Element/form'>&lt;form&gt;</a> elements",
+            "description": "Applies to <code>&lt;form&gt;</code> elements",
             "support": {
               "chrome": {
                 "version_added": "40"
@@ -43355,7 +43038,14 @@
           "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/:where",
           "support": {
             "chrome": {
-              "version_added": false
+              "version_added": "72",
+              "flags": [
+                {
+                  "type": "preference",
+                  "name": "#enable-experimental-web-platform-features",
+                  "value_to_set": "Enabled"
+                }
+              ]
             },
             "edge": {
               "version_added": false
@@ -43380,13 +43070,41 @@
               "version_added": false
             },
             "safari": {
-              "version_added": false
+              "version_added": "14"
             }
           },
           "status": {
             "experimental": false,
             "standard_track": true,
             "deprecated": false
+          }
+        },
+        "forgiving_selector_list": {
+          "__compat": {
+            "description": "Support for forgiving selector list",
+            "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/:where",
+            "support": {
+              "chrome": {
+                "version_added": false
+              },
+              "edge": {
+                "version_added": false
+              },
+              "firefox": {
+                "version_added": "82"
+              },
+              "ie": {
+                "version_added": false
+              },
+              "safari": {
+                "version_added": false
+              }
+            },
+            "status": {
+              "experimental": false,
+              "standard_track": true,
+              "deprecated": false
+            }
           }
         }
       }
@@ -44888,7 +44606,7 @@
                   "version_added": false
                 },
                 "safari": {
-                  "version_added": false
+                  "version_added": "14"
                 }
               },
               "status": {
@@ -45130,12 +44848,10 @@
             "mdn_url": "https://developer.mozilla.org/docs/Web/CSS/revert",
             "support": {
               "chrome": {
-                "version_added": false,
-                "notes": "See <a href='https://crbug.com/579788'>bug 579788</a>."
+                "version_added": "84"
               },
               "edge": {
-                "version_added": false,
-                "notes": "See <a href='https://crbug.com/579788'>bug 579788</a>."
+                "version_added": "84"
               },
               "firefox": {
                 "version_added": "67"
@@ -45357,9 +45073,20 @@
                 "edge": {
                   "version_added": "79"
                 },
-                "firefox": {
-                  "version_added": false
-                },
+                "firefox": [
+                  {
+                    "version_added": "83"
+                  },
+                  {
+                    "version_added": "75",
+                    "flags": [
+                      {
+                        "type": "preference",
+                        "name": "layout.css.conic-gradient.enabled"
+                      }
+                    ]
+                  }
+                ],
                 "ie": {
                   "version_added": false
                 },

@@ -1,11 +1,10 @@
-import postcss from 'postcss';
 import compatData from './data.json';
 import { Helpers } from './helpers';
 
 export class Match {
 
   public static property(text: string): { property: string; prefix: string } {
-    let property = postcss.vendor.unprefixed(text);
+    let property = text.replace(/^-\w+-/, '');
     const prefix = text.replace(property, '');
     if (property.startsWith('--')) {
       property = 'custom-property';

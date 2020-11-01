@@ -1,4 +1,4 @@
-import postcss from 'postcss';
+import postcss, { AtRule as PostCSSAtRule, Rule as PostCSSRule } from 'postcss';
 import { AtRule } from './at-rule';
 import { browsers } from './browsers';
 import { Declaration } from './declaration';
@@ -19,17 +19,19 @@ export class Stylesheets {
   }
 
   public add(source: Source) {
-    const plugin = postcss.plugin('postcss-css-report', (opts) => (css, result) => {
-      css.walkRules((rule) => this.processRule(rule));
-      css.walkAtRules((node) => this.processAtRule(node));
+    return postcss([{
+      postcssPlugin: 'postcss-css-compat',
+      Once: (root) => {
+        root.walkRules((rule) => this.processRule(rule));
+        root.walkAtRules((node) => this.processAtRule(node));
+      }
+    }]).process(source.content, {
+      from: undefined
+    }).then(() => {
+      this.sources.push(source);
+    }).catch(err => {
+      console.error('[css-compat] CSS parse error:', err);
     });
-    return postcss([plugin])
-      .process(source.content, { from: undefined })
-      .then(() => {
-        this.sources.push(source);
-      }).catch(err => {
-        console.error('[css-compat] CSS parse error:', err);
-      });
   }
 
   public getIssues(sources: Array<Source>, status: StatusFilter, year: string): GroupedIssues {
@@ -94,12 +96,12 @@ export class Stylesheets {
     return this.sources;
   }
 
-  private processAtRule(node: postcss.AtRule) {
+  private processAtRule(node: PostCSSAtRule) {
     const atRule = new AtRule(node);
     atRule.process(this.issues);
   }
 
-  private processRule(rule: postcss.Rule) {
+  private processRule(rule: PostCSSRule) {
     // Process selector
     if (rule.selector) {
       const selector = new Selector(rule);

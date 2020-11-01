@@ -1,4 +1,4 @@
-import postcss from 'postcss';
+import { Declaration as PostCSSDeclaration, Rule as PostCSSRule } from 'postcss';
 import compatData from './data.json';
 import { Helpers } from './helpers';
 import { Match } from './match';
@@ -6,11 +6,11 @@ import { BrowserKey, Issues } from './types';
 
 export class Declaration {
 
-  constructor(private rule: postcss.Rule) {
+  constructor(private rule: PostCSSRule) {
   }
 
   public process(issues: Issues) {
-    const declarations: { [key: string]: { prefixes: Set<string>; instances: Array<postcss.Declaration> } } = {};
+    const declarations: { [key: string]: { prefixes: Set<string>; instances: Array<PostCSSDeclaration> } } = {};
     this.rule.walkDecls(decl => {
       const match = Match.property(decl.prop);
       if (!match.property) {

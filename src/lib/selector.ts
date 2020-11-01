@@ -1,4 +1,4 @@
-import postcss from 'postcss';
+import { Rule as PostCSSRule } from 'postcss';
 import postcssSelectorParser from 'postcss-selector-parser';
 import compatData from './data.json';
 import { Helpers } from './helpers';
@@ -6,7 +6,7 @@ import { Match } from './match';
 import { BrowserKey, Issues } from './types';
 
 export class Selector {
-  constructor(private rule: postcss.Rule) {
+  constructor(private rule: PostCSSRule) {
   }
 
   public process(issues: Issues) {

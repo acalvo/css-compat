@@ -43,9 +43,6 @@ const config: webpack.Configuration = {
       },
     ]
   },
-  node: {
-    fs: 'empty'
-  },
   plugins: [
     new CopyWebpackPlugin({
       patterns: [
